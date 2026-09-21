@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Libur Nataru</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+    color: #fff;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  #timer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.5rem 1.8rem;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 90px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+  .box:hover { transform: translateY(-5px); }
+  .num {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .label {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+  }
+  .done {
+    font-size: 2rem;
+    text-align: center;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+  @media (max-width: 500px) {
+    .num { font-size: 2rem; }
+    .box { padding: 1rem 1.2rem; min-width: 70px; }
+    h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+  <h1>Countdown Libur Nataru</h1>
+  <p class="subtitle">Menuju hari yang ditunggu-tunggu</p>
+  <div id="timer">
+    <div class="box"><div class="num" id="d">0</div><div class="label">Hari</div></div>
+    <div class="box"><div class="num" id="h">0</div><div class="label">Jam</div></div>
+    <div class="box"><div class="num" id="m">0</div><div class="label">Menit</div></div>
+    <div class="box"><div class="num" id="s">0</div><div class="label">Detik</div></div>
+  </div>
+
+<script>
+  // 👇 GANTI TANGGAL TARGET DI SINI (format: YYYY-MM-DDTHH:MM:SS)
+  const target = new Date("2025-12-25T00:00:00").getTime();
+
+  function update() {
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById("timer").innerHTML =
+        '<div class="done">🎉 Waktunya tiba! 🎉</div>';
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("d").textContent = String(d).padStart(2, "0");
+    document.getElementById("h").textContent = String(h).padStart(2, "0");
+    document.getElementById("m").textContent = String(m).padStart(2, "0");
+    document.getElementById("s").textContent = String(s).padStart(2, "0");
+  }
+
+  update();
+  setInterval(update, 1000);
+</script>
+</body>
+</html>
