@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎄 Countdown Libur Nataru 2026 🎅</title>
-<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>🎄 Countdown Nataru 2026 🎄</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,161 +18,222 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: 
-      radial-gradient(ellipse at top, #1a3a2e 0%, #0d1f17 40%, #050a08 100%);
     color: #fff;
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     position: relative;
+    background: #050a08;
   }
 
-  /* ❄️ Salju turun */
+  /* 🖼️ BACKGROUND REALISTIS - Suasana Natal */
+  .bg-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    background-image: 
+      linear-gradient(rgba(5, 15, 10, 0.55), rgba(5, 15, 10, 0.75)),
+      url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.3) contrast(1.1);
+    animation: bgZoom 30s ease-in-out infinite alternate;
+  }
+  @keyframes bgZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+  }
+
+  /* 🌫️ OVERLAY UE5 - Bloom + Vignette + Grain */
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: 
+      radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 100%),
+      radial-gradient(circle at 20% 30%, rgba(255, 100, 100, 0.15) 0%, transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba(100, 255, 150, 0.12) 0%, transparent 30%),
+      radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+  }
+
+  /* 📸 Film grain */
+  .grain {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grainShift 0.5s steps(2) infinite;
+  }
+  @keyframes grainShift {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-2px, 2px); }
+    100% { transform: translate(2px, -2px); }
+  }
+
+  /* 💡 Bokeh lights (out of focus) */
+  .bokeh {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(15px);
+    animation: bokehFloat 8s ease-in-out infinite;
+  }
+  .bokeh-1 { top: 10%; left: 8%; width: 60px; height: 60px; background: rgba(255, 100, 100, 0.7); }
+  .bokeh-2 { top: 25%; right: 12%; width: 80px; height: 80px; background: rgba(255, 215, 0, 0.6); animation-delay: 1s; }
+  .bokeh-3 { bottom: 20%; left: 15%; width: 70px; height: 70px; background: rgba(100, 255, 150, 0.5); animation-delay: 2s; }
+  .bokeh-4 { bottom: 30%; right: 20%; width: 50px; height: 50px; background: rgba(255, 200, 100, 0.6); animation-delay: 3s; }
+  .bokeh-5 { top: 50%; left: 45%; width: 100px; height: 100px; background: rgba(255, 150, 150, 0.3); animation-delay: 1.5s; }
+  @keyframes bokehFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
+  }
+
+  /* ❄️ Salju realistis (mix bokeh + tajam) */
   .snow-container {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
     overflow: hidden;
   }
   .snowflake {
     position: absolute;
-    top: -10px;
-    color: #fff;
-    font-size: 1em;
-    text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    top: -20px;
+    background: #fff;
+    border-radius: 50%;
     animation: snowfall linear infinite;
-    user-select: none;
+    box-shadow: 0 0 6px rgba(255,255,255,0.9);
   }
   @keyframes snowfall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
-    100% { transform: translateY(110vh) translateX(50px) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(110vh) translateX(80px) rotate(720deg); opacity: 0; }
   }
 
-  /* 💡 Lampu kelap-kelip di atas */
-  .lights {
+  /* ✨ Partikel emas mengambang */
+  .sparkle {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    padding: 0 10px;
-    z-index: 3;
-    pointer-events: none;
-  }
-  .light {
-    width: 12px; height: 12px;
+    width: 4px; height: 4px;
+    background: #ffd700;
     border-radius: 50%;
-    margin-top: 5px;
-    animation: blink 1.5s infinite;
-    box-shadow: 0 0 10px 2px currentColor;
-  }
-  .light:nth-child(4n+1) { color: #ff3b3b; background: #ff3b3b; animation-delay: 0s; }
-  .light:nth-child(4n+2) { color: #ffd700; background: #ffd700; animation-delay: 0.3s; }
-  .light:nth-child(4n+3) { color: #00e676; background: #00e676; animation-delay: 0.6s; }
-  .light:nth-child(4n+4) { color: #40c4ff; background: #40c4ff; animation-delay: 0.9s; }
-  @keyframes blink {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(0.8); }
-  }
-
-  /* Pohon natal kiri-kanan */
-  .tree {
-    position: fixed;
-    bottom: 0;
-    font-size: clamp(4rem, 12vw, 9rem);
     z-index: 2;
-    filter: drop-shadow(0 0 20px rgba(0, 230, 118, 0.5));
-    animation: treeSway 3s ease-in-out infinite;
     pointer-events: none;
+    box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.8);
+    animation: sparkleFloat linear infinite;
   }
-  .tree-left { left: -10px; }
-  .tree-right { right: -10px; animation-delay: 1.5s; }
-  @keyframes treeSway {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
+  @keyframes sparkleFloat {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
   }
 
-  /* Konten */
+  /* Konten utama */
   .container {
     position: relative;
-    z-index: 5;
+    z-index: 10;
     text-align: center;
-    max-width: 900px;
+    max-width: 950px;
     width: 100%;
+    padding: 2rem;
+    background: rgba(10, 20, 15, 0.35);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 24px;
+    box-shadow: 
+      0 0 80px rgba(255, 215, 0, 0.15),
+      0 20px 60px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
-  /* Sinterklas */
-  .santa {
-    font-size: clamp(3.5rem, 10vw, 6rem);
-    margin-bottom: 0.5rem;
+  .badge {
     display: inline-block;
-    animation: santaWave 1.5s ease-in-out infinite;
-    filter: drop-shadow(0 0 25px rgba(255, 59, 59, 0.7));
+    padding: 0.4rem 1.2rem;
+    background: linear-gradient(135deg, rgba(255, 59, 59, 0.3), rgba(0, 230, 118, 0.3));
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: #ffd700;
+    font-weight: 600;
+    animation: badgePulse 2s ease-in-out infinite;
   }
-  @keyframes santaWave {
-    0%, 100% { transform: rotate(-8deg) scale(1); }
-    50% { transform: rotate(8deg) scale(1.08); }
+  @keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0); }
   }
 
   h1 {
-    font-family: 'Mountains of Christmas', cursive;
-    font-size: clamp(2rem, 7vw, 4rem);
-    font-weight: 700;
-    letter-spacing: 2px;
-    background: linear-gradient(135deg, #ff3b3b 0%, #ffd700 30%, #fff 50%, #ffd700 70%, #00e676 100%);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #ff3b3b 0%, #ffd700 25%, #fff 50%, #00e676 75%, #ffd700 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: xmasShine 5s linear infinite;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    text-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
   }
   @keyframes xmasShine {
     to { background-position: 200% center; }
   }
 
   .subtitle {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
     color: #a8e6c0;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     font-weight: 300;
   }
 
   .target-date {
-    font-size: 0.95rem;
-    color: #ccc;
-    letter-spacing: 2px;
-    margin-bottom: 3rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: #ddd;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
   }
   .target-date span {
     color: #ffd700;
     font-weight: 700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   }
 
-  /* Ornamen pembatas */
   .divider {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 2.5rem;
+    gap: 18px;
+    margin-bottom: 2rem;
   }
   .divider-line {
-    width: 80px; height: 2px;
-    background: linear-gradient(90deg, transparent, #ff3b3b, transparent);
-  }
-  .divider-line.right {
-    background: linear-gradient(90deg, transparent, #00e676, transparent);
+    width: 100px; height: 1px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
   }
   .divider-icon {
-    font-size: 1.3rem;
-    animation: blink 1.5s infinite;
+    color: #ffd700;
+    font-size: 0.9rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+    animation: iconPulse 2s ease-in-out infinite;
+  }
+  @keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
   }
 
   /* Timer */
@@ -185,17 +246,17 @@
 
   .box {
     position: relative;
-    background: linear-gradient(145deg, rgba(180, 30, 30, 0.9), rgba(20, 60, 40, 0.95));
-    border: 2px solid rgba(255, 215, 0, 0.5);
-    padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2.2rem);
-    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(20, 40, 30, 0.75), rgba(10, 20, 15, 0.85));
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    padding: clamp(1rem, 3vw, 1.8rem) clamp(0.9rem, 3vw, 2rem);
+    border-radius: 16px;
     text-align: center;
-    min-width: clamp(75px, 18vw, 130px);
+    min-width: clamp(72px, 18vw, 125px);
     box-shadow:
-      0 0 30px rgba(255, 59, 59, 0.3),
+      0 0 40px rgba(255, 215, 0, 0.2),
       inset 0 1px 0 rgba(255, 215, 0, 0.3),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
   }
@@ -205,43 +266,44 @@
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), transparent);
-    transition: left 0.6s;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    transition: left 0.7s;
   }
   .box:hover::before { left: 100%; }
 
   .box:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1.03);
     border-color: #ffd700;
     box-shadow:
-      0 0 60px rgba(255, 215, 0, 0.5),
-      inset 0 1px 0 rgba(255, 215, 0, 0.5);
+      0 0 70px rgba(255, 215, 0, 0.6),
+      0 0 120px rgba(255, 59, 59, 0.3),
+      inset 0 1px 0 rgba(255, 215, 0, 0.6);
   }
 
   .num {
-    font-family: 'Mountains of Christmas', cursive;
-    font-size: clamp(2rem, 6vw, 3.8rem);
-    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.9rem, 6vw, 3.6rem);
+    font-weight: 900;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    background: linear-gradient(180deg, #fff 0%, #ffd700 50%, #ff3b3b 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #ff3b3b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
     transition: transform 0.3s;
   }
 
-  .box:hover .num { transform: scale(1.08); }
+  .box:hover .num { transform: scale(1.1); }
 
   .label {
-    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    font-size: clamp(0.6rem, 1.5vw, 0.78rem);
     color: #ffe9a8;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-top: 0.7rem;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
   }
 
   .box::after {
@@ -249,16 +311,15 @@
     position: absolute;
     top: 6px; right: 6px;
     width: 14px; height: 14px;
-    border-top: 2px solid #ffd700;
-    border-right: 2px solid #ffd700;
+    border-top: 1px solid #ffd700;
+    border-right: 1px solid #ffd700;
     opacity: 0.7;
   }
 
-  /* Pesan selesai */
   .done {
-    font-family: 'Mountains of Christmas', cursive;
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-weight: 900;
     background: linear-gradient(135deg, #ff3b3b, #ffd700, #fff, #00e676, #ffd700, #ff3b3b);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -267,26 +328,25 @@
     animation: xmasShine 3s linear infinite;
     text-align: center;
     padding: 2rem;
-    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8));
   }
 
-  /* Footer */
   .footer {
     position: relative;
-    z-index: 5;
-    margin-top: 3rem;
-    font-size: 0.8rem;
+    z-index: 10;
+    margin-top: 2rem;
+    font-size: 0.75rem;
     color: #a8e6c0;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
+    text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
   }
 
-  /* Animasi masuk */
   .fade-in {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeIn 1s ease forwards;
+    animation: fadeIn 1.2s ease forwards;
   }
   @keyframes fadeIn {
     to { opacity: 1; transform: translateY(0); }
@@ -297,58 +357,38 @@
   .delay-4 { animation-delay: 0.8s; }
   .delay-5 { animation-delay: 1s; }
 
-  /* Hadiah di bawah */
-  .gifts {
-    position: fixed;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    letter-spacing: 8px;
-    z-index: 4;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
-    animation: giftsBounce 2s ease-in-out infinite;
-    pointer-events: none;
-  }
-  @keyframes giftsBounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-8px); }
-  }
-
   @media (max-width: 600px) {
-    .divider-line { width: 40px; }
-    .target-date { margin-bottom: 2rem; }
-    .tree { font-size: 3.5rem; }
+    .container { padding: 1.2rem; border-radius: 18px; }
+    .divider-line { width: 50px; }
+    .target-date { margin-bottom: 1.8rem; }
   }
 </style>
 </head>
 <body>
 
-  <!-- 💡 Lampu natal di atas -->
-  <div class="lights">
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div>
-  </div>
+  <!-- 🖼️ Background realistis -->
+  <div class="bg-layer"></div>
 
-  <!-- 🌲 Pohon natal -->
-  <div class="tree tree-left">🎄</div>
-  <div class="tree tree-right">🎄</div>
+  <!-- 🌫️ Overlay UE5 -->
+  <div class="overlay"></div>
+
+  <!-- 📸 Film grain -->
+  <div class="grain"></div>
+
+  <!-- 💡 Bokeh lights -->
+  <div class="bokeh bokeh-1"></div>
+  <div class="bokeh bokeh-2"></div>
+  <div class="bokeh bokeh-3"></div>
+  <div class="bokeh bokeh-4"></div>
+  <div class="bokeh bokeh-5"></div>
 
   <!-- ❄️ Salju -->
   <div class="snow-container" id="snow"></div>
 
-  <!-- 🎁 Hadiah di bawah -->
-  <div class="gifts">🎁 🎀 🎁</div>
-
   <div class="container">
-    <div class="santa fade-in delay-1">🎅</div>
+    <div class="badge fade-in delay-1">✦ Christmas Edition ✦</div>
 
-    <h1 class="fade-in delay-2">Selamat Natal & Tahun Baru</h1>
+    <h1 class="fade-in delay-2">SELAMAT NATAL & TAHUN BARU</h1>
 
     <p class="subtitle fade-in delay-2">Menuju Libur Nataru</p>
 
@@ -358,8 +398,8 @@
 
     <div class="divider fade-in delay-3">
       <div class="divider-line"></div>
-      <div class="divider-icon">🎄</div>
-      <div class="divider-line right"></div>
+      <div class="divider-icon">◆</div>
+      <div class="divider-line"></div>
     </div>
 
     <div id="timer" class="fade-in delay-4">
@@ -383,26 +423,41 @@
   </div>
 
   <div class="footer fade-in delay-5">
-    ✦ Ho Ho Ho • Countdown by Rehan ✦
+    ✦ Countdown by Rehan ✦
   </div>
 
 <script>
   // 🎯 TARGET: 10 Desember 2026, 00:00 WIB
   const target = new Date("2026-12-10T00:00:00+07:00").getTime();
 
-  // ❄️ Generate salju
+  // ❄️ Generate salju realistis (mix tajam + bokeh)
   const snowContainer = document.getElementById("snow");
-  const snowflakes = ["❄", "❅", "❆", "•", "*"];
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 80; i++) {
     const s = document.createElement("div");
     s.className = "snowflake";
-    s.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+    const size = Math.random() * 6 + 2;
+    s.style.width = size + "px";
+    s.style.height = size + "px";
     s.style.left = Math.random() * 100 + "%";
-    s.style.fontSize = (Math.random() * 15 + 8) + "px";
-    s.style.animationDuration = (Math.random() * 8 + 5) + "s";
-    s.style.animationDelay = (Math.random() * 10) + "s";
+    s.style.animationDuration = (Math.random() * 10 + 6) + "s";
+    s.style.animationDelay = (Math.random() * 12) + "s";
     s.style.opacity = Math.random() * 0.7 + 0.3;
+    // Bokeh effect: sebagian salju di-blur
+    if (Math.random() > 0.7) {
+      s.style.filter = "blur(2px)";
+      s.style.opacity = 0.4;
+    }
     snowContainer.appendChild(s);
+  }
+
+  // ✨ Generate sparkle emas
+  for (let i = 0; i < 25; i++) {
+    const sp = document.createElement("div");
+    sp.className = "sparkle";
+    sp.style.left = Math.random() * 100 + "%";
+    sp.style.animationDuration = (Math.random() * 8 + 6) + "s";
+    sp.style.animationDelay = (Math.random() * 10) + "s";
+    document.body.appendChild(sp);
   }
 
   // ⏰ Update countdown
@@ -412,7 +467,7 @@
 
     if (diff <= 0) {
       document.getElementById("timer").innerHTML =
-        '<div class="done">🎄 SELAMAT NATAL & TAHUN BARU 🎅</div>';
+        '<div class="done">🎄 SELAMAT NATAL & TAHUN BARU 🎄</div>';
       return;
     }
 
