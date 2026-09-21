@@ -9,8 +9,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg-start: #050a08;
-    --bg-end: #0d1f17;
     --accent-1: #ff3b3b;
     --accent-2: #ffd700;
     --accent-3: #00e676;
@@ -20,8 +18,6 @@
   }
 
   body.light-mode {
-    --bg-start: #f5f0e8;
-    --bg-end: #e8dfd0;
     --accent-1: #c41e3a;
     --accent-2: #b8860b;
     --accent-3: #2d7a4f;
@@ -30,10 +26,7 @@
     --panel-bg: rgba(255, 255, 255, 0.5);
   }
 
-  html, body {
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  html, body { min-height: 100vh; overflow-x: hidden; }
 
   body {
     display: flex;
@@ -44,11 +37,11 @@
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     position: relative;
-    background: var(--bg-start);
+    background: #050a08;
     transition: background 0.5s;
   }
 
-  /* 🖼️ BACKGROUND */
+  /* 🖼️ Background */
   .bg-layer {
     position: fixed;
     top: 0; left: 0;
@@ -61,7 +54,6 @@
     background-position: center;
     filter: saturate(1.3) contrast(1.1);
     animation: bgZoom 30s ease-in-out infinite alternate;
-    transition: opacity 0.5s;
   }
   body.light-mode .bg-layer {
     background-image: 
@@ -74,7 +66,7 @@
     to { transform: scale(1.08); }
   }
 
-  /* 🌫️ OVERLAY */
+  /* Overlay */
   .overlay {
     position: fixed;
     top: 0; left: 0;
@@ -90,7 +82,7 @@
     background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(200, 180, 140, 0.4) 100%);
   }
 
-  /* 📸 Grain */
+  /* Grain */
   .grain {
     position: fixed;
     top: 0; left: 0;
@@ -107,7 +99,7 @@
     100% { transform: translate(2px, -2px); }
   }
 
-  /* 💡 Bokeh */
+  /* Bokeh */
   .bokeh {
     position: fixed;
     border-radius: 50%;
@@ -125,7 +117,7 @@
     50% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
   }
 
-  /* ❄️ Salju */
+  /* Salju */
   .snow-container {
     position: fixed;
     top: 0; left: 0;
@@ -149,7 +141,7 @@
     100% { transform: translateY(110vh) translateX(80px) rotate(720deg); opacity: 0; }
   }
 
-  /* ✨ Sparkle */
+  /* Sparkle */
   .sparkle {
     position: fixed;
     width: 4px; height: 4px;
@@ -167,7 +159,7 @@
     100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
   }
 
-  /* 🎆 Canvas kembang api */
+  /* Kembang api canvas */
   #fireworks {
     position: fixed;
     top: 0; left: 0;
@@ -176,17 +168,11 @@
     pointer-events: none;
   }
 
-  /* 🔝 TOP BAR - tombol kontrol */
-  .top-bar {
+  /* Tombol tema */
+  .theme-btn {
     position: fixed;
     top: 15px;
     right: 15px;
-    z-index: 100;
-    display: flex;
-    gap: 10px;
-  }
-
-  .icon-btn {
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -201,13 +187,14 @@
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+    z-index: 100;
   }
-  .icon-btn:hover {
+  .theme-btn:hover {
     transform: scale(1.15) rotate(10deg);
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
   }
 
-  /* 🎵 Tombol musik */
+  /* Tombol musik */
   .music-btn {
     position: fixed;
     bottom: 25px;
@@ -239,7 +226,7 @@
     to { transform: rotate(360deg); }
   }
 
-  /* Konten utama */
+  /* Container utama */
   .container {
     position: relative;
     z-index: 10;
@@ -256,10 +243,9 @@
       0 0 80px rgba(255, 215, 0, 0.15),
       0 20px 60px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: background 0.5s;
+    transition: all 0.5s;
   }
 
-  /* 📅 Tanggal hari ini */
   .today-date {
     font-size: 0.8rem;
     color: var(--text-sub);
@@ -315,7 +301,6 @@
     font-weight: 300;
   }
 
-  /* 💬 Ucapan custom */
   .greeting {
     font-size: clamp(0.85rem, 2vw, 1.05rem);
     color: var(--accent-2);
@@ -338,7 +323,7 @@
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   }
 
-  /* 📊 Progress bar */
+  /* Progress bar */
   .progress-wrap {
     margin: 0 auto 2rem;
     max-width: 600px;
@@ -364,7 +349,6 @@
     overflow: hidden;
     border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-    position: relative;
   }
 
   .progress-fill {
@@ -387,7 +371,6 @@
     gap: clamp(0.5rem, 2vw, 1.2rem);
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 2rem;
   }
 
   .box {
@@ -403,7 +386,6 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
   }
-
   body.light-mode .box {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 240, 230, 0.95));
     box-shadow: 0 0 40px rgba(184, 134, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -450,147 +432,53 @@
     font-weight: 600;
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
   }
-
   body.light-mode .label { color: #8b6914; text-shadow: none; }
 
-  .done {
+  /* 🎉 Yang muncul pas target tercapai */
+  .done-wrap {
+    text-align: center;
+    padding: 3rem 1rem;
+    animation: doneIn 1.5s ease forwards;
+  }
+  @keyframes doneIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    60% { opacity: 1; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .done-title {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-size: clamp(1.8rem, 7vw, 4rem);
     font-weight: 900;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--text-main), var(--accent-3), var(--accent-2), var(--accent-1));
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), #fff, var(--accent-3), var(--accent-2), var(--accent-1));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: xmasShine 3s linear infinite;
-    text-align: center;
-    padding: 2rem;
-    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8));
+    animation: xmasShine 2s linear infinite;
+    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1));
+    margin-bottom: 1rem;
   }
 
-  /* 🔗 Tombol aksi */
-  .actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-
-  .action-btn {
-    padding: 0.7rem 1.4rem;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.5);
+  .done-sub {
+    font-size: clamp(1rem, 3vw, 1.5rem);
     color: var(--accent-2);
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    font-style: italic;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
   }
 
-  .action-btn:hover {
-    background: rgba(255, 215, 0, 0.25);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+  .done-emoji {
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 15px;
+    animation: bounce 1.5s ease-in-out infinite;
   }
-
-  /* 📤 Share menu */
-  .share-menu {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: rgba(10, 20, 15, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    z-index: 200;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 280px;
-    transition: transform 0.3s ease;
-    box-shadow: 0 0 80px rgba(255, 215, 0, 0.4);
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
   }
-  .share-menu.active { transform: translate(-50%, -50%) scale(1); }
-
-  .share-title {
-    font-family: 'Cinzel', serif;
-    color: #ffd700;
-    font-size: 1.1rem;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-  }
-
-  .share-btn {
-    padding: 0.8rem 1rem;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    color: #fff;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Poppins', sans-serif;
-  }
-  .share-btn:hover {
-    background: rgba(255, 215, 0, 0.25);
-    transform: translateX(5px);
-  }
-
-  .share-close {
-    margin-top: 0.5rem;
-    padding: 0.6rem;
-    background: rgba(255, 59, 59, 0.2);
-    border: 1px solid rgba(255, 59, 59, 0.5);
-    color: #ff6b6b;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
-  }
-
-  /* Overlay backdrop */
-  .backdrop {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    z-index: 150;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .backdrop.active { opacity: 1; pointer-events: all; }
-
-  /* Toast notif */
-  .toast {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: rgba(10, 20, 15, 0.95);
-    color: #ffd700;
-    padding: 12px 24px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    z-index: 300;
-    transition: transform 0.4s ease;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
 
   .footer {
     position: relative;
@@ -616,14 +504,11 @@
   .delay-3 { animation-delay: 0.6s; }
   .delay-4 { animation-delay: 0.8s; }
   .delay-5 { animation-delay: 1s; }
-  .delay-6 { animation-delay: 1.2s; }
 
   @media (max-width: 600px) {
     .container { padding: 1.2rem; border-radius: 18px; }
     .music-btn { width: 50px; height: 50px; font-size: 1.2rem; bottom: 15px; right: 15px; }
-    .top-bar { top: 10px; right: 10px; gap: 6px; }
-    .icon-btn { width: 38px; height: 38px; font-size: 1rem; }
-    .action-btn { padding: 0.6rem 1rem; font-size: 0.7rem; }
+    .theme-btn { width: 38px; height: 38px; font-size: 1rem; top: 10px; right: 10px; }
   }
 </style>
 </head>
@@ -640,33 +525,14 @@
 
   <div class="snow-container" id="snow"></div>
 
-  <!-- 🎆 Canvas kembang api -->
   <canvas id="fireworks"></canvas>
 
-  <!-- 🔝 Top bar -->
-  <div class="top-bar">
-    <button class="icon-btn" id="themeBtn" title="Ganti Tema">🌙</button>
-  </div>
+  <button class="theme-btn" id="themeBtn" title="Ganti Tema">🌙</button>
 
-  <!-- 🎵 Audio -->
   <audio id="bgMusic" loop preload="auto">
     <source src="tunetank-jingle-bells-slap-house-348413.mp3" type="audio/mpeg">
   </audio>
-
   <button class="music-btn" id="musicBtn" title="Play / Pause Musik">🎵</button>
-
-  <!-- 📤 Share menu -->
-  <div class="backdrop" id="backdrop"></div>
-  <div class="share-menu" id="shareMenu">
-    <div class="share-title">✦ Bagikan ✦</div>
-    <button class="share-btn" onclick="shareWA()">💬 WhatsApp</button>
-    <button class="share-btn" onclick="shareTW()">🐦 Twitter / X</button>
-    <button class="share-btn" onclick="shareFB()">📘 Facebook</button>
-    <button class="share-btn" onclick="shareCopy()">🔗 Copy Link</button>
-    <button class="share-close" onclick="closeShare()">✕ Tutup</button>
-  </div>
-
-  <div class="toast" id="toast">✨ Berhasil!</div>
 
   <div class="container">
     <p class="today-date fade-in delay-1" id="todayDate"></p>
@@ -677,14 +543,12 @@
 
     <p class="subtitle fade-in delay-2">Menuju Libur Nataru</p>
 
-    <!-- 💬 Ucapan custom — GANTI TEKS INI -->
     <p class="greeting fade-in delay-3">"Semoga tahun ini penuh berkat & kebahagiaan 🎁"</p>
 
     <p class="target-date fade-in delay-3">
       📅 <span>10 Desember 2026</span> • 00:00 WIB
     </p>
 
-    <!-- 📊 Progress bar -->
     <div class="progress-wrap fade-in delay-4">
       <div class="progress-info">
         <span>Progress</span>
@@ -713,45 +577,30 @@
         <div class="label">Detik</div>
       </div>
     </div>
-
-    <div class="actions fade-in delay-5">
-      <button class="action-btn" onclick="openShare()">🔗 Bagikan</button>
-      <button class="action-btn" onclick="saveCalendar()">📅 Save Kalender</button>
-      <button class="action-btn" onclick="takeScreenshot()">📸 Screenshot</button>
-    </div>
   </div>
 
-  <div class="footer fade-in delay-6">✦ Countdown by Rehan ✦</div>
+  <div class="footer fade-in delay-5">✦ Countdown by Rehan ✦</div>
 
 <script>
-  // ═══════════════════════════════════════════════
-  // 🎯 KONFIGURASI — GANTI DI SINI
-  // ═══════════════════════════════════════════════
+  // 🎯 KONFIGURASI
   const CONFIG = {
-    targetDate: "2026-12-10T00:00:00+07:00",  // Tanggal target
-    startDate: "2025-12-10T00:00:00+07:00",   // Tanggal mulai (buat progress bar)
-    eventTitle: "Libur Nataru 2026",
-    eventDesc: "Libur Natal dan Tahun Baru"
+    targetDate: "2026-12-10T00:00:00+07:00",
+    startDate: "2025-12-10T00:00:00+07:00"
   };
-
   const target = new Date(CONFIG.targetDate).getTime();
   const startTime = new Date(CONFIG.startDate).getTime();
 
-  // ═══════════════════════════════════════════════
-  // 📅 TANGGAL HARI INI
-  // ═══════════════════════════════════════════════
+  // 📅 Tanggal hari ini
   const daysID = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
   const monthsID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
   function updateTodayDate() {
     const now = new Date();
-    const el = document.getElementById("todayDate");
-    el.textContent = `📅 Hari ini: ${daysID[now.getDay()]}, ${now.getDate()} ${monthsID[now.getMonth()]} ${now.getFullYear()}`;
+    document.getElementById("todayDate").textContent =
+      `📅 Hari ini: ${daysID[now.getDay()]}, ${now.getDate()} ${monthsID[now.getMonth()]} ${now.getFullYear()}`;
   }
   updateTodayDate();
 
-  // ═══════════════════════════════════════════════
-  // ❄️ GENERATE SALJU
-  // ═══════════════════════════════════════════════
+  // ❄️ Salju
   const snowContainer = document.getElementById("snow");
   for (let i = 0; i < 80; i++) {
     const s = document.createElement("div");
@@ -770,7 +619,7 @@
     snowContainer.appendChild(s);
   }
 
-  // ✨ SPARKLE
+  // ✨ Sparkle
   for (let i = 0; i < 25; i++) {
     const sp = document.createElement("div");
     sp.className = "sparkle";
@@ -780,9 +629,7 @@
     document.body.appendChild(sp);
   }
 
-  // ═══════════════════════════════════════════════
-  // 📊 PROGRESS BAR
-  // ═══════════════════════════════════════════════
+  // 📊 Progress
   function updateProgress() {
     const now = Date.now();
     const total = target - startTime;
@@ -793,9 +640,7 @@
     document.getElementById("progressPercent").textContent = percent.toFixed(1) + "%";
   }
 
-  // ═══════════════════════════════════════════════
-  // 🎵 KONTROL MUSIK
-  // ═══════════════════════════════════════════════
+  // 🎵 Musik
   const music = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
   let isPlaying = false;
@@ -812,15 +657,12 @@
         musicBtn.textContent = "⏸";
         musicBtn.classList.add("playing");
         isPlaying = true;
-      }).catch(err => {
-        showToast("⚠️ Klik lagi ya");
-      });
+      }).catch(() => {});
     }
   }
   musicBtn.addEventListener("click", toggleMusic);
 
-  document.body.addEventListener("click", function autoStart(e) {
-    if (e.target.closest("button, .share-menu, .backdrop")) return;
+  document.body.addEventListener("click", function autoStart() {
     if (!isPlaying) {
       music.play().then(() => {
         musicBtn.textContent = "⏸";
@@ -831,99 +673,21 @@
     document.body.removeEventListener("click", autoStart);
   }, { once: true });
 
-  // ═══════════════════════════════════════════════
-  // 🌙 DARK/LIGHT MODE
-  // ═══════════════════════════════════════════════
+  // 🌙 Dark/light mode
   const themeBtn = document.getElementById("themeBtn");
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light-mode");
     themeBtn.textContent = "☀️";
   }
-
   themeBtn.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
     const isLight = document.body.classList.contains("light-mode");
     themeBtn.textContent = isLight ? "☀️" : "🌙";
     localStorage.setItem("theme", isLight ? "light" : "dark");
-    showToast(isLight ? "☀️ Mode terang" : "🌙 Mode gelap");
   });
 
-  // ═══════════════════════════════════════════════
-  // 🔗 SHARE
-  // ═══════════════════════════════════════════════
-  function openShare() {
-    document.getElementById("shareMenu").classList.add("active");
-    document.getElementById("backdrop").classList.add("active");
-  }
-  function closeShare() {
-    document.getElementById("shareMenu").classList.remove("active");
-    document.getElementById("backdrop").classList.remove("active");
-  }
-  document.getElementById("backdrop").addEventListener("click", closeShare);
-
-  const shareText = `🎄 Countdown ${CONFIG.eventTitle} tinggal menuju 10 Desember 2026! Cek di:`;
-  const shareURL = window.location.href;
-
-  function shareWA() {
-    window.open(`https://wa.me/?text=${encodeURIComponent(shareText + " " + shareURL)}`, "_blank");
-    closeShare();
-  }
-  function shareTW() {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareURL)}`, "_blank");
-    closeShare();
-  }
-  function shareFB() {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`, "_blank");
-    closeShare();
-  }
-  function shareCopy() {
-    navigator.clipboard.writeText(shareURL).then(() => {
-      showToast("🔗 Link dicopy!");
-      closeShare();
-    }).catch(() => {
-      showToast("⚠️ Gagal copy, coba manual");
-    });
-  }
-
-  // ═══════════════════════════════════════════════
-  // 📅 SAVE TO CALENDAR
-  // ═══════════════════════════════════════════════
-  function saveCalendar() {
-    const start = "20261210T000000";
-    const end = "20261211T000000";
-    const title = encodeURIComponent(CONFIG.eventTitle);
-    const desc = encodeURIComponent(CONFIG.eventDesc);
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${desc}&location=Indonesia`;
-    window.open(url, "_blank");
-    showToast("📅 Buka Google Calendar");
-  }
-
-  // ═══════════════════════════════════════════════
-  // 📸 SCREENSHOT
-  // ═══════════════════════════════════════════════
-  function takeScreenshot() {
-    showToast("📸 Fitur screenshot butuh library. Gua kasih alternatif!");
-    setTimeout(() => {
-      showToast("💡 Pakai tombol Print Screen / Power+Volume Down");
-    }, 2500);
-  }
-
-  // ═══════════════════════════════════════════════
-  // 🍞 TOAST
-  // ═══════════════════════════════════════════════
-  const toast = document.getElementById("toast");
-  let toastTimeout;
-  function showToast(msg) {
-    toast.textContent = msg;
-    toast.classList.add("show");
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => toast.classList.remove("show"), 2500);
-  }
-
-  // ═══════════════════════════════════════════════
-  // 🎆 KEMBANG API (Canvas)
-  // ═══════════════════════════════════════════════
+  // 🎆 Kembang api canvas
   const canvas = document.getElementById("fireworks");
   const ctx = canvas.getContext("2d");
   let particles = [];
@@ -939,17 +703,16 @@
   const colors = ["#ff3b3b", "#ffd700", "#00e676", "#40c4ff", "#ff80ab", "#ffffff", "#ffab40"];
 
   function createFirework(x, y) {
-    const count = 60 + Math.floor(Math.random() * 40);
-    const color = colors[Math.floor(Math.random() * colors.length)];
+    const count = 80 + Math.floor(Math.random() * 50);
     for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 * i) / count;
-      const speed = Math.random() * 6 + 2;
+      const angle = (Math.PI * 2 * i) / count + Math.random() * 0.2;
+      const speed = Math.random() * 7 + 2;
       particles.push({
         x, y,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 1,
-        color: Math.random() > 0.5 ? color : colors[Math.floor(Math.random() * colors.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
         size: Math.random() * 3 + 1
       });
     }
@@ -966,7 +729,7 @@
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.08; // gravity
+      p.vy += 0.08;
       p.vx *= 0.99;
       p.vy *= 0.99;
       p.life -= 0.015;
@@ -992,25 +755,21 @@
     if (fireworksActive) return;
     fireworksActive = true;
     animateFireworks();
-    // Launch 10 fireworks bertahap
-    for (let i = 0; i < 10; i++) {
-      setTimeout(launchFirework, i * 400);
+    for (let i = 0; i < 15; i++) {
+      setTimeout(launchFirework, i * 350);
     }
-    // Terus-terusan selama 30 detik
     const interval = setInterval(() => {
       if (!fireworksActive) return clearInterval(interval);
       launchFirework();
-    }, 800);
+    }, 700);
     setTimeout(() => {
       fireworksActive = false;
       clearInterval(interval);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }, 30000);
+    }, 60000);
   }
 
-  // ═══════════════════════════════════════════════
-  // ⏰ COUNTDOWN
-  // ═══════════════════════════════════════════════
+  // ⏰ Countdown
   let doneTriggered = false;
 
   function update() {
@@ -1023,10 +782,16 @@
     if (diff <= 0) {
       if (!doneTriggered) {
         doneTriggered = true;
-        document.getElementById("timer").innerHTML =
-          '<div class="done">🎄 SELAMAT NATAL & TAHUN BARU 🎄</div>';
+        // 🎉 Tampilan pas target tercapai
+        document.getElementById("timer").outerHTML = `
+          <div class="done-wrap">
+            <div class="done-emoji">🎄 🎁 🎅 🎁 🎄</div>
+            <h2 class="done-title">SELAMAT NATAL<br>& TAHUN BARU 2027</h2>
+            <p class="done-sub">✨ Selamat menikmati libur Nataru! ✨</p>
+            <div class="done-emoji">🎊 ✨ 🎊</div>
+          </div>
+        `;
         startFireworks();
-        showToast("🎉 Waktunya tiba! Selamat Natal!");
       }
       return;
     }
@@ -1045,8 +810,8 @@
   update();
   setInterval(update, 1000);
 
-  // 🧪 Demo: cek fitur kembang api (hapus/comment kalau nggak perlu)
-  // setTimeout(startFireworks, 3000);
+  // 🧪 DEMO: Uncomment baris bawah buat tes kembang api SEKARANG
+  // setTimeout(() => { startFireworks(); }, 3000);
 </script>
 </body>
 </html>
