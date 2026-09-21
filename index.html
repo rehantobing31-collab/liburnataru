@@ -868,6 +868,7 @@
     }
   }
 
+  // 🛡️ FUNGSI FIXED - Anti negative radius & alpha
   function animateFireworks() {
     if (!fireworksActive) return;
     ctx.globalCompositeOperation = "destination-out";
@@ -882,10 +883,14 @@
       p.vx *= 0.99; p.vy *= 0.99;
       p.life -= 0.015;
 
+      // 🛡️ ANTI-NEGATIVE RADIUS
+      const radius = Math.max(0.1, p.size * p.life);
+      const alpha = Math.max(0, Math.min(1, p.life));
+
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.life;
+      ctx.globalAlpha = alpha;
       ctx.fill();
       ctx.globalAlpha = 1;
     });
