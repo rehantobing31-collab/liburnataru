@@ -4,9 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🎄 Countdown Nataru 2026 🎄</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-start: #050a08;
+    --bg-end: #0d1f17;
+    --accent-1: #ff3b3b;
+    --accent-2: #ffd700;
+    --accent-3: #00e676;
+    --text-main: #ffffff;
+    --text-sub: #a8e6c0;
+    --panel-bg: rgba(10, 20, 15, 0.35);
+  }
+
+  body.light-mode {
+    --bg-start: #f5f0e8;
+    --bg-end: #e8dfd0;
+    --accent-1: #c41e3a;
+    --accent-2: #b8860b;
+    --accent-3: #2d7a4f;
+    --text-main: #1a1a1a;
+    --text-sub: #2d5a3d;
+    --panel-bg: rgba(255, 255, 255, 0.5);
+  }
 
   html, body {
     min-height: 100vh;
@@ -18,14 +40,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: var(--text-main);
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     position: relative;
-    background: #050a08;
+    background: var(--bg-start);
+    transition: background 0.5s;
   }
 
-  /* 🖼️ BACKGROUND REALISTIS */
+  /* 🖼️ BACKGROUND */
   .bg-layer {
     position: fixed;
     top: 0; left: 0;
@@ -38,13 +61,20 @@
     background-position: center;
     filter: saturate(1.3) contrast(1.1);
     animation: bgZoom 30s ease-in-out infinite alternate;
+    transition: opacity 0.5s;
+  }
+  body.light-mode .bg-layer {
+    background-image: 
+      linear-gradient(rgba(255, 250, 240, 0.7), rgba(240, 230, 210, 0.85)),
+      url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');
+    filter: saturate(1.1) brightness(1.1);
   }
   @keyframes bgZoom {
     from { transform: scale(1); }
     to { transform: scale(1.08); }
   }
 
-  /* 🌫️ OVERLAY UE5 */
+  /* 🌫️ OVERLAY */
   .overlay {
     position: fixed;
     top: 0; left: 0;
@@ -54,11 +84,13 @@
     background: 
       radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 100%),
       radial-gradient(circle at 20% 30%, rgba(255, 100, 100, 0.15) 0%, transparent 30%),
-      radial-gradient(circle at 80% 70%, rgba(100, 255, 150, 0.12) 0%, transparent 30%),
-      radial-gradient(circle at 50% 90%, rgba(255, 215, 0, 0.1) 0%, transparent 40%);
+      radial-gradient(circle at 80% 70%, rgba(100, 255, 150, 0.12) 0%, transparent 30%);
+  }
+  body.light-mode .overlay {
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(200, 180, 140, 0.4) 100%);
   }
 
-  /* 📸 Film grain */
+  /* 📸 Grain */
   .grain {
     position: fixed;
     top: 0; left: 0;
@@ -88,7 +120,6 @@
   .bokeh-2 { top: 25%; right: 12%; width: 80px; height: 80px; background: rgba(255, 215, 0, 0.6); animation-delay: 1s; }
   .bokeh-3 { bottom: 20%; left: 15%; width: 70px; height: 70px; background: rgba(100, 255, 150, 0.5); animation-delay: 2s; }
   .bokeh-4 { bottom: 30%; right: 20%; width: 50px; height: 50px; background: rgba(255, 200, 100, 0.6); animation-delay: 3s; }
-  .bokeh-5 { top: 50%; left: 45%; width: 100px; height: 100px; background: rgba(255, 150, 150, 0.3); animation-delay: 1.5s; }
   @keyframes bokehFloat {
     0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
     50% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
@@ -136,6 +167,46 @@
     100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
   }
 
+  /* 🎆 Canvas kembang api */
+  #fireworks {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  /* 🔝 TOP BAR - tombol kontrol */
+  .top-bar {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+  }
+
+  .icon-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    color: #ffd700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  .icon-btn:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+  }
+
   /* 🎵 Tombol musik */
   .music-btn {
     position: fixed;
@@ -153,52 +224,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 
-      0 0 25px rgba(255, 215, 0, 0.7),
-      0 0 50px rgba(255, 59, 59, 0.4),
-      inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 59, 59, 0.4);
     transition: all 0.3s ease;
     animation: musicPulse 2s ease-in-out infinite;
   }
-  .music-btn:hover {
-    transform: scale(1.15) rotate(10deg);
-    box-shadow: 
-      0 0 40px rgba(255, 215, 0, 1),
-      0 0 80px rgba(255, 59, 59, 0.6);
-  }
-  .music-btn.playing {
-    animation: musicSpin 3s linear infinite;
-  }
+  .music-btn:hover { transform: scale(1.15) rotate(10deg); }
+  .music-btn.playing { animation: musicSpin 3s linear infinite; }
   @keyframes musicPulse {
-    0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 59, 59, 0.4), inset 0 2px 5px rgba(255,255,255,0.3); }
-    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 59, 59, 0.7), inset 0 2px 5px rgba(255,255,255,0.3); }
+    0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 59, 59, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 59, 59, 0.7); }
   }
   @keyframes musicSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
-  }
-
-  /* Tooltip */
-  .music-tip {
-    position: fixed;
-    bottom: 95px;
-    right: 25px;
-    background: rgba(0, 0, 0, 0.85);
-    color: #ffd700;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    z-index: 100;
-    pointer-events: none;
-    animation: tipBounce 2s ease-in-out infinite;
-    white-space: nowrap;
-  }
-  @keyframes tipBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
   }
 
   /* Konten utama */
@@ -209,7 +247,7 @@
     max-width: 950px;
     width: 100%;
     padding: 2rem;
-    background: rgba(10, 20, 15, 0.35);
+    background: var(--panel-bg);
     backdrop-filter: blur(20px) saturate(1.3);
     -webkit-backdrop-filter: blur(20px) saturate(1.3);
     border: 1px solid rgba(255, 215, 0, 0.25);
@@ -218,6 +256,17 @@
       0 0 80px rgba(255, 215, 0, 0.15),
       0 20px 60px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: background 0.5s;
+  }
+
+  /* 📅 Tanggal hari ini */
+  .today-date {
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.8;
   }
 
   .badge {
@@ -241,10 +290,10 @@
 
   h1 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-size: clamp(1.6rem, 5.5vw, 3.2rem);
     font-weight: 900;
     letter-spacing: 4px;
-    background: linear-gradient(135deg, #ff3b3b 0%, #ffd700 25%, #fff 50%, #00e676 75%, #ffd700 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 25%, var(--text-main) 50%, var(--accent-3) 75%, var(--accent-2) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -259,52 +308,86 @@
 
   .subtitle {
     font-size: clamp(0.8rem, 1.8vw, 1rem);
-    color: #a8e6c0;
+    color: var(--text-sub);
     letter-spacing: 6px;
     text-transform: uppercase;
     margin-bottom: 0.8rem;
     font-weight: 300;
   }
 
+  /* 💬 Ucapan custom */
+  .greeting {
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    color: var(--accent-2);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    opacity: 0.9;
+    letter-spacing: 1px;
+  }
+
   .target-date {
     font-size: clamp(0.85rem, 2vw, 1rem);
-    color: #ddd;
+    color: var(--text-main);
     letter-spacing: 3px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.85;
   }
   .target-date span {
-    color: #ffd700;
+    color: var(--accent-2);
     font-weight: 700;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   }
 
-  .divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 2rem;
-  }
-  .divider-line {
-    width: 100px; height: 1px;
-    background: linear-gradient(90deg, transparent, #ffd700, transparent);
-  }
-  .divider-icon {
-    color: #ffd700;
-    font-size: 0.9rem;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-    animation: iconPulse 2s ease-in-out infinite;
-  }
-  @keyframes iconPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
+  /* 📊 Progress bar */
+  .progress-wrap {
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    width: 100%;
   }
 
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    background-size: 200% auto;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s ease;
+    animation: progressShine 3s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+  }
+  @keyframes progressShine {
+    to { background-position: 200% center; }
+  }
+
+  /* Timer */
   #timer {
     display: flex;
     gap: clamp(0.5rem, 2vw, 1.2rem);
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 2rem;
   }
 
   .box {
@@ -315,13 +398,15 @@
     border-radius: 16px;
     text-align: center;
     min-width: clamp(72px, 18vw, 125px);
-    box-shadow:
-      0 0 40px rgba(255, 215, 0, 0.2),
-      inset 0 1px 0 rgba(255, 215, 0, 0.3),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), inset 0 1px 0 rgba(255, 215, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+  }
+
+  body.light-mode .box {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 240, 230, 0.95));
+    box-shadow: 0 0 40px rgba(184, 134, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .box::before {
@@ -336,11 +421,8 @@
 
   .box:hover {
     transform: translateY(-8px) scale(1.03);
-    border-color: #ffd700;
-    box-shadow:
-      0 0 70px rgba(255, 215, 0, 0.6),
-      0 0 120px rgba(255, 59, 59, 0.3),
-      inset 0 1px 0 rgba(255, 215, 0, 0.6);
+    border-color: var(--accent-2);
+    box-shadow: 0 0 70px rgba(255, 215, 0, 0.6), 0 0 120px rgba(255, 59, 59, 0.3);
   }
 
   .num {
@@ -349,7 +431,7 @@
     font-weight: 900;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #ff3b3b 100%);
+    background: linear-gradient(180deg, var(--text-main) 0%, var(--accent-2) 50%, var(--accent-1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -369,21 +451,13 @@
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
   }
 
-  .box::after {
-    content: '';
-    position: absolute;
-    top: 6px; right: 6px;
-    width: 14px; height: 14px;
-    border-top: 1px solid #ffd700;
-    border-right: 1px solid #ffd700;
-    opacity: 0.7;
-  }
+  body.light-mode .label { color: #8b6914; text-shadow: none; }
 
   .done {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.5rem, 5vw, 2.8rem);
     font-weight: 900;
-    background: linear-gradient(135deg, #ff3b3b, #ffd700, #fff, #00e676, #ffd700, #ff3b3b);
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--text-main), var(--accent-3), var(--accent-2), var(--accent-1));
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -394,16 +468,139 @@
     filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.8));
   }
 
+  /* 🔗 Tombol aksi */
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .action-btn {
+    padding: 0.7rem 1.4rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    color: var(--accent-2);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .action-btn:hover {
+    background: rgba(255, 215, 0, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+  }
+
+  /* 📤 Share menu */
+  .share-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(10, 20, 15, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 280px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 80px rgba(255, 215, 0, 0.4);
+  }
+  .share-menu.active { transform: translate(-50%, -50%) scale(1); }
+
+  .share-title {
+    font-family: 'Cinzel', serif;
+    color: #ffd700;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .share-btn {
+    padding: 0.8rem 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .share-btn:hover {
+    background: rgba(255, 215, 0, 0.25);
+    transform: translateX(5px);
+  }
+
+  .share-close {
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    background: rgba(255, 59, 59, 0.2);
+    border: 1px solid rgba(255, 59, 59, 0.5);
+    color: #ff6b6b;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+  }
+
+  /* Overlay backdrop */
+  .backdrop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .backdrop.active { opacity: 1; pointer-events: all; }
+
+  /* Toast notif */
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(10, 20, 15, 0.95);
+    color: #ffd700;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    z-index: 300;
+    transition: transform 0.4s ease;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
   .footer {
     position: relative;
     z-index: 10;
     margin-top: 2rem;
     font-size: 0.75rem;
-    color: #a8e6c0;
+    color: var(--text-sub);
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
-    text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
   }
 
   .fade-in {
@@ -419,62 +616,83 @@
   .delay-3 { animation-delay: 0.6s; }
   .delay-4 { animation-delay: 0.8s; }
   .delay-5 { animation-delay: 1s; }
+  .delay-6 { animation-delay: 1.2s; }
 
   @media (max-width: 600px) {
     .container { padding: 1.2rem; border-radius: 18px; }
-    .divider-line { width: 50px; }
-    .target-date { margin-bottom: 1.8rem; }
     .music-btn { width: 50px; height: 50px; font-size: 1.2rem; bottom: 15px; right: 15px; }
-    .music-tip { bottom: 75px; right: 15px; font-size: 0.65rem; }
+    .top-bar { top: 10px; right: 10px; gap: 6px; }
+    .icon-btn { width: 38px; height: 38px; font-size: 1rem; }
+    .action-btn { padding: 0.6rem 1rem; font-size: 0.7rem; }
   }
 </style>
 </head>
 <body>
 
-  <!-- 🖼️ Background -->
   <div class="bg-layer"></div>
-
-  <!-- 🌫️ Overlay UE5 -->
   <div class="overlay"></div>
-
-  <!-- 📸 Film grain -->
   <div class="grain"></div>
 
-  <!-- 💡 Bokeh -->
   <div class="bokeh bokeh-1"></div>
   <div class="bokeh bokeh-2"></div>
   <div class="bokeh bokeh-3"></div>
   <div class="bokeh bokeh-4"></div>
-  <div class="bokeh bokeh-5"></div>
 
-  <!-- ❄️ Salju -->
   <div class="snow-container" id="snow"></div>
 
-  <!-- 🎵 Audio + Tombol Musik -->
+  <!-- 🎆 Canvas kembang api -->
+  <canvas id="fireworks"></canvas>
+
+  <!-- 🔝 Top bar -->
+  <div class="top-bar">
+    <button class="icon-btn" id="themeBtn" title="Ganti Tema">🌙</button>
+  </div>
+
+  <!-- 🎵 Audio -->
   <audio id="bgMusic" loop preload="auto">
     <source src="tunetank-jingle-bells-slap-house-348413.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="music-btn" id="musicBtn" title="Play / Pause Musik">
-    🎵
-  </button>
-  <div class="music-tip" id="musicTip">🎶 Klik untuk musik 🎶</div>
+  <button class="music-btn" id="musicBtn" title="Play / Pause Musik">🎵</button>
+
+  <!-- 📤 Share menu -->
+  <div class="backdrop" id="backdrop"></div>
+  <div class="share-menu" id="shareMenu">
+    <div class="share-title">✦ Bagikan ✦</div>
+    <button class="share-btn" onclick="shareWA()">💬 WhatsApp</button>
+    <button class="share-btn" onclick="shareTW()">🐦 Twitter / X</button>
+    <button class="share-btn" onclick="shareFB()">📘 Facebook</button>
+    <button class="share-btn" onclick="shareCopy()">🔗 Copy Link</button>
+    <button class="share-close" onclick="closeShare()">✕ Tutup</button>
+  </div>
+
+  <div class="toast" id="toast">✨ Berhasil!</div>
 
   <div class="container">
+    <p class="today-date fade-in delay-1" id="todayDate"></p>
+
     <div class="badge fade-in delay-1">✦ Christmas Edition ✦</div>
 
     <h1 class="fade-in delay-2">SELAMAT NATAL & TAHUN BARU</h1>
 
     <p class="subtitle fade-in delay-2">Menuju Libur Nataru</p>
 
+    <!-- 💬 Ucapan custom — GANTI TEKS INI -->
+    <p class="greeting fade-in delay-3">"Semoga tahun ini penuh berkat & kebahagiaan 🎁"</p>
+
     <p class="target-date fade-in delay-3">
       📅 <span>10 Desember 2026</span> • 00:00 WIB
     </p>
 
-    <div class="divider fade-in delay-3">
-      <div class="divider-line"></div>
-      <div class="divider-icon">◆</div>
-      <div class="divider-line"></div>
+    <!-- 📊 Progress bar -->
+    <div class="progress-wrap fade-in delay-4">
+      <div class="progress-info">
+        <span>Progress</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
     </div>
 
     <div id="timer" class="fade-in delay-4">
@@ -495,17 +713,45 @@
         <div class="label">Detik</div>
       </div>
     </div>
+
+    <div class="actions fade-in delay-5">
+      <button class="action-btn" onclick="openShare()">🔗 Bagikan</button>
+      <button class="action-btn" onclick="saveCalendar()">📅 Save Kalender</button>
+      <button class="action-btn" onclick="takeScreenshot()">📸 Screenshot</button>
+    </div>
   </div>
 
-  <div class="footer fade-in delay-5">
-    ✦ Countdown by Rehan ✦
-  </div>
+  <div class="footer fade-in delay-6">✦ Countdown by Rehan ✦</div>
 
 <script>
-  // 🎯 TARGET: 10 Desember 2026, 00:00 WIB
-  const target = new Date("2026-12-10T00:00:00+07:00").getTime();
+  // ═══════════════════════════════════════════════
+  // 🎯 KONFIGURASI — GANTI DI SINI
+  // ═══════════════════════════════════════════════
+  const CONFIG = {
+    targetDate: "2026-12-10T00:00:00+07:00",  // Tanggal target
+    startDate: "2025-12-10T00:00:00+07:00",   // Tanggal mulai (buat progress bar)
+    eventTitle: "Libur Nataru 2026",
+    eventDesc: "Libur Natal dan Tahun Baru"
+  };
 
-  // ❄️ Salju
+  const target = new Date(CONFIG.targetDate).getTime();
+  const startTime = new Date(CONFIG.startDate).getTime();
+
+  // ═══════════════════════════════════════════════
+  // 📅 TANGGAL HARI INI
+  // ═══════════════════════════════════════════════
+  const daysID = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+  const monthsID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  function updateTodayDate() {
+    const now = new Date();
+    const el = document.getElementById("todayDate");
+    el.textContent = `📅 Hari ini: ${daysID[now.getDay()]}, ${now.getDate()} ${monthsID[now.getMonth()]} ${now.getFullYear()}`;
+  }
+  updateTodayDate();
+
+  // ═══════════════════════════════════════════════
+  // ❄️ GENERATE SALJU
+  // ═══════════════════════════════════════════════
   const snowContainer = document.getElementById("snow");
   for (let i = 0; i < 80; i++) {
     const s = document.createElement("div");
@@ -524,7 +770,7 @@
     snowContainer.appendChild(s);
   }
 
-  // ✨ Sparkle emas
+  // ✨ SPARKLE
   for (let i = 0; i < 25; i++) {
     const sp = document.createElement("div");
     sp.className = "sparkle";
@@ -534,12 +780,25 @@
     document.body.appendChild(sp);
   }
 
+  // ═══════════════════════════════════════════════
+  // 📊 PROGRESS BAR
+  // ═══════════════════════════════════════════════
+  function updateProgress() {
+    const now = Date.now();
+    const total = target - startTime;
+    const elapsed = now - startTime;
+    let percent = (elapsed / total) * 100;
+    percent = Math.max(0, Math.min(100, percent));
+    document.getElementById("progressFill").style.width = percent + "%";
+    document.getElementById("progressPercent").textContent = percent.toFixed(1) + "%";
+  }
+
+  // ═══════════════════════════════════════════════
   // 🎵 KONTROL MUSIK
+  // ═══════════════════════════════════════════════
   const music = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
-  const musicTip = document.getElementById("musicTip");
   let isPlaying = false;
-
   music.volume = 0.5;
 
   function toggleMusic() {
@@ -547,51 +806,228 @@
       music.pause();
       musicBtn.textContent = "🎵";
       musicBtn.classList.remove("playing");
-      musicTip.textContent = "🎶 Klik untuk musik 🎶";
       isPlaying = false;
     } else {
       music.play().then(() => {
         musicBtn.textContent = "⏸";
         musicBtn.classList.add("playing");
-        musicTip.textContent = "⏸ Klik untuk pause";
         isPlaying = true;
       }).catch(err => {
-        console.log("Gagal play:", err);
-        musicTip.textContent = "⚠️ Klik lagi ya";
+        showToast("⚠️ Klik lagi ya");
       });
     }
   }
-
   musicBtn.addEventListener("click", toggleMusic);
 
-  // Sembunyikan tooltip
-  setTimeout(() => {
-    musicTip.style.transition = "opacity 1s";
-    musicTip.style.opacity = "0";
-    setTimeout(() => musicTip.style.display = "none", 1000);
-  }, 5000);
-
-  // Autoplay saat user klik pertama kali
-  document.body.addEventListener("click", function autoStart() {
+  document.body.addEventListener("click", function autoStart(e) {
+    if (e.target.closest("button, .share-menu, .backdrop")) return;
     if (!isPlaying) {
       music.play().then(() => {
         musicBtn.textContent = "⏸";
         musicBtn.classList.add("playing");
-        musicTip.textContent = "⏸ Klik untuk pause";
         isPlaying = true;
       }).catch(() => {});
     }
     document.body.removeEventListener("click", autoStart);
   }, { once: true });
 
-  // ⏰ Countdown
+  // ═══════════════════════════════════════════════
+  // 🌙 DARK/LIGHT MODE
+  // ═══════════════════════════════════════════════
+  const themeBtn = document.getElementById("themeBtn");
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeBtn.textContent = "☀️";
+  }
+
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    const isLight = document.body.classList.contains("light-mode");
+    themeBtn.textContent = isLight ? "☀️" : "🌙";
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+    showToast(isLight ? "☀️ Mode terang" : "🌙 Mode gelap");
+  });
+
+  // ═══════════════════════════════════════════════
+  // 🔗 SHARE
+  // ═══════════════════════════════════════════════
+  function openShare() {
+    document.getElementById("shareMenu").classList.add("active");
+    document.getElementById("backdrop").classList.add("active");
+  }
+  function closeShare() {
+    document.getElementById("shareMenu").classList.remove("active");
+    document.getElementById("backdrop").classList.remove("active");
+  }
+  document.getElementById("backdrop").addEventListener("click", closeShare);
+
+  const shareText = `🎄 Countdown ${CONFIG.eventTitle} tinggal menuju 10 Desember 2026! Cek di:`;
+  const shareURL = window.location.href;
+
+  function shareWA() {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText + " " + shareURL)}`, "_blank");
+    closeShare();
+  }
+  function shareTW() {
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareURL)}`, "_blank");
+    closeShare();
+  }
+  function shareFB() {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareURL)}`, "_blank");
+    closeShare();
+  }
+  function shareCopy() {
+    navigator.clipboard.writeText(shareURL).then(() => {
+      showToast("🔗 Link dicopy!");
+      closeShare();
+    }).catch(() => {
+      showToast("⚠️ Gagal copy, coba manual");
+    });
+  }
+
+  // ═══════════════════════════════════════════════
+  // 📅 SAVE TO CALENDAR
+  // ═══════════════════════════════════════════════
+  function saveCalendar() {
+    const start = "20261210T000000";
+    const end = "20261211T000000";
+    const title = encodeURIComponent(CONFIG.eventTitle);
+    const desc = encodeURIComponent(CONFIG.eventDesc);
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${desc}&location=Indonesia`;
+    window.open(url, "_blank");
+    showToast("📅 Buka Google Calendar");
+  }
+
+  // ═══════════════════════════════════════════════
+  // 📸 SCREENSHOT
+  // ═══════════════════════════════════════════════
+  function takeScreenshot() {
+    showToast("📸 Fitur screenshot butuh library. Gua kasih alternatif!");
+    setTimeout(() => {
+      showToast("💡 Pakai tombol Print Screen / Power+Volume Down");
+    }, 2500);
+  }
+
+  // ═══════════════════════════════════════════════
+  // 🍞 TOAST
+  // ═══════════════════════════════════════════════
+  const toast = document.getElementById("toast");
+  let toastTimeout;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove("show"), 2500);
+  }
+
+  // ═══════════════════════════════════════════════
+  // 🎆 KEMBANG API (Canvas)
+  // ═══════════════════════════════════════════════
+  const canvas = document.getElementById("fireworks");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  let fireworksActive = false;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  const colors = ["#ff3b3b", "#ffd700", "#00e676", "#40c4ff", "#ff80ab", "#ffffff", "#ffab40"];
+
+  function createFirework(x, y) {
+    const count = 60 + Math.floor(Math.random() * 40);
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count;
+      const speed = Math.random() * 6 + 2;
+      particles.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        color: Math.random() > 0.5 ? color : colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * 3 + 1
+      });
+    }
+  }
+
+  function animateFireworks() {
+    if (!fireworksActive) return;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalCompositeOperation = "lighter";
+
+    particles = particles.filter(p => p.life > 0);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.08; // gravity
+      p.vx *= 0.99;
+      p.vy *= 0.99;
+      p.life -= 0.015;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.life;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+
+    requestAnimationFrame(animateFireworks);
+  }
+
+  function launchFirework() {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * (canvas.height * 0.6) + 100;
+    createFirework(x, y);
+  }
+
+  function startFireworks() {
+    if (fireworksActive) return;
+    fireworksActive = true;
+    animateFireworks();
+    // Launch 10 fireworks bertahap
+    for (let i = 0; i < 10; i++) {
+      setTimeout(launchFirework, i * 400);
+    }
+    // Terus-terusan selama 30 detik
+    const interval = setInterval(() => {
+      if (!fireworksActive) return clearInterval(interval);
+      launchFirework();
+    }, 800);
+    setTimeout(() => {
+      fireworksActive = false;
+      clearInterval(interval);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }, 30000);
+  }
+
+  // ═══════════════════════════════════════════════
+  // ⏰ COUNTDOWN
+  // ═══════════════════════════════════════════════
+  let doneTriggered = false;
+
   function update() {
     const now = Date.now();
     const diff = target - now;
 
+    updateTodayDate();
+    updateProgress();
+
     if (diff <= 0) {
-      document.getElementById("timer").innerHTML =
-        '<div class="done">🎄 SELAMAT NATAL & TAHUN BARU 🎄</div>';
+      if (!doneTriggered) {
+        doneTriggered = true;
+        document.getElementById("timer").innerHTML =
+          '<div class="done">🎄 SELAMAT NATAL & TAHUN BARU 🎄</div>';
+        startFireworks();
+        showToast("🎉 Waktunya tiba! Selamat Natal!");
+      }
       return;
     }
 
@@ -608,6 +1044,9 @@
 
   update();
   setInterval(update, 1000);
+
+  // 🧪 Demo: cek fitur kembang api (hapus/comment kalau nggak perlu)
+  // setTimeout(startFireworks, 3000);
 </script>
 </body>
 </html>
