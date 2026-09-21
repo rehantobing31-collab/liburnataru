@@ -452,8 +452,7 @@
 
   <!-- 🎵 Audio + Tombol Musik -->
   <audio id="bgMusic" loop preload="auto">
-    <!-- 🎶 Lagu Natal - bisa ganti link-nya -->
-    <source src="https://www.bensound.com/bensound-music/bensound-jinglebells.mp3" type="audio/mpeg">
+    <source src="tunetank-jingle-bells-slap-house-348413.mp3" type="audio/mpeg">
   </audio>
 
   <button class="music-btn" id="musicBtn" title="Play / Pause Musik">
@@ -506,7 +505,7 @@
   // 🎯 TARGET: 10 Desember 2026, 00:00 WIB
   const target = new Date("2026-12-10T00:00:00+07:00").getTime();
 
-  // ❄️ Generate salju
+  // ❄️ Salju
   const snowContainer = document.getElementById("snow");
   for (let i = 0; i < 80; i++) {
     const s = document.createElement("div");
@@ -541,8 +540,7 @@
   const musicTip = document.getElementById("musicTip");
   let isPlaying = false;
 
-  // Set volume (0.0 - 1.0)
-  music.volume = 0.4;
+  music.volume = 0.5;
 
   function toggleMusic() {
     if (isPlaying) {
@@ -558,22 +556,22 @@
         musicTip.textContent = "⏸ Klik untuk pause";
         isPlaying = true;
       }).catch(err => {
-        console.log("Autoplay diblokir:", err);
-        musicTip.textContent = "⚠️ Gagal play, coba klik lagi";
+        console.log("Gagal play:", err);
+        musicTip.textContent = "⚠️ Klik lagi ya";
       });
     }
   }
 
   musicBtn.addEventListener("click", toggleMusic);
 
-  // 🔇 Sembunyikan tooltip setelah 5 detik
+  // Sembunyikan tooltip
   setTimeout(() => {
     musicTip.style.transition = "opacity 1s";
     musicTip.style.opacity = "0";
     setTimeout(() => musicTip.style.display = "none", 1000);
   }, 5000);
 
-  // 🎬 Coba autoplay saat pertama kali user klik di mana aja
+  // Autoplay saat user klik pertama kali
   document.body.addEventListener("click", function autoStart() {
     if (!isPlaying) {
       music.play().then(() => {
@@ -586,7 +584,7 @@
     document.body.removeEventListener("click", autoStart);
   }, { once: true });
 
-  // ⏰ Update countdown
+  // ⏰ Countdown
   function update() {
     const now = Date.now();
     const diff = target - now;
