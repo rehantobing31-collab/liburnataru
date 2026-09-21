@@ -3,21 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="robots" content="noarchive, nosnippet, noimageindex">
 <title>🎄 Countdown Nataru 2026 🎄</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box;
-    /* 🛡️ ANTI SELECT */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+    -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
   }
 
   :root {
@@ -32,44 +24,44 @@
   html, body { min-height: 100vh; overflow-x: hidden; }
 
   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-main);
-    font-family: 'Poppins', sans-serif;
-    padding: 20px;
-    position: relative;
-    background: #050a08;
-    cursor: default;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: var(--text-main); font-family: 'Poppins', sans-serif;
+    padding: 20px; position: relative; background: #050a08; cursor: default;
+    overflow-x: hidden;
   }
 
-  /* 🖼️ Background */
-  .bg-layer {
+  /* 🌊 WAVE ANIMATION BACKGROUND (#30) */
+  .wave-bg {
     position: fixed;
     top: 0; left: 0;
-    width: 100%; height: 100%;
+    width: 200%; height: 100%;
     z-index: 0;
+    pointer-events: none;
+    background: 
+      radial-gradient(ellipse at 20% 30%, rgba(0, 230, 118, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(255, 59, 59, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+    animation: waveMove 15s ease-in-out infinite alternate;
+  }
+  @keyframes waveMove {
+    0% { transform: translateX(0) scale(1); }
+    100% { transform: translateX(-50%) scale(1.15); }
+  }
+
+  .bg-layer {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
     background-image: 
       linear-gradient(rgba(5, 15, 10, 0.55), rgba(5, 15, 10, 0.75)),
       url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');
-    background-size: cover;
-    background-position: center;
+    background-size: cover; background-position: center;
     filter: saturate(1.3) contrast(1.1);
     animation: bgZoom 30s ease-in-out infinite alternate;
     pointer-events: none;
   }
-  @keyframes bgZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.08); }
-  }
+  @keyframes bgZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
 
-  /* Overlay */
   .overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
     pointer-events: none;
     background: 
       radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 100%),
@@ -77,31 +69,19 @@
       radial-gradient(circle at 80% 70%, rgba(100, 255, 150, 0.12) 0%, transparent 30%);
   }
 
-  /* Grain */
   .grain {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.06;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
+    pointer-events: none; opacity: 0.06;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     animation: grainShift 0.5s steps(2) infinite;
   }
   @keyframes grainShift {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(-2px, 2px); }
-    100% { transform: translate(2px, -2px); }
+    0% { transform: translate(0,0); } 50% { transform: translate(-2px, 2px); } 100% { transform: translate(2px, -2px); }
   }
 
-  /* Bokeh */
   .bokeh {
-    position: fixed;
-    border-radius: 50%;
-    z-index: 1;
-    pointer-events: none;
-    filter: blur(15px);
-    animation: bokehFloat 8s ease-in-out infinite;
+    position: fixed; border-radius: 50%; z-index: 1; pointer-events: none;
+    filter: blur(15px); animation: bokehFloat 8s ease-in-out infinite;
   }
   .bokeh-1 { top: 10%; left: 8%; width: 60px; height: 60px; background: rgba(255, 100, 100, 0.7); }
   .bokeh-2 { top: 25%; right: 12%; width: 80px; height: 80px; background: rgba(255, 215, 0, 0.6); animation-delay: 1s; }
@@ -112,67 +92,90 @@
     50% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
   }
 
-  /* Salju */
-  .snow-container {
+  /* 🎅 SINTERKLAS JALAN (#21) */
+  .santa-walk {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 15%;
+    left: -120px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    z-index: 4;
     pointer-events: none;
-    z-index: 3;
-    overflow: hidden;
+    filter: drop-shadow(0 0 15px rgba(255, 59, 59, 0.7));
+    animation: santaWalk 25s linear infinite;
   }
+  @keyframes santaWalk {
+    0% { left: -120px; transform: scaleX(1); }
+    49% { transform: scaleX(1); }
+    50% { left: 100%; transform: scaleX(-1); }
+    99% { transform: scaleX(-1); }
+    100% { left: -120px; transform: scaleX(1); }
+  }
+
+  /* 🦌 RUSA TERBANG (#22) */
+  .deer-fly {
+    position: fixed;
+    top: 8%;
+    left: -100px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    z-index: 4;
+    pointer-events: none;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+    animation: deerFly 20s linear infinite;
+    animation-delay: 5s;
+  }
+  @keyframes deerFly {
+    0% { left: -100px; top: 8%; }
+    50% { top: 5%; }
+    100% { left: 105%; top: 10%; }
+  }
+
+  .snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: hidden; }
   .snowflake {
-    position: absolute;
-    top: -20px;
-    background: #fff;
-    border-radius: 50%;
-    animation: snowfall linear infinite;
-    box-shadow: 0 0 6px rgba(255,255,255,0.9);
+    position: absolute; top: -20px; background: #fff; border-radius: 50%;
+    animation: snowfall linear infinite; box-shadow: 0 0 6px rgba(255,255,255,0.9);
   }
   @keyframes snowfall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
+    10% { opacity: 1; } 90% { opacity: 1; }
     100% { transform: translateY(110vh) translateX(80px) rotate(720deg); opacity: 0; }
   }
 
-  /* Sparkle */
-  .sparkle {
+  /* ❄️ KLIK SALJU TAMBAHAN (#23) */
+  .click-snow {
     position: fixed;
-    width: 4px; height: 4px;
-    background: #ffd700;
-    border-radius: 50%;
-    z-index: 2;
     pointer-events: none;
+    z-index: 60;
+    font-size: 1.5rem;
+    animation: clickSnow 1.5s ease forwards;
+  }
+  @keyframes clickSnow {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+    50% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2) rotate(180deg) translateY(-100px); opacity: 0; }
+  }
+
+  .sparkle {
+    position: fixed; width: 4px; height: 4px; background: #ffd700; border-radius: 50%;
+    z-index: 2; pointer-events: none;
     box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.8);
     animation: sparkleFloat linear infinite;
   }
   @keyframes sparkleFloat {
     0% { transform: translateY(100vh) scale(0); opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
+    20% { opacity: 1; } 80% { opacity: 1; }
     100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
   }
 
-  /* 🌟 Bintang jatuh */
+  /* 🌠 BINTANG JATUH (#26 - lebih sering) */
   .shooting-star {
-    position: fixed;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    z-index: 2;
-    pointer-events: none;
+    position: fixed; width: 2px; height: 2px; background: #fff; border-radius: 50%;
+    z-index: 2; pointer-events: none;
     box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9);
     animation: shoot linear;
   }
   .shooting-star::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 150px;
-    height: 1px;
+    content: ''; position: absolute; top: 50%; right: 0;
+    width: 150px; height: 1px;
     background: linear-gradient(90deg, rgba(255,255,255,0.9), transparent);
     transform: translateY(-50%);
   }
@@ -182,32 +185,57 @@
     100% { transform: translate(-800px, 800px) rotate(-45deg); opacity: 0; }
   }
 
-  /* Kembang api */
-  #fireworks {
+  /* ✨ PARTICLE TRAIL CURSOR (#4) */
+  .cursor-particle {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 50;
+    width: 6px; height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
     pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.9);
+    animation: cursorTrail 0.9s ease-out forwards;
+  }
+  @keyframes cursorTrail {
+    0% { transform: scale(1) translate(-50%, -50%); opacity: 1; }
+    100% { transform: scale(0) translate(-50%, -50%) translateY(30px); opacity: 0; }
   }
 
-  /* Tombol musik */
-  .music-btn {
+  #fireworks {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 50; pointer-events: none;
+  }
+
+  /* ⏰ JAM DIGITAL WIB (#5) */
+  .clock-wib {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #b91c1c, #ffd700);
-    border: 2px solid rgba(255, 215, 0, 0.8);
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
+    top: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    background: rgba(10, 20, 15, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    border-radius: 50px;
+    color: #ffd700;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    animation: clockPulse 2s ease-in-out infinite;
+  }
+  @keyframes clockPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); }
+  }
+
+  .music-btn {
+    position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px;
+    border-radius: 50%; background: linear-gradient(135deg, #b91c1c, #ffd700);
+    border: 2px solid rgba(255, 215, 0, 0.8); color: #fff;
+    font-size: 1.5rem; cursor: pointer; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 59, 59, 0.4);
     transition: all 0.3s ease;
     animation: musicPulse 2s ease-in-out infinite;
@@ -218,12 +246,9 @@
     0%, 100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 59, 59, 0.4); }
     50% { box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 59, 59, 0.7); }
   }
-  @keyframes musicSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+  @keyframes musicSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-  /* Container */
+  /* 🎨 CONTAINER DENGAN GRADIENT BORDER GERAK (#28) */
   .container {
     position: relative;
     z-index: 10;
@@ -232,37 +257,59 @@
     width: 100%;
     padding: 2.5rem 2rem;
     background: var(--panel-bg);
-    backdrop-filter: blur(20px) saturate(1.3);
-    -webkit-backdrop-filter: blur(20px) saturate(1.3);
-    border: 1px solid rgba(255, 215, 0, 0.25);
+    backdrop-filter: blur(25px) saturate(1.5);
+    -webkit-backdrop-filter: blur(25px) saturate(1.5);
     border-radius: 24px;
     box-shadow: 
-      0 0 80px rgba(255, 215, 0, 0.15),
+      0 0 80px rgba(255, 215, 0, 0.2),
       0 20px 60px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+  }
+
+  /* Gradient border gerak */
+  .container::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    padding: 2px;
+    background: linear-gradient(90deg, #ff3b3b, #ffd700, #00e676, #40c4ff, #ff80ab, #ff3b3b);
+    background-size: 300% 100%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderFlow 6s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+  @keyframes borderFlow {
+    to { background-position: 300% center; }
+  }
+
+  /* 💎 GLASS MORPHISM DALAM (#27) */
+  .container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+    border-radius: 24px 24px 0 0;
+    pointer-events: none;
   }
 
   .today-date {
-    font-size: 0.8rem;
-    color: var(--text-sub);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    opacity: 0.8;
+    font-size: 0.8rem; color: var(--text-sub); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 1rem; opacity: 0.8;
   }
 
   .badge {
-    display: inline-block;
-    padding: 0.4rem 1.2rem;
+    display: inline-block; padding: 0.4rem 1.2rem;
     background: linear-gradient(135deg, rgba(255, 59, 59, 0.3), rgba(0, 230, 118, 0.3));
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    border-radius: 50px;
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    color: #ffd700;
-    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.5); border-radius: 50px;
+    font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;
+    margin-bottom: 1.5rem; color: #ffd700; font-weight: 600;
     animation: badgePulse 2s ease-in-out infinite;
   }
   @keyframes badgePulse {
@@ -270,103 +317,81 @@
     50% { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0); }
   }
 
+  /* 🌈 HOLOGRAPHIC TEXT (#34) */
   h1 {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 5.5vw, 3.2rem);
     font-weight: 900;
     letter-spacing: 4px;
-    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 25%, #fff 50%, var(--accent-3) 75%, var(--accent-2) 100%);
-    background-size: 200% auto;
+    background: linear-gradient(
+      135deg,
+      #ff3b3b 0%, #ffd700 15%, #00e676 30%, #40c4ff 45%, #ff80ab 60%, #ffd700 75%, #ff3b3b 100%
+    );
+    background-size: 400% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: xmasShine 5s linear infinite;
+    animation: holoShine 8s linear infinite;
     margin-bottom: 0.5rem;
-    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    cursor: pointer;
+    position: relative;
+    /* 🌟 TEXT SHADOW BERLAPIS (#32) */
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 30px rgba(255, 59, 59, 0.4)) drop-shadow(0 0 60px rgba(0, 230, 118, 0.3));
   }
-  @keyframes xmasShine {
-    to { background-position: 200% center; }
+  @keyframes holoShine {
+    to { background-position: 400% center; }
   }
 
   .subtitle {
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
-    color: var(--text-sub);
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-    font-weight: 300;
+    font-size: clamp(0.8rem, 1.8vw, 1rem); color: var(--text-sub);
+    letter-spacing: 6px; text-transform: uppercase;
+    margin-bottom: 0.8rem; font-weight: 300;
+    text-shadow: 0 0 20px rgba(0, 230, 118, 0.5), 0 0 40px rgba(0, 230, 118, 0.3);
   }
 
   .greeting {
-    font-size: clamp(0.85rem, 2vw, 1.05rem);
-    color: var(--accent-2);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    opacity: 0.9;
-    letter-spacing: 1px;
+    font-size: clamp(0.85rem, 2vw, 1.05rem); color: var(--accent-2);
+    margin-bottom: 1.5rem; font-style: italic;
+    opacity: 0.9; letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
   }
 
   .target-date {
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    color: var(--text-main);
-    letter-spacing: 3px;
-    margin-bottom: 2rem;
-    opacity: 0.85;
+    font-size: clamp(0.85rem, 2vw, 1rem); color: var(--text-main);
+    letter-spacing: 3px; margin-bottom: 2rem; opacity: 0.85;
   }
   .target-date span {
-    color: var(--accent-2);
-    font-weight: 700;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    color: var(--accent-2); font-weight: 700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
   }
 
-  /* Progress */
-  .progress-wrap {
-    margin: 0 auto 2rem;
-    max-width: 600px;
-    width: 100%;
-  }
-
+  .progress-wrap { margin: 0 auto 2rem; max-width: 600px; width: 100%; }
   .progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-    color: var(--text-sub);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    display: flex; justify-content: space-between;
+    font-size: 0.75rem; color: var(--text-sub);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 0.5rem; font-weight: 600;
   }
-
   .progress-bar {
-    width: 100%;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
+    width: 100%; height: 10px; background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px; overflow: hidden;
     border: 1px solid rgba(255, 215, 0, 0.3);
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
   }
-
   .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
-    background-size: 200% auto;
-    border-radius: 10px;
-    width: 0%;
-    transition: width 1s ease;
+    background-size: 200% auto; border-radius: 10px;
+    width: 0%; transition: width 1s ease;
     animation: progressShine 3s linear infinite;
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
   }
-  @keyframes progressShine {
-    to { background-position: 200% center; }
-  }
+  @keyframes progressShine { to { background-position: 200% center; } }
 
-  /* Timer */
   #timer {
-    display: flex;
-    gap: clamp(0.5rem, 2vw, 1.2rem);
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; gap: clamp(0.5rem, 2vw, 1.2rem);
+    flex-wrap: wrap; justify-content: center;
+    perspective: 1000px;
   }
 
   .box {
@@ -374,61 +399,117 @@
     background: linear-gradient(145deg, rgba(20, 40, 30, 0.75), rgba(10, 20, 15, 0.85));
     border: 1px solid rgba(255, 215, 0, 0.4);
     padding: clamp(1rem, 3vw, 1.8rem) clamp(0.9rem, 3vw, 2rem);
-    border-radius: 16px;
-    text-align: center;
+    border-radius: 16px; text-align: center;
     min-width: clamp(72px, 18vw, 125px);
     box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), inset 0 1px 0 rgba(255, 215, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* 🌟 KOTAK HARI LEBIH BESAR (#7) */
+  .box.box-hari {
+    min-width: clamp(90px, 22vw, 160px);
+    padding: clamp(1.2rem, 4vw, 2.2rem) clamp(1rem, 3.5vw, 2.5rem);
+    background: linear-gradient(145deg, rgba(255, 59, 59, 0.3), rgba(20, 40, 30, 0.9));
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    box-shadow: 
+      0 0 60px rgba(255, 215, 0, 0.4), 
+      0 0 100px rgba(255, 59, 59, 0.2),
+      inset 0 1px 0 rgba(255, 215, 0, 0.5), 
+      inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+    animation: hariPulse 3s ease-in-out infinite;
+  }
+  @keyframes hariPulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), 0 0 100px rgba(255, 59, 59, 0.2); }
+    50% { box-shadow: 0 0 90px rgba(255, 215, 0, 0.7), 0 0 150px rgba(255, 59, 59, 0.4); }
+  }
+
+  .box.box-hari .num {
+    font-size: clamp(2.5rem, 8vw, 4.8rem);
   }
 
   .box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
+    content: ''; position: absolute; top: 0; left: -100%;
     width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
     transition: left 0.7s;
   }
   .box:hover::before { left: 100%; }
-
   .box:hover {
-    transform: translateY(-8px) scale(1.03);
     border-color: var(--accent-2);
     box-shadow: 0 0 70px rgba(255, 215, 0, 0.6), 0 0 120px rgba(255, 59, 59, 0.3);
+  }
+
+  /* 🔮 REFLECTION DI BAWAH BOX (#6) */
+  .box::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 5%;
+    width: 90%;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.15), transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+    pointer-events: none;
   }
 
   .num {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.9rem, 6vw, 3.6rem);
     font-weight: 900;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
+    line-height: 1; font-variant-numeric: tabular-nums;
     background: linear-gradient(180deg, #fff 0%, var(--accent-2) 50%, var(--accent-1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
     transition: transform 0.3s;
   }
-
   .box:hover .num { transform: scale(1.1); }
-
   .label {
-    font-size: clamp(0.6rem, 1.5vw, 0.78rem);
-    color: #ffe9a8;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-top: 0.7rem;
-    font-weight: 600;
+    font-size: clamp(0.6rem, 1.5vw, 0.78rem); color: #ffe9a8;
+    text-transform: uppercase; letter-spacing: 3px;
+    margin-top: 0.7rem; font-weight: 600;
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
   }
 
-  /* Done */
+  /* 🎯 COUNTDOWN KEDUA KE TAHUN BARU (#1) */
+  .mini-countdown {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+  }
+  .mini-title {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .mini-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--accent-2);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .mini-timer span {
+    color: var(--text-main);
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  /* Done view */
   .done-wrap {
-    text-align: center;
-    padding: 3rem 1rem;
+    text-align: center; padding: 3rem 1rem;
     animation: doneIn 1.5s ease forwards;
   }
   @keyframes doneIn {
@@ -439,24 +520,19 @@
 
   .done-title {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.8rem, 7vw, 4rem);
-    font-weight: 900;
-    letter-spacing: 4px;
+    font-size: clamp(1.8rem, 7vw, 4rem); font-weight: 900; letter-spacing: 4px;
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2), #fff, var(--accent-3), var(--accent-2), var(--accent-1));
     background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: xmasShine 2s linear infinite;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: holoShine 2s linear infinite;
     filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1));
     margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
   .done-sub {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: var(--accent-2);
-    letter-spacing: 3px;
-    margin-bottom: 1rem;
+    font-size: clamp(1rem, 3vw, 1.5rem); color: var(--accent-2);
+    letter-spacing: 3px; margin-bottom: 1.5rem;
     font-style: italic;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
   }
@@ -471,25 +547,54 @@
     50% { transform: translateY(-15px); }
   }
 
-  .footer {
-    position: relative;
-    z-index: 10;
-    margin-top: 2rem;
-    font-size: 0.75rem;
+  .done-divider {
+    width: 200px; height: 1px; margin: 1.5rem auto;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+
+  .done-message {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     color: var(--text-sub);
-    letter-spacing: 4px;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .replay-btn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #b91c1c, #ffd700);
+    border: 2px solid #ffd700;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    font-weight: 300;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    transition: all 0.3s;
+  }
+  .replay-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+  }
+
+  .footer {
+    position: relative; z-index: 10; margin-top: 2rem;
+    font-size: 0.75rem; color: var(--text-sub);
+    letter-spacing: 4px; text-transform: uppercase; font-weight: 300;
   }
 
   .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 0; transform: translateY(20px);
     animation: fadeIn 1.2s ease forwards;
   }
-  @keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
   .delay-1 { animation-delay: 0.2s; }
   .delay-2 { animation-delay: 0.4s; }
   .delay-3 { animation-delay: 0.6s; }
@@ -499,25 +604,15 @@
   @media (max-width: 600px) {
     .container { padding: 1.5rem 1rem; border-radius: 18px; }
     .music-btn { width: 50px; height: 50px; font-size: 1.2rem; bottom: 15px; right: 15px; }
-  }
-
-  /* 🛡️ ANTI PRINT */
-  @media print {
-    body * { visibility: hidden; }
-    body::after {
-      content: "🔒 Konten ini dilindungi. Screenshot dilarang.";
-      visibility: visible;
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2rem;
-      color: #000;
-    }
+    .clock-wib { font-size: 0.7rem; padding: 6px 12px; }
+    .santa-walk { font-size: 2rem; }
+    .deer-fly { font-size: 1.5rem; }
   }
 </style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
+  <div class="wave-bg"></div>
   <div class="bg-layer"></div>
   <div class="overlay"></div>
   <div class="grain"></div>
@@ -531,17 +626,24 @@
 
   <canvas id="fireworks"></canvas>
 
+  <!-- 🎅 Sinterklas -->
+  <div class="santa-walk">🎅</div>
+  <div class="deer-fly">🦌</div>
+
+  <!-- ⏰ Jam WIB -->
+  <div class="clock-wib" id="clockWib">⏰ 00:00:00 WIB</div>
+
   <audio id="bgMusic" loop preload="auto">
     <source src="tunetank-jingle-bells-slap-house-348413.mp3" type="audio/mpeg">
   </audio>
   <button class="music-btn" id="musicBtn" title="Play / Pause Musik">🎵</button>
 
-  <div class="container">
+  <div class="container" id="container">
     <p class="today-date fade-in delay-1" id="todayDate"></p>
 
     <div class="badge fade-in delay-1">✦ Christmas Edition ✦</div>
 
-    <h1 class="fade-in delay-2">SELAMAT NATAL & TAHUN BARU</h1>
+    <h1 class="fade-in delay-2" id="titleEgg">SELAMAT NATAL & TAHUN BARU</h1>
 
     <p class="subtitle fade-in delay-2">Menuju Libur Nataru</p>
 
@@ -562,7 +664,7 @@
     </div>
 
     <div id="timer" class="fade-in delay-4">
-      <div class="box">
+      <div class="box box-hari">
         <div class="num" id="d">00</div>
         <div class="label">Hari</div>
       </div>
@@ -579,95 +681,46 @@
         <div class="label">Detik</div>
       </div>
     </div>
+
+    <!-- 🎯 Mini countdown Tahun Baru -->
+    <div class="mini-countdown fade-in delay-5">
+      <div class="mini-title">🎆 Menuju Tahun Baru 2027</div>
+      <div class="mini-timer" id="miniTimer">
+        <span id="mD">00</span> hari • <span id="mH">00</span> jam • <span id="mM">00</span> menit
+      </div>
+    </div>
   </div>
 
   <div class="footer fade-in delay-5">✦ Countdown by Rehan ✦</div>
 
 <script>
-  // 🎯 KONFIGURASI
+  // 🎯 KONFIGURASI — ganti target date kalau perlu
   const CONFIG = {
     targetDate: "2026-12-10T00:00:00+07:00",
-    startDate: "2025-12-10T00:00:00+07:00"
+    startDate: "2025-12-10T00:00:00+07:00",
+    newYearDate: "2027-01-01T00:00:00+07:00"
   };
   const target = new Date(CONFIG.targetDate).getTime();
   const startTime = new Date(CONFIG.startDate).getTime();
+  const newYearTarget = new Date(CONFIG.newYearDate).getTime();
 
-  // ═══════════════════════════════════════════════
-  // 🛡️ ANTI COPY / BLOCK / DEVTOOLS
-  // ═══════════════════════════════════════════════
-
-  // Anti right-click
+  // 🛡️ ANTI COPY
   document.addEventListener("contextmenu", e => e.preventDefault());
-
-  // Anti select
   document.addEventListener("selectstart", e => e.preventDefault());
-
-  // Anti drag
   document.addEventListener("dragstart", e => e.preventDefault());
-
-  // Anti copy
-  document.addEventListener("copy", e => {
-    e.preventDefault();
-    return false;
-  });
-
-  // Anti cut
+  document.addEventListener("copy", e => e.preventDefault());
   document.addEventListener("cut", e => e.preventDefault());
-
-  // Anti Ctrl+A, Ctrl+C, Ctrl+U, F12, Ctrl+Shift+I/J/C
   document.addEventListener("keydown", e => {
-    // Ctrl+A / Ctrl+C / Ctrl+U / Ctrl+S / Ctrl+P
-    if (e.ctrlKey && ["a", "c", "u", "s", "p"].includes(e.key.toLowerCase())) {
-      e.preventDefault();
-      return false;
-    }
-    // Cmd (Mac)
-    if (e.metaKey && ["a", "c", "u", "s", "p"].includes(e.key.toLowerCase())) {
-      e.preventDefault();
-      return false;
-    }
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-      return false;
-    }
-    // Ctrl+Shift+I/J/C (DevTools)
-    if (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(e.key.toLowerCase())) {
-      e.preventDefault();
-      return false;
-    }
+    if (e.ctrlKey && ["a","c","u","s","p"].includes(e.key.toLowerCase())) { e.preventDefault(); return false; }
+    if (e.metaKey && ["a","c","u","s","p"].includes(e.key.toLowerCase())) { e.preventDefault(); return false; }
+    if (e.key === "F12") { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) { e.preventDefault(); return false; }
   });
+  document.addEventListener("touchstart", e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
 
-  // Anti long-press (mobile)
-  document.addEventListener("touchstart", e => {
-    if (e.touches.length > 1) e.preventDefault();
-  }, { passive: false });
-
-  // Anti drag image
-  document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("draggable", "false");
-  });
-
-  // Deteksi DevTools (opsional, ga 100% akurat)
-  let devtoolsOpen = false;
-  const threshold = 160;
-  setInterval(() => {
-    const widthDiff = window.outerWidth - window.innerWidth > threshold;
-    const heightDiff = window.outerHeight - window.innerHeight > threshold;
-    if ((widthDiff || heightDiff) && !devtoolsOpen) {
-      devtoolsOpen = true;
-      // Optional: tindakan kalau devtools kebuka
-      // document.body.innerHTML = "";
-    } else if (!widthDiff && !heightDiff && devtoolsOpen) {
-      devtoolsOpen = false;
-    }
-  }, 1000);
-
-  // ═══════════════════════════════════════════════
-
-  // 📅 Tanggal hari ini
-  const daysID = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-  const monthsID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  // 📅 Tanggal
+  const daysID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  const monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
   function updateTodayDate() {
     const now = new Date();
     document.getElementById("todayDate").textContent =
@@ -675,7 +728,19 @@
   }
   updateTodayDate();
 
-  // ❄️ Salju
+  // ⏰ JAM WIB
+  function updateClock() {
+    const now = new Date();
+    const wib = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Jakarta"}));
+    const h = String(wib.getHours()).padStart(2, "0");
+    const m = String(wib.getMinutes()).padStart(2, "0");
+    const s = String(wib.getSeconds()).padStart(2, "0");
+    document.getElementById("clockWib").textContent = `⏰ ${h}:${m}:${s} WIB`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // ❄️ SALJU
   const snowContainer = document.getElementById("snow");
   for (let i = 0; i < 80; i++) {
     const s = document.createElement("div");
@@ -694,7 +759,24 @@
     snowContainer.appendChild(s);
   }
 
-  // ✨ Sparkle
+  // ❄️ KLIK SALJU TAMBAHAN (#23)
+  const clickEmojis = ["❄️", "❅", "❆", "✨", "🌟"];
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".music-btn")) return;
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => {
+        const snow = document.createElement("div");
+        snow.className = "click-snow";
+        snow.textContent = clickEmojis[Math.floor(Math.random() * clickEmojis.length)];
+        snow.style.left = (e.clientX + (Math.random() - 0.5) * 60) + "px";
+        snow.style.top = e.clientY + "px";
+        document.body.appendChild(snow);
+        setTimeout(() => snow.remove(), 1500);
+      }, i * 80);
+    }
+  });
+
+  // ✨ SPARKLE
   for (let i = 0; i < 25; i++) {
     const sp = document.createElement("div");
     sp.className = "sparkle";
@@ -704,7 +786,7 @@
     document.body.appendChild(sp);
   }
 
-  // 🌟 Bintang jatuh (random muncul)
+  // 🌠 BINTANG JATUH LEBIH SERING (#26)
   function createShootingStar() {
     const star = document.createElement("div");
     star.className = "shooting-star";
@@ -714,11 +796,39 @@
     document.body.appendChild(star);
     setTimeout(() => star.remove(), 3500);
   }
-  setInterval(() => {
-    if (Math.random() > 0.5) createShootingStar();
-  }, 4000);
+  setInterval(() => { if (Math.random() > 0.3) createShootingStar(); }, 2000);
 
-  // 📊 Progress
+  // ✨ PARTICLE TRAIL CURSOR (#4)
+  let lastTrailTime = 0;
+  document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastTrailTime < 30) return;
+    lastTrailTime = now;
+    const p = document.createElement("div");
+    p.className = "cursor-particle";
+    p.style.left = e.clientX + "px";
+    p.style.top = e.clientY + "px";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 900);
+  });
+
+  // 🔮 3D TILT HOVER (#31)
+  const container = document.getElementById("container");
+  container.addEventListener("mousemove", (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+    container.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  container.addEventListener("mouseleave", () => {
+    container.style.transform = "perspective(1500px) rotateX(0) rotateY(0)";
+  });
+
+  // 📊 PROGRESS
   function updateProgress() {
     const now = Date.now();
     const total = target - startTime;
@@ -729,7 +839,7 @@
     document.getElementById("progressPercent").textContent = percent.toFixed(1) + "%";
   }
 
-  // 🎵 Musik
+  // 🎵 MUSIK
   const music = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
   let isPlaying = false;
@@ -752,7 +862,7 @@
   musicBtn.addEventListener("click", toggleMusic);
 
   document.body.addEventListener("click", function autoStart(e) {
-    if (e.target.id === "musicBtn") return;
+    if (e.target.id === "musicBtn" || e.target.closest(".music-btn")) return;
     if (!isPlaying) {
       music.play().then(() => {
         musicBtn.textContent = "⏸";
@@ -763,7 +873,70 @@
     document.body.removeEventListener("click", autoStart);
   }, { once: true });
 
-  // 🎆 Kembang api canvas
+  // 🎁 EASTER EGG — klik 5x judul (#3)
+  let titleClicks = 0;
+  const titleEgg = document.getElementById("titleEgg");
+  titleEgg.addEventListener("click", () => {
+    titleClicks++;
+    if (titleClicks >= 5) {
+      titleClicks = 0;
+      // Tampilkan kejutan
+      showToast("🎁 Kejutan! Selamat Natal ya! 🎄");
+      // Trigger kembang api kecil
+      for (let i = 0; i < 5; i++) {
+        setTimeout(launchFirework, i * 200);
+      }
+      // Hujan emoji
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const emoji = document.createElement("div");
+          emoji.textContent = ["🎁", "🎅", "🎄", "⭐", "🔔", "✨"][Math.floor(Math.random() * 6)];
+          emoji.style.position = "fixed";
+          emoji.style.left = Math.random() * 100 + "%";
+          emoji.style.top = "-50px";
+          emoji.style.fontSize = (Math.random() * 2 + 1.5) + "rem";
+          emoji.style.zIndex = "9999";
+          emoji.style.pointerEvents = "none";
+          emoji.style.transition = "transform 4s linear, opacity 4s";
+          document.body.appendChild(emoji);
+          setTimeout(() => {
+            emoji.style.transform = `translateY(${window.innerHeight + 100}px) rotate(360deg)`;
+            emoji.style.opacity = "0";
+          }, 50);
+          setTimeout(() => emoji.remove(), 4000);
+        }, i * 80);
+      }
+    }
+  });
+
+  // 🍞 TOAST
+  function showToast(msg) {
+    let toast = document.getElementById("toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "toast";
+      toast.style.cssText = `
+        position: fixed; bottom: 100px; left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: rgba(10, 20, 15, 0.95); color: #ffd700;
+        padding: 12px 24px; border-radius: 50px;
+        border: 1px solid rgba(255, 215, 0, 0.5);
+        font-size: 0.85rem; letter-spacing: 1px;
+        z-index: 300; transition: transform 0.4s ease;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        font-family: 'Poppins', sans-serif;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    setTimeout(() => toast.style.transform = "translateX(-50%) translateY(0)", 50);
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+      toast.style.transform = "translateX(-50%) translateY(100px)";
+    }, 2500);
+  }
+
+  // 🎆 KEMBANG API
   const canvas = document.getElementById("fireworks");
   const ctx = canvas.getContext("2d");
   let particles = [];
@@ -776,7 +949,7 @@
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
-  const colors = ["#ff3b3b", "#ffd700", "#00e676", "#40c4ff", "#ff80ab", "#ffffff", "#ffab40"];
+  const colors = ["#ff3b3b","#ffd700","#00e676","#40c4ff","#ff80ab","#ffffff","#ffab40"];
 
   function createFirework(x, y) {
     const count = 80 + Math.floor(Math.random() * 50);
@@ -803,11 +976,9 @@
 
     particles = particles.filter(p => p.life > 0);
     particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
+      p.x += p.vx; p.y += p.vy;
       p.vy += 0.08;
-      p.vx *= 0.99;
-      p.vy *= 0.99;
+      p.vx *= 0.99; p.vy *= 0.99;
       p.life -= 0.015;
 
       ctx.beginPath();
@@ -845,8 +1016,27 @@
     }, 60000);
   }
 
-  // ⏰ Countdown
+  // 🔔 SOUND TICK (#2)
+  const tickAudio = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT");
+  let tickPlayed = false;
+
+  // ⏰ COUNTDOWN
   let doneTriggered = false;
+
+  function updateMiniCountdown() {
+    const now = Date.now();
+    const diff = newYearTarget - now;
+    if (diff <= 0) {
+      document.getElementById("miniTimer").innerHTML = "🎉 Selamat Tahun Baru!";
+      return;
+    }
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    document.getElementById("mD").textContent = String(d).padStart(2, "0");
+    document.getElementById("mH").textContent = String(h).padStart(2, "0");
+    document.getElementById("mM").textContent = String(m).padStart(2, "0");
+  }
 
   function update() {
     const now = Date.now();
@@ -854,6 +1044,7 @@
 
     updateTodayDate();
     updateProgress();
+    updateMiniCountdown();
 
     if (diff <= 0) {
       if (!doneTriggered) {
@@ -862,8 +1053,16 @@
           <div class="done-wrap">
             <div class="done-emoji">🎄 🎁 🎅 🎁 🎄</div>
             <h2 class="done-title">SELAMAT NATAL<br>& TAHUN BARU 2027</h2>
+            <div class="done-divider"></div>
             <p class="done-sub">✨ Selamat menikmati libur Nataru! ✨</p>
+            <p class="done-message">
+              Semoga libur ini penuh sukacita,<br>
+              kebersamaan, dan momen indah<br>
+              bersama orang tersayang.
+            </p>
+            <div class="done-divider"></div>
             <div class="done-emoji">🎊 ✨ 🎊</div>
+            <button class="replay-btn" onclick="startFireworks()">🎆 Ulangi Kembang Api</button>
           </div>
         `;
         startFireworks();
@@ -876,17 +1075,36 @@
     const m = Math.floor((diff / (1000 * 60)) % 60);
     const s = Math.floor((diff / 1000) % 60);
 
-    document.getElementById("d").textContent = String(d).padStart(2, "0");
-    document.getElementById("h").textContent = String(h).padStart(2, "0");
-    document.getElementById("m").textContent = String(m).padStart(2, "0");
-    document.getElementById("s").textContent = String(s).padStart(2, "0");
+    const dEl = document.getElementById("d");
+    const hEl = document.getElementById("h");
+    const mEl = document.getElementById("m");
+    const sEl = document.getElementById("s");
+
+    const newD = String(d).padStart(2, "0");
+    const newH = String(h).padStart(2, "0");
+    const newM = String(m).padStart(2, "0");
+    const newS = String(s).padStart(2, "0");
+
+    // Flip animation pas ganti
+    [[dEl, newD], [hEl, newH], [mEl, newM], [sEl, newS]].forEach(([el, val]) => {
+      if (el.textContent !== val) {
+        el.textContent = val;
+        el.classList.remove("flip");
+        void el.offsetWidth;
+        el.classList.add("flip");
+      }
+    });
+
+    // 🔔 Sound tick di 10 detik terakhir
+    if (d === 0 && h === 0 && m === 0 && s <= 10 && s > 0 && !tickPlayed) {
+      tickAudio.play().catch(() => {});
+      tickPlayed = true;
+      setTimeout(() => tickPlayed = false, 1000);
+    }
   }
 
   update();
   setInterval(update, 1000);
-
-  // 🧪 DEMO kembang api (uncomment buat tes)
-  // setTimeout(() => { startFireworks(); }, 3000);
 </script>
 </body>
 </html>
