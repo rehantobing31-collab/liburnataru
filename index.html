@@ -3,102 +3,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown Libur Nataru</title>
+<title>Countdown Libur Nataru 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
+
+  html, body {
     min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+    background: radial-gradient(ellipse at top, #1a1408 0%, #0a0a0a 50%, #000 100%);
     color: #fff;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'Poppins', sans-serif;
     padding: 20px;
+    position: relative;
   }
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+
+  /* Partikel emas */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #d4af37;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.6);
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+
+  /* Konten */
+  .container {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .crown {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: shine 3s ease-in-out infinite;
+  }
+  @keyframes shine {
+    0%, 100% { filter: drop-shadow(0 0 10px #d4af37); }
+    50% { filter: drop-shadow(0 0 25px #ffd700); }
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #d4af37 0%, #ffd700 25%, #fff8dc 50%, #ffd700 75%, #d4af37 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShine 4s linear infinite;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
   }
+  @keyframes goldShine {
+    to { background-position: 200% center; }
+  }
+
   .subtitle {
-    font-size: 0.9rem;
-    opacity: 0.5;
-    margin-bottom: 2.5rem;
-    text-align: center;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    color: #b8a06a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
   }
+
+  .target-date {
+    font-size: 0.9rem;
+    color: #888;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    font-style: italic;
+  }
+  .target-date span {
+    color: #d4af37;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* Ornamen garis */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2.5rem;
+  }
+  .divider-line {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
+  .divider-diamond {
+    color: #d4af37;
+    font-size: 0.8rem;
+  }
+
+  /* Timer */
   #timer {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
     flex-wrap: wrap;
     justify-content: center;
+    perspective: 1000px;
   }
+
   .box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 1.5rem 1.8rem;
+    position: relative;
+    background: linear-gradient(145deg, rgba(30, 25, 10, 0.9), rgba(15, 12, 5, 0.95));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2.2rem);
     border-radius: 16px;
     text-align: center;
-    min-width: 90px;
+    min-width: clamp(75px, 18vw, 130px);
+    box-shadow:
+      0 0 30px rgba(212, 175, 55, 0.15),
+      inset 0 1px 0 rgba(255, 215, 0, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    transition: transform 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
   }
-  .box:hover { transform: translateY(-5px); }
+
+  .box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    transition: left 0.6s;
+  }
+  .box:hover::before { left: 100%; }
+
+  .box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow:
+      0 0 50px rgba(212, 175, 55, 0.4),
+      inset 0 1px 0 rgba(255, 215, 0, 0.3);
+  }
+
   .num {
-    font-size: 2.8rem;
-    font-weight: 800;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 900;
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #fff8dc 0%, #ffd700 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+    transition: transform 0.3s;
   }
+
+  .box:hover .num { transform: scale(1.05); }
+
   .label {
-    font-size: 0.75rem;
-    opacity: 0.6;
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    color: #b8a06a;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.5rem;
+    letter-spacing: 3px;
+    margin-top: 0.7rem;
+    font-weight: 400;
   }
+
+  /* Sudut ornamen di tiap box */
+  .box::after {
+    content: '';
+    position: absolute;
+    top: 6px; right: 6px;
+    width: 12px; height: 12px;
+    border-top: 1px solid #d4af37;
+    border-right: 1px solid #d4af37;
+    opacity: 0.6;
+  }
+
+  /* Pesan selesai */
   .done {
-    font-size: 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #d4af37, #ffd700, #fff8dc, #ffd700, #d4af37);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShine 3s linear infinite;
     text-align: center;
-    animation: pulse 1.5s infinite;
+    padding: 2rem;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.6));
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.05); }
+
+  /* Footer */
+  .footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 3rem;
+    font-size: 0.75rem;
+    color: #555;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
   }
-  @media (max-width: 500px) {
-    .num { font-size: 2rem; }
-    .box { padding: 1rem 1.2rem; min-width: 70px; }
-    h1 { font-size: 1.4rem; }
+
+  /* Animasi masuk */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+  .delay-5 { animation-delay: 1s; }
+
+  @media (max-width: 600px) {
+    .divider-line { width: 40px; }
+    .target-date { margin-bottom: 2rem; }
   }
 </style>
 </head>
 <body>
-  <h1>Countdown Libur Nataru</h1>
-  <p class="subtitle">Menuju hari yang ditunggu-tunggu</p>
-  <div id="timer">
-    <div class="box"><div class="num" id="d">0</div><div class="label">Hari</div></div>
-    <div class="box"><div class="num" id="h">0</div><div class="label">Jam</div></div>
-    <div class="box"><div class="num" id="m">0</div><div class="label">Menit</div></div>
-    <div class="box"><div class="num" id="s">0</div><div class="label">Detik</div></div>
+
+  <!-- Partikel emas -->
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="crown fade-in delay-1">👑</div>
+
+    <h1 class="fade-in delay-2">LIBUR NATARU 2026</h1>
+
+    <p class="subtitle fade-in delay-2">Menuju Hari yang Ditunggu</p>
+
+    <p class="target-date fade-in delay-3">
+      📅 <span>10 Desember 2026</span> • 00:00 WIB
+    </p>
+
+    <div class="divider fade-in delay-3">
+      <div class="divider-line"></div>
+      <div class="divider-diamond">◆</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div id="timer" class="fade-in delay-4">
+      <div class="box">
+        <div class="num" id="d">00</div>
+        <div class="label">Hari</div>
+      </div>
+      <div class="box">
+        <div class="num" id="h">00</div>
+        <div class="label">Jam</div>
+      </div>
+      <div class="box">
+        <div class="num" id="m">00</div>
+        <div class="label">Menit</div>
+      </div>
+      <div class="box">
+        <div class="num" id="s">00</div>
+        <div class="label">Detik</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer fade-in delay-5">
+    ✦ Countdown by Rehan ✦
   </div>
 
 <script>
-  // 👇 GANTI TANGGAL TARGET DI SINI (format: YYYY-MM-DDTHH:MM:SS)
-  const target = new Date("2025-12-25T00:00:00").getTime();
+  // 🎯 TARGET: 10 Desember 2026, 00:00 WIB
+  const target = new Date("2026-12-10T00:00:00+07:00").getTime();
 
+  // Generate partikel emas
+  const particleContainer = document.getElementById("particles");
+  const particleCount = 40;
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (Math.random() * 8 + 6) + "s";
+    p.style.animationDelay = (Math.random() * 10) + "s";
+    const size = Math.random() * 3 + 1.5;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.opacity = Math.random() * 0.7 + 0.3;
+    particleContainer.appendChild(p);
+  }
+
+  // Update countdown
   function update() {
     const now = Date.now();
     const diff = target - now;
 
     if (diff <= 0) {
       document.getElementById("timer").innerHTML =
-        '<div class="done">🎉 Waktunya tiba! 🎉</div>';
+        '<div class="done">🎉 SELAMAT! WAKTUNYA TIBA 🎉</div>';
       return;
     }
 
