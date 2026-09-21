@@ -2,11 +2,23 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noarchive, nosnippet, noimageindex">
 <title>🎄 Countdown Nataru 2026 🎄</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    /* 🛡️ ANTI SELECT */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 
   :root {
     --accent-1: #ff3b3b;
@@ -15,15 +27,6 @@
     --text-main: #ffffff;
     --text-sub: #a8e6c0;
     --panel-bg: rgba(10, 20, 15, 0.35);
-  }
-
-  body.light-mode {
-    --accent-1: #c41e3a;
-    --accent-2: #b8860b;
-    --accent-3: #2d7a4f;
-    --text-main: #1a1a1a;
-    --text-sub: #2d5a3d;
-    --panel-bg: rgba(255, 255, 255, 0.5);
   }
 
   html, body { min-height: 100vh; overflow-x: hidden; }
@@ -38,7 +41,7 @@
     padding: 20px;
     position: relative;
     background: #050a08;
-    transition: background 0.5s;
+    cursor: default;
   }
 
   /* 🖼️ Background */
@@ -54,12 +57,7 @@
     background-position: center;
     filter: saturate(1.3) contrast(1.1);
     animation: bgZoom 30s ease-in-out infinite alternate;
-  }
-  body.light-mode .bg-layer {
-    background-image: 
-      linear-gradient(rgba(255, 250, 240, 0.7), rgba(240, 230, 210, 0.85)),
-      url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');
-    filter: saturate(1.1) brightness(1.1);
+    pointer-events: none;
   }
   @keyframes bgZoom {
     from { transform: scale(1); }
@@ -77,9 +75,6 @@
       radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(0,0,0,0.7) 100%),
       radial-gradient(circle at 20% 30%, rgba(255, 100, 100, 0.15) 0%, transparent 30%),
       radial-gradient(circle at 80% 70%, rgba(100, 255, 150, 0.12) 0%, transparent 30%);
-  }
-  body.light-mode .overlay {
-    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(200, 180, 140, 0.4) 100%);
   }
 
   /* Grain */
@@ -159,39 +154,41 @@
     100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
   }
 
-  /* Kembang api canvas */
+  /* 🌟 Bintang jatuh */
+  .shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.9);
+    animation: shoot linear;
+  }
+  .shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.9), transparent);
+    transform: translateY(-50%);
+  }
+  @keyframes shoot {
+    0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translate(-800px, 800px) rotate(-45deg); opacity: 0; }
+  }
+
+  /* Kembang api */
   #fireworks {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: 50;
     pointer-events: none;
-  }
-
-  /* Tombol tema */
-  .theme-btn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.5);
-    color: #ffd700;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-    z-index: 100;
-  }
-  .theme-btn:hover {
-    transform: scale(1.15) rotate(10deg);
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
   }
 
   /* Tombol musik */
@@ -226,14 +223,14 @@
     to { transform: rotate(360deg); }
   }
 
-  /* Container utama */
+  /* Container */
   .container {
     position: relative;
     z-index: 10;
     text-align: center;
     max-width: 950px;
     width: 100%;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     background: var(--panel-bg);
     backdrop-filter: blur(20px) saturate(1.3);
     -webkit-backdrop-filter: blur(20px) saturate(1.3);
@@ -243,7 +240,6 @@
       0 0 80px rgba(255, 215, 0, 0.15),
       0 20px 60px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.5s;
   }
 
   .today-date {
@@ -279,7 +275,7 @@
     font-size: clamp(1.6rem, 5.5vw, 3.2rem);
     font-weight: 900;
     letter-spacing: 4px;
-    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 25%, var(--text-main) 50%, var(--accent-3) 75%, var(--accent-2) 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 25%, #fff 50%, var(--accent-3) 75%, var(--accent-2) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -323,7 +319,7 @@
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   }
 
-  /* Progress bar */
+  /* Progress */
   .progress-wrap {
     margin: 0 auto 2rem;
     max-width: 600px;
@@ -386,10 +382,6 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
   }
-  body.light-mode .box {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 240, 230, 0.95));
-    box-shadow: 0 0 40px rgba(184, 134, 11, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
 
   .box::before {
     content: '';
@@ -413,7 +405,7 @@
     font-weight: 900;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    background: linear-gradient(180deg, var(--text-main) 0%, var(--accent-2) 50%, var(--accent-1) 100%);
+    background: linear-gradient(180deg, #fff 0%, var(--accent-2) 50%, var(--accent-1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -432,9 +424,8 @@
     font-weight: 600;
     text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
   }
-  body.light-mode .label { color: #8b6914; text-shadow: none; }
 
-  /* 🎉 Yang muncul pas target tercapai */
+  /* Done */
   .done-wrap {
     text-align: center;
     padding: 3rem 1rem;
@@ -506,13 +497,26 @@
   .delay-5 { animation-delay: 1s; }
 
   @media (max-width: 600px) {
-    .container { padding: 1.2rem; border-radius: 18px; }
+    .container { padding: 1.5rem 1rem; border-radius: 18px; }
     .music-btn { width: 50px; height: 50px; font-size: 1.2rem; bottom: 15px; right: 15px; }
-    .theme-btn { width: 38px; height: 38px; font-size: 1rem; top: 10px; right: 10px; }
+  }
+
+  /* 🛡️ ANTI PRINT */
+  @media print {
+    body * { visibility: hidden; }
+    body::after {
+      content: "🔒 Konten ini dilindungi. Screenshot dilarang.";
+      visibility: visible;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: #000;
+    }
   }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
   <div class="bg-layer"></div>
   <div class="overlay"></div>
@@ -526,8 +530,6 @@
   <div class="snow-container" id="snow"></div>
 
   <canvas id="fireworks"></canvas>
-
-  <button class="theme-btn" id="themeBtn" title="Ganti Tema">🌙</button>
 
   <audio id="bgMusic" loop preload="auto">
     <source src="tunetank-jingle-bells-slap-house-348413.mp3" type="audio/mpeg">
@@ -590,6 +592,79 @@
   const target = new Date(CONFIG.targetDate).getTime();
   const startTime = new Date(CONFIG.startDate).getTime();
 
+  // ═══════════════════════════════════════════════
+  // 🛡️ ANTI COPY / BLOCK / DEVTOOLS
+  // ═══════════════════════════════════════════════
+
+  // Anti right-click
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Anti select
+  document.addEventListener("selectstart", e => e.preventDefault());
+
+  // Anti drag
+  document.addEventListener("dragstart", e => e.preventDefault());
+
+  // Anti copy
+  document.addEventListener("copy", e => {
+    e.preventDefault();
+    return false;
+  });
+
+  // Anti cut
+  document.addEventListener("cut", e => e.preventDefault());
+
+  // Anti Ctrl+A, Ctrl+C, Ctrl+U, F12, Ctrl+Shift+I/J/C
+  document.addEventListener("keydown", e => {
+    // Ctrl+A / Ctrl+C / Ctrl+U / Ctrl+S / Ctrl+P
+    if (e.ctrlKey && ["a", "c", "u", "s", "p"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+      return false;
+    }
+    // Cmd (Mac)
+    if (e.metaKey && ["a", "c", "u", "s", "p"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+      return false;
+    }
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I/J/C (DevTools)
+    if (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(e.key.toLowerCase())) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Anti long-press (mobile)
+  document.addEventListener("touchstart", e => {
+    if (e.touches.length > 1) e.preventDefault();
+  }, { passive: false });
+
+  // Anti drag image
+  document.querySelectorAll("img").forEach(img => {
+    img.setAttribute("draggable", "false");
+  });
+
+  // Deteksi DevTools (opsional, ga 100% akurat)
+  let devtoolsOpen = false;
+  const threshold = 160;
+  setInterval(() => {
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+    if ((widthDiff || heightDiff) && !devtoolsOpen) {
+      devtoolsOpen = true;
+      // Optional: tindakan kalau devtools kebuka
+      // document.body.innerHTML = "";
+    } else if (!widthDiff && !heightDiff && devtoolsOpen) {
+      devtoolsOpen = false;
+    }
+  }, 1000);
+
+  // ═══════════════════════════════════════════════
+
   // 📅 Tanggal hari ini
   const daysID = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
   const monthsID = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
@@ -629,6 +704,20 @@
     document.body.appendChild(sp);
   }
 
+  // 🌟 Bintang jatuh (random muncul)
+  function createShootingStar() {
+    const star = document.createElement("div");
+    star.className = "shooting-star";
+    star.style.top = Math.random() * 50 + "%";
+    star.style.right = "-50px";
+    star.style.animationDuration = (Math.random() * 1.5 + 1.5) + "s";
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 3500);
+  }
+  setInterval(() => {
+    if (Math.random() > 0.5) createShootingStar();
+  }, 4000);
+
   // 📊 Progress
   function updateProgress() {
     const now = Date.now();
@@ -662,7 +751,8 @@
   }
   musicBtn.addEventListener("click", toggleMusic);
 
-  document.body.addEventListener("click", function autoStart() {
+  document.body.addEventListener("click", function autoStart(e) {
+    if (e.target.id === "musicBtn") return;
     if (!isPlaying) {
       music.play().then(() => {
         musicBtn.textContent = "⏸";
@@ -672,20 +762,6 @@
     }
     document.body.removeEventListener("click", autoStart);
   }, { once: true });
-
-  // 🌙 Dark/light mode
-  const themeBtn = document.getElementById("themeBtn");
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    document.body.classList.add("light-mode");
-    themeBtn.textContent = "☀️";
-  }
-  themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-    const isLight = document.body.classList.contains("light-mode");
-    themeBtn.textContent = isLight ? "☀️" : "🌙";
-    localStorage.setItem("theme", isLight ? "light" : "dark");
-  });
 
   // 🎆 Kembang api canvas
   const canvas = document.getElementById("fireworks");
@@ -782,7 +858,6 @@
     if (diff <= 0) {
       if (!doneTriggered) {
         doneTriggered = true;
-        // 🎉 Tampilan pas target tercapai
         document.getElementById("timer").outerHTML = `
           <div class="done-wrap">
             <div class="done-emoji">🎄 🎁 🎅 🎁 🎄</div>
@@ -810,7 +885,7 @@
   update();
   setInterval(update, 1000);
 
-  // 🧪 DEMO: Uncomment baris bawah buat tes kembang api SEKARANG
+  // 🧪 DEMO kembang api (uncomment buat tes)
   // setTimeout(() => { startFireworks(); }, 3000);
 </script>
 </body>
