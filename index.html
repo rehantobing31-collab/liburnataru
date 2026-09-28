@@ -10,12 +10,12 @@
 <meta name="description" content="Countdown menuju Libur Nataru 2026">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
-:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,0.35)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.35)}
 html,body{min-height:100vh;overflow-x:hidden}
 body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden}
 
-/* LOADING */
+/* LOADER */
 #loader{position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1f17,#000);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1s,visibility 1s}
 #loader.hide{opacity:0;visibility:hidden}
 .loader-icon{font-size:5rem;animation:loaderSpin 2s ease-in-out infinite}
@@ -27,11 +27,11 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 @keyframes loaderBar{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
 
 .video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;opacity:.6;filter:brightness(.6) saturate(1.2)}
-.video-fallback{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(5,15,10,.6),rgba(5,15,10,.8)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');background-size:cover;background-position:center}
+.video-fallback{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(5,15,10,.6),rgba(5,15,10,.8)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80') center/cover}
 .cinematic-overlay{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.85) 100%)}
-.wave-bg{position:fixed;top:0;left:0;width:200%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.4;background:radial-gradient(ellipse at 20% 30%,rgba(0,230,118,.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(255,59,59,.15) 0%,transparent 50%);animation:waveMove 15s ease-in-out infinite alternate}
+.wave-bg{position:fixed;top:0;left:0;width:200%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.4;background:radial-gradient(ellipse at 20% 30%,rgba(0,230,118,.15),transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(255,59,59,.15),transparent 50%);animation:waveMove 15s ease-in-out infinite alternate}
 @keyframes waveMove{0%{transform:translateX(0) scale(1)}100%{transform:translateX(-50%) scale(1.15)}}
-.overlay{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(255,100,100,.1) 0%,transparent 30%),radial-gradient(circle at 80% 70%,rgba(100,255,150,.08) 0%,transparent 30%)}
+.overlay{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(255,100,100,.1),transparent 30%),radial-gradient(circle at 80% 70%,rgba(100,255,150,.08),transparent 30%)}
 .grain{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grainShift .5s steps(2) infinite}
 @keyframes grainShift{0%{transform:translate(0,0)}50%{transform:translate(-2px,2px)}100%{transform:translate(2px,-2px)}}
 .bokeh{position:fixed;border-radius:50%;z-index:2;pointer-events:none;filter:blur(15px);animation:bokehFloat 8s ease-in-out infinite}
@@ -65,20 +65,16 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 
 #fireworks{position:fixed;inset:0;z-index:50;pointer-events:none}
 
-/* TOP LEFT: CLOCK + VISITOR */
 .top-left{position:fixed;top:15px;left:15px;z-index:100;display:flex;flex-direction:column;gap:6px}
 .clock-wib{padding:8px 14px;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.5);border-radius:50px;color:#ffd700;font-family:'Cinzel',serif;font-size:.8rem;font-weight:700;letter-spacing:2px;box-shadow:0 0 20px rgba(255,215,0,.4);animation:clockPulse 2s ease-in-out infinite}
 .visitor-counter{padding:6px 12px;background:rgba(10,20,15,.7);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.3);border-radius:50px;color:#a8e6c0;font-size:.65rem;letter-spacing:1px}
 @keyframes clockPulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.4)}50%{box-shadow:0 0 30px rgba(255,215,0,.7)}}
 
-/* TOP RIGHT: CONTROLS */
 .top-right{position:fixed;top:15px;right:15px;z-index:100;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.ctrl-btn{width:38px;height:38px;border-radius:50%;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);color:#ffd700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.ctrl-btn:hover{transform:scale(1.15) rotate(10deg);box-shadow:0 0 20px rgba(255,215,0,.7)}
 .volume-wrap{position:relative;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);border-radius:50px;padding:6px 12px;display:flex;align-items:center;gap:8px;color:#ffd700;font-size:.8rem}
 .volume-wrap input[type=range]{width:70px;-webkit-appearance:none;height:4px;background:rgba(255,215,0,.3);border-radius:3px;outline:none}
 .volume-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:#ffd700;border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(255,215,0,.8)}
-.lang-btn{padding:8px 12px;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);border-radius:50px;color:#ffd700;font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:1px}
+.lang-btn{padding:8px 12px;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);border-radius:50px;color:#ffd700;font-size:.7rem;font-weight:700;cursor:pointer;letter-spacing:1px}
 
 .music-btn{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#b91c1c,#ffd700);border:2px solid rgba(255,215,0,.8);color:#fff;font-size:1.5rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(255,215,0,.7),0 0 50px rgba(255,59,59,.4);transition:all .3s;animation:musicPulse 2s ease-in-out infinite}
 .music-btn:hover{transform:scale(1.15) rotate(10deg)}
@@ -86,11 +82,54 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 @keyframes musicPulse{0%,100%{box-shadow:0 0 25px rgba(255,215,0,.7),0 0 50px rgba(255,59,59,.4)}50%{box-shadow:0 0 40px rgba(255,215,0,1),0 0 80px rgba(255,59,59,.7)}}
 @keyframes musicSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
-/* CONFETTI BTN */
 .confetti-btn{position:fixed;bottom:25px;left:25px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#00e676,#40c4ff);border:2px solid rgba(0,230,118,.8);color:#fff;font-size:1.3rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,230,118,.7);transition:all .3s}
 .confetti-btn:hover{transform:scale(1.15) rotate(-10deg)}
 
-/* CONTAINER */
+/* MUSIC VISUALIZER */
+.viz{position:fixed;bottom:0;left:0;width:100%;height:60px;z-index:5;pointer-events:none;display:flex;align-items:flex-end;justify-content:space-around;padding:0 5px;gap:2px;opacity:.7}
+.viz-bar{flex:1;background:linear-gradient(180deg,transparent,#ffd700,#ff3b3b);border-radius:3px 3px 0 0;height:4px;transition:height .1s ease;min-height:3px;box-shadow:0 0 8px rgba(255,215,0,.6)}
+
+/* WISH JAR */
+.wish-jar{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,215,0,.3);border-radius:15px;backdrop-filter:blur(10px);text-align:left}
+.wish-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.85rem;letter-spacing:2px;margin-bottom:.8rem;text-align:center}
+.wish-form{display:flex;gap:6px;margin-bottom:.8rem}
+.wish-form input{flex:1;padding:.6rem 1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:50px;color:#fff;font-size:.8rem;outline:none;font-family:'Poppins',sans-serif}
+.wish-form input:focus{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.4)}
+.wish-form button{padding:.6rem 1rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:none;border-radius:50px;color:#fff;font-weight:700;cursor:pointer;font-size:.75rem}
+.wish-list{max-height:120px;overflow-y:auto;padding-right:5px}
+.wish-list::-webkit-scrollbar{width:4px}
+.wish-list::-webkit-scrollbar-thumb{background:rgba(255,215,0,.4);border-radius:4px}
+.wish-item{display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,215,0,.08);border-left:2px solid #ffd700;border-radius:6px;margin-bottom:4px;font-size:.75rem;color:#ffe9a8;animation:wishIn .4s ease}
+@keyframes wishIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+.wish-item button{background:none;border:none;color:#ff6b6b;cursor:pointer;font-size:.9rem;padding:0 4px}
+.wish-empty{font-size:.7rem;color:var(--ts);text-align:center;font-style:italic;opacity:.6}
+
+/* TIME CAPSULE */
+.time-capsule{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(255,215,0,.08),rgba(255,59,59,.05));border:1px solid rgba(255,215,0,.3);border-radius:15px;text-align:center;position:relative;overflow:hidden}
+.tc-icon{font-size:2rem;margin-bottom:.5rem;animation:tcFloat 3s ease-in-out infinite}
+@keyframes tcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.tc-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.85rem;letter-spacing:2px;margin-bottom:.5rem}
+.tc-status{font-size:.75rem;color:var(--ts);margin-bottom:.8rem}
+.tc-preview{font-size:.7rem;color:rgba(255,255,255,.5);font-style:italic;padding:.5rem;background:rgba(0,0,0,.3);border-radius:8px;margin-bottom:.8rem;min-height:30px;display:flex;align-items:center;justify-content:center}
+.tc-btn{padding:.6rem 1.5rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:none;border-radius:50px;color:#fff;font-weight:700;cursor:pointer;font-size:.75rem;letter-spacing:1px;font-family:'Poppins',sans-serif;transition:all .3s}
+.tc-btn:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.7)}
+.tc-locked{filter:blur(8px);user-select:none;pointer-events:none}
+
+/* CANDLE */
+.candle-area{position:fixed;bottom:15px;right:100px;z-index:8;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.candle{width:20px;height:50px;background:linear-gradient(180deg,#fff5e0,#ffd7a0,#e8b878);border-radius:3px 3px 2px 2px;position:relative;box-shadow:inset -3px 0 6px rgba(0,0,0,.15),0 0 20px rgba(255,200,100,.3)}
+.candle::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:#4a3520;border-radius:2px}
+.flame{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:12px;height:22px;background:radial-gradient(ellipse at bottom,#fff8dc 0%,#ffd700 30%,#ff8c00 60%,#ff3b3b 90%,transparent 100%);border-radius:50% 50% 30% 30%/60% 60% 40% 40%;animation:flameFlick 0.15s infinite alternate;filter:blur(1px);box-shadow:0 0 15px 3px rgba(255,180,0,.6)}
+@keyframes flameFlick{0%{transform:translateX(-50%) scale(1) rotate(-2deg);opacity:.95}100%{transform:translateX(-50%) scale(1.1) rotate(2deg);opacity:1}}
+.glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:100px;height:100px;background:radial-gradient(circle,rgba(255,200,100,.4) 0%,transparent 70%);border-radius:50%;animation:glowPulse 2s ease-in-out infinite;pointer-events:none}
+@keyframes glowPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.15)}}
+
+/* GROWING TREE */
+.tree-display{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.3);border:1px solid rgba(0,230,118,.3);border-radius:15px;text-align:center;position:relative;overflow:hidden}
+.tree-title{font-family:'Cinzel',serif;color:#00e676;font-size:.8rem;letter-spacing:2px;margin-bottom:.8rem}
+.tree-svg{height:110px;width:auto;filter:drop-shadow(0 0 15px rgba(0,230,118,.5))}
+.tree-progress{font-size:.7rem;color:var(--ts);margin-top:.5rem;letter-spacing:1px}
+
 .container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);border-radius:24px;box-shadow:0 0 100px rgba(255,215,0,.25),0 30px 80px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.15);transition:transform .4s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff80ab,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.85}
 @keyframes borderFlow{to{background-position:300% center}}
@@ -105,22 +144,19 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .target-date{font-size:clamp(.85rem,2vw,1rem);color:var(--tm);letter-spacing:3px;margin-bottom:2rem;opacity:.85}
 .target-date span{color:var(--a2);font-weight:700;text-shadow:0 0 15px rgba(255,215,0,.6)}
 
-/* NAME INPUT */
 .name-form{display:flex;gap:8px;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
 .name-form input{padding:.6rem 1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.4);border-radius:50px;color:#fff;font-family:'Poppins',sans-serif;font-size:.85rem;outline:none;min-width:180px;text-align:center}
 .name-form input::placeholder{color:rgba(255,255,255,.4)}
 .name-form input:focus{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.5)}
-.name-form button{padding:.6rem 1.2rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:none;border-radius:50px;color:#fff;font-weight:700;cursor:pointer;font-size:.8rem;letter-spacing:1px;font-family:'Poppins',sans-serif;transition:all .3s}
+.name-form button{padding:.6rem 1.2rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:none;border-radius:50px;color:#fff;font-weight:700;cursor:pointer;font-size:.8rem;letter-spacing:1px;font-family:'Poppins',sans-serif}
 .name-form button:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.7)}
 
-/* PROGRESS */
 .progress-wrap{margin:0 auto 2rem;max-width:600px;width:100%}
 .progress-info{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;font-weight:600}
 .progress-bar{width:100%;height:10px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;border:1px solid rgba(255,215,0,.3);box-shadow:inset 0 2px 5px rgba(0,0,0,.5)}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));background-size:200% auto;border-radius:10px;width:0;transition:width 1s ease;animation:progressShine 3s linear infinite;box-shadow:0 0 15px rgba(255,215,0,.7)}
 @keyframes progressShine{to{background-position:200% center}}
 
-/* TIMER */
 #timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center;perspective:2000px}
 .box{position:relative;background:linear-gradient(145deg,rgba(20,40,30,.85),rgba(10,20,15,.95));border:1px solid rgba(255,215,0,.4);padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);border-radius:16px;text-align:center;min-width:clamp(72px,18vw,125px);box-shadow:0 15px 35px rgba(0,0,0,.6),0 0 40px rgba(255,215,0,.2),inset 0 1px 0 rgba(255,215,0,.3);backdrop-filter:blur(15px);transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden;transform-style:preserve-3d}
 .box.box-hari{min-width:clamp(90px,22vw,160px);padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);background:linear-gradient(145deg,rgba(255,59,59,.35),rgba(20,40,30,.95));border:2px solid rgba(255,215,0,.6);box-shadow:0 20px 50px rgba(0,0,0,.7),0 0 80px rgba(255,215,0,.4),0 0 120px rgba(255,59,59,.25),inset 0 1px 0 rgba(255,215,0,.6);animation:hariPulse 3s ease-in-out infinite;transform:translateZ(20px)}
@@ -132,20 +168,17 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.6rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(255,215,0,.9));display:inline-block}
 .label{font-size:clamp(.6rem,1.5vw,.78rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:3px;margin-top:.7rem;font-weight:600;text-shadow:0 0 12px rgba(255,215,0,.6)}
 
-/* MINI COUNTDOWN */
 .mini-countdown{margin-top:2rem;padding:1rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,215,0,.25);border-radius:15px;backdrop-filter:blur(10px)}
 .mini-title{font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
 .mini-timer{display:flex;justify-content:center;gap:15px;font-family:'Cinzel',serif;font-size:clamp(.9rem,2.5vw,1.1rem);color:var(--a2);font-weight:700;flex-wrap:wrap}
 .mini-timer span{color:var(--tm);font-weight:400;opacity:.7}
 
-/* EXTRA INFO GRID */
 .extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:1.5rem}
 .info-card{padding:.8rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,215,0,.2);border-radius:12px;backdrop-filter:blur(10px);transition:all .3s}
 .info-card:hover{border-color:rgba(255,215,0,.5);transform:translateY(-3px)}
 .info-label{font-size:.65rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.3rem;opacity:.7}
 .info-value{font-family:'Cinzel',serif;font-size:1.1rem;color:#ffd700;font-weight:700}
 
-/* MINI CALENDAR */
 .mini-calendar{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.3);border:1px solid rgba(255,215,0,.25);border-radius:15px;backdrop-filter:blur(10px)}
 .cal-title{font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;max-width:320px;margin:0 auto}
@@ -156,17 +189,9 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 @keyframes calPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
 .cal-date.past{opacity:.3}
 
-/* RANDOM QUOTE */
 .quote-box{margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(0,0,0,.25);border-left:3px solid #ffd700;border-radius:10px;font-style:italic;color:var(--ts);font-size:.85rem;min-height:60px;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .5s}
 .quote-box.fade{opacity:0}
 
-/* MINI GAMES */
-.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:1.5rem}
-.game-btn{padding:.9rem;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.4);border-radius:12px;color:#ffd700;font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;letter-spacing:1px;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:6px}
-.game-btn:hover{background:rgba(255,215,0,.25);transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,215,0,.4)}
-.game-btn:active{transform:translateY(0) scale(.98)}
-
-/* DONE */
 .done-wrap{text-align:center;padding:3rem 1rem;animation:doneIn 1.5s ease forwards}
 @keyframes doneIn{0%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
 .done-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,7vw,4rem);font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,var(--a1),var(--a2),#fff,var(--a3),var(--a2),var(--a1));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 2s linear infinite;filter:drop-shadow(0 0 40px rgba(255,215,0,1));margin-bottom:1rem;line-height:1.2}
@@ -183,27 +208,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
 .d1{animation-delay:.2s}.d2{animation-delay:.4s}.d3{animation-delay:.6s}.d4{animation-delay:.8s}.d5{animation-delay:1s}
 
-/* MODAL */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:9999;display:none;justify-content:center;align-items:center;padding:20px}
-.modal.active{display:flex;animation:modalIn .3s ease}
-@keyframes modalIn{from{opacity:0}to{opacity:1}}
-.modal-box{background:linear-gradient(145deg,rgba(20,40,30,.98),rgba(10,20,15,.98));border:2px solid rgba(255,215,0,.6);border-radius:24px;padding:2rem;max-width:400px;width:100%;text-align:center;box-shadow:0 0 60px rgba(255,215,0,.5);position:relative}
-.modal-close{position:absolute;top:10px;right:15px;background:none;border:none;color:#ffd700;font-size:1.5rem;cursor:pointer;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.modal-close:hover{background:rgba(255,215,0,.2)}
-.modal-title{font-family:'Cinzel',serif;color:#ffd700;font-size:1.3rem;margin-bottom:1rem;letter-spacing:2px}
-.modal-content{color:var(--tm);font-size:.95rem;line-height:1.6;margin-bottom:1.5rem}
-
-/* SPIN WHEEL */
-.wheel{width:200px;height:200px;margin:0 auto 1.5rem;border-radius:50%;background:conic-gradient(#ff3b3b 0deg 45deg,#ffd700 45deg 90deg,#00e676 90deg 135deg,#40c4ff 135deg 180deg,#ff80ab 180deg 225deg,#ffab40 225deg 270deg,#fff 270deg 315deg,#ff3b3b 315deg 360deg);position:relative;transition:transform 3s cubic-bezier(.17,.67,.35,1);box-shadow:0 0 40px rgba(255,215,0,.6);border:4px solid #ffd700}
-.wheel::after{content:'🎁';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;background:#0d1f17;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:3px solid #ffd700}
-.wheel-pointer{width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:25px solid #ffd700;margin:0 auto;filter:drop-shadow(0 0 8px rgba(255,215,0,.9))}
-
-/* SNOW CLICKER SCORE */
-.snow-score{display:none;position:fixed;top:50%;left:20px;transform:translateY(-50%);padding:8px 14px;background:rgba(10,20,15,.85);border:1px solid rgba(64,196,255,.5);border-radius:50px;color:#40c4ff;font-weight:700;font-size:.85rem;z-index:100;box-shadow:0 0 20px rgba(64,196,255,.5)}
-.snow-score.active{display:block;animation:modalIn .3s ease}
-
-/* TOAST */
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(10,20,15,.95);color:#ffd700;padding:12px 24px;border-radius:50px;border:1px solid rgba(255,215,0,.5);font-size:.85rem;letter-spacing:1px;z-index:99999;transition:transform .4s ease;box-shadow:0 0 30px rgba(255,215,0,.5);font-family:'Poppins',sans-serif;max-width:90vw;text-align:center}
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(10,20,15,.95);color:#ffd700;padding:12px 24px;border-radius:50px;border:1px solid rgba(255,215,0,.5);font-size:.85rem;letter-spacing:1px;z-index:99999;transition:transform .4s ease;box-shadow:0 0 30px rgba(255,215,0,.5);max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:700px){
@@ -212,20 +217,17 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
   .confetti-btn{width:44px;height:44px;bottom:15px;left:15px;font-size:1.1rem}
   .top-left{top:10px;left:10px}
   .top-right{top:10px;right:10px;gap:5px}
-  .ctrl-btn{width:34px;height:34px;font-size:.9rem}
   .volume-wrap{padding:5px 8px}
   .volume-wrap input[type=range]{width:50px}
   .clock-wib{font-size:.7rem;padding:6px 10px}
   .visitor-counter{font-size:.6rem}
-  .santa-walk{font-size:2rem}
-  .deer-fly{font-size:1.5rem}
-  .mini-timer{gap:8px}
+  .candle-area{right:15px;bottom:80px;transform:scale(.7)}
+  .viz{height:40px}
 }
 </style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
-<!-- LOADING -->
 <div id="loader">
   <div class="loader-icon">🎄</div>
   <div class="loader-text">MERRY CHRISTMAS</div>
@@ -254,6 +256,17 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 <div class="deer-fly">🦌</div>
 <div class="penguin">🐧</div>
 
+<!-- CANDLE -->
+<div class="candle-area">
+  <div class="candle">
+    <div class="glow"></div>
+    <div class="flame"></div>
+  </div>
+</div>
+
+<!-- MUSIC VISUALIZER -->
+<div class="viz" id="viz"></div>
+
 <div class="top-left">
   <div class="clock-wib" id="clockWib">⏰ 00:00:00 WIB</div>
   <div class="visitor-counter" id="visitorCounter">👁️ 0 pengunjung</div>
@@ -263,10 +276,10 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
   <div class="volume-wrap">
     🔊 <input type="range" id="volumeSlider" min="0" max="100" value="50">
   </div>
-  <button class="ctrl-btn" id="langBtn" title="Ganti Bahasa" style="width:auto;padding:0 12px;font-size:.7rem;font-weight:700;letter-spacing:1px">🇮🇩 ID</button>
+  <button class="lang-btn" id="langBtn">🇮🇩 ID</button>
 </div>
 
-<audio id="bgMusic" loop preload="auto">
+<audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
   <source src="clavier-music-calm-christmas-piano-262888.mp3" type="audio/mpeg">
 </audio>
 <button class="music-btn" id="musicBtn" title="Play / Pause Musik">🎵</button>
@@ -324,50 +337,57 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     </div>
   </div>
 
-  <div class="extra-grid fade-in d5">
-    <div class="info-card">
-      <div class="info-label" id="weekendLabel">Weekend Lagi</div>
-      <div class="info-value" id="weekendCount">—</div>
+  <!-- 🎄 GROWING TREE -->
+  <div class="tree-display fade-in d5">
+    <div class="tree-title">🎄 POHON NATALMU</div>
+    <svg class="tree-svg" viewBox="0 0 100 120" id="treeSvg">
+      <rect x="46" y="105" width="8" height="12" fill="#5d3a1a"/>
+      <polygon points="50,90 20,105 80,105" fill="#0d4d2c" id="treeBase" opacity="0" style="transition:opacity .8s"/>
+      <polygon points="50,70 25,90 75,90" fill="#0f5d35" id="treeMid" opacity="0" style="transition:opacity .8s"/>
+      <polygon points="50,50 28,72 72,72" fill="#116b3e" id="treeTop" opacity="0" style="transition:opacity .8s"/>
+      <polygon points="50,32 32,54 68,54" fill="#148047" id="treeTip" opacity="0" style="transition:opacity .8s"/>
+      <text x="50" y="28" text-anchor="middle" font-size="14" id="treeStar" opacity="0" style="transition:opacity .8s">⭐</text>
+      <circle cx="40" cy="95" r="2" fill="#ff3b3b" id="orn1" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="60" cy="85" r="2" fill="#ffd700" id="orn2" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="50" cy="75" r="2" fill="#40c4ff" id="orn3" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="35" cy="65" r="2" fill="#ff80ab" id="orn4" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="65" cy="60" r="2" fill="#ffd700" id="orn5" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="45" cy="45" r="2" fill="#ff3b3b" id="orn6" opacity="0" style="transition:opacity .5s"/>
+      <circle cx="55" cy="40" r="2" fill="#00e676" id="orn7" opacity="0" style="transition:opacity .5s"/>
+    </svg>
+    <div class="tree-progress" id="treeProgress">Pohon tumbuh: 0%</div>
+  </div>
+
+  <!-- 💌 WISH JAR -->
+  <div class="wish-jar fade-in d5">
+    <div class="wish-title">💌 TOPLES HARAPAN</div>
+    <div class="wish-form">
+      <input type="text" id="wishInput" placeholder="Tulis harapanmu..." maxlength="80">
+      <button id="wishBtn">Kirim</button>
     </div>
-    <div class="info-card">
-      <div class="info-label" id="totalDaysLabel">Total Hari</div>
-      <div class="info-value">365</div>
-    </div>
-    <div class="info-card">
-      <div class="info-label" id="passedLabel">Udah Lewat</div>
-      <div class="info-value" id="passedDays">0</div>
-    </div>
+    <div class="wish-list" id="wishList"></div>
+  </div>
+
+  <!-- 📜 TIME CAPSULE -->
+  <div class="time-capsule fade-in d5">
+    <div class="tc-icon" id="tcIcon">🔒</div>
+    <div class="tc-title" id="tcTitle">📜 TIME CAPSULE</div>
+    <div class="tc-status" id="tcStatus">Pesan akan kebuka pas 10 Des 2026</div>
+    <div class="tc-preview" id="tcPreview">Belum ada pesan...</div>
+    <button class="tc-btn" id="tcBtn">✍️ Tulis Pesan</button>
   </div>
 
   <div class="mini-calendar fade-in d5">
-    <div class="cal-title">📅 Desember 2026</div>
+    <div class="cal-title" id="calTitle">📅 Desember 2026</div>
     <div class="cal-grid" id="miniCal"></div>
   </div>
 
   <div class="quote-box fade-in d5" id="quoteBox">"Loading quote..."</div>
-
-  <div class="games-grid fade-in d5">
-    <button class="game-btn" id="btnGift">🎁 Buka Hadiah</button>
-    <button class="game-btn" id="btnSnow">❄️ Snow Clicker</button>
-    <button class="game-btn" id="btnSpin">🎰 Spin Wheel</button>
-    <button class="game-btn" id="btnQuiz">🧠 Kuis Natal</button>
-  </div>
 </div>
 
 <div class="footer fade-in d5">✦ Selamat Menyambut Nataru ✦</div>
 
-<!-- SNOW SCORE -->
-<div class="snow-score" id="snowScore">❄️ Skor: <span id="snowScoreVal">0</span></div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="modal-title" id="modalTitle">🎁</div>
-    <div class="modal-content" id="modalContent">...</div>
-    <div id="modalExtra"></div>
-  </div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
 // ═══════════════════════════════════════
@@ -382,179 +402,86 @@ const target = new Date(CONFIG.targetDate).getTime();
 const startTime = new Date(CONFIG.startDate).getTime();
 const newYearTarget = new Date(CONFIG.newYearDate).getTime();
 
-// ═══════════════════════════════════════
-// LOADING SCREEN
-// ═══════════════════════════════════════
-setTimeout(() => {
-  document.getElementById('loader').classList.add('hide');
-}, 2500);
+setTimeout(() => document.getElementById('loader').classList.add('hide'), 2500);
 
-// ═══════════════════════════════════════
-// ANTI-COPY
-// ═══════════════════════════════════════
-['contextmenu','selectstart','dragstart','copy','cut'].forEach(evt => {
-  document.addEventListener(evt, e => e.preventDefault());
-});
+// Anti-copy
+['contextmenu','selectstart','dragstart','copy','cut'].forEach(evt => document.addEventListener(evt, e => e.preventDefault()));
 document.addEventListener('keydown', e => {
   const k = e.key.toLowerCase();
-  if (e.ctrlKey && ['a','c','u','s','p'].includes(k)) { e.preventDefault(); return false; }
-  if (e.metaKey && ['a','c','u','s','p'].includes(k)) { e.preventDefault(); return false; }
-  if (e.key === 'F12') { e.preventDefault(); return false; }
-  if (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) { e.preventDefault(); return false; }
+  if (e.ctrlKey && ['a','c','u','s','p'].includes(k)) return e.preventDefault();
+  if (e.metaKey && ['a','c','u','s','p'].includes(k)) return e.preventDefault();
+  if (e.key === 'F12') return e.preventDefault();
+  if (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) return e.preventDefault();
 });
 document.addEventListener('touchstart', e => { if (e.touches.length > 1) e.preventDefault(); }, {passive:false});
 
-// ═══════════════════════════════════════
-// BAHASA (i18n)
-// ═══════════════════════════════════════
+// i18n
 const I18N = {
-  id: {
-    subtitle: "Menuju Libur Nataru",
-    greeting: '"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',
-    progress: "Progress",
-    lblD: "Hari", lblH: "Jam", lblM: "Menit", lblS: "Detik",
-    miniTitle: "🎆 Menuju Tahun Baru 2027",
-    mDl: "hari", mHl: "jam", mMl: "menit",
-    weekend: "Weekend Lagi", totalDays: "Total Hari", passed: "Udah Lewat",
-    calTitle: "📅 Desember 2026",
-    todayIs: "📅 Hari ini:",
-    visitors: "👁️ pengunjung",
-    footer: "✦ Selamat Menyambut Nataru ✦",
-    namePlaceholder: "Ketik nama lu...", nameBtn: "Simpan",
-    hi: "Hai"
-  },
-  en: {
-    subtitle: "Countdown to Christmas",
-    greeting: '"May this year be full of blessings & happiness 🎁"',
-    progress: "Progress",
-    lblD: "Days", lblH: "Hours", lblM: "Minutes", lblS: "Seconds",
-    miniTitle: "🎆 Countdown to New Year 2027",
-    mDl: "days", mHl: "hours", mMl: "minutes",
-    weekend: "Weekends Left", totalDays: "Total Days", passed: "Passed",
-    calTitle: "📅 December 2026",
-    todayIs: "📅 Today is:",
-    visitors: "👁️ visitors",
-    footer: "✦ Merry Christmas ✦",
-    namePlaceholder: "Type your name...", nameBtn: "Save",
-    hi: "Hi"
-  }
+  id: {subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",visitors:"pengunjung",namePlaceholder:"Ketik nama lu...",nameBtn:"Simpan",hi:"Hai",wishTitle:"💌 TOPLES HARAPAN",wishPh:"Tulis harapanmu...",wishBtn:"Kirim",wishEmpty:"Belum ada harapan... tulis yang pertama! ✨",tcTitle:"📜 TIME CAPSULE",tcStatus:"Pesan akan kebuka pas 10 Des 2026",tcEmpty:"Belum ada pesan...",tcBtn:"✍️ Tulis Pesan",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:"},
+  en: {subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",calTitle:"📅 December 2026",todayIs:"📅 Today is:",visitors:"visitors",namePlaceholder:"Type your name...",nameBtn:"Save",hi:"Hi",wishTitle:"💌 WISH JAR",wishPh:"Write your wish...",wishBtn:"Send",wishEmpty:"No wishes yet... be the first! ✨",tcTitle:"📜 TIME CAPSULE",tcStatus:"Message opens on Dec 10, 2026",tcEmpty:"No message yet...",tcBtn:"✍️ Write Message",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
 
 function applyLang() {
   const t = I18N[currentLang];
-  document.getElementById('subtitle').textContent = t.subtitle;
+  ['subtitle','progressLabel','lblD','lblH','lblM','lblS','miniTitle','mDl','mHl','mMl','calTitle','nameBtn','tcTitle','tcStatus','tcBtn'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.textContent = t[id.replace('progressLabel','progress')] || t[id] || el.textContent;
+  });
   document.getElementById('progressLabel').textContent = t.progress;
-  document.getElementById('lblD').textContent = t.lblD;
-  document.getElementById('lblH').textContent = t.lblH;
-  document.getElementById('lblM').textContent = t.lblM;
-  document.getElementById('lblS').textContent = t.lblS;
-  document.getElementById('miniTitle').textContent = t.miniTitle;
-  document.getElementById('mDl').textContent = t.mDl;
-  document.getElementById('mHl').textContent = t.mHl;
-  document.getElementById('mMl').textContent = t.mMl;
-  document.getElementById('weekendLabel').textContent = t.weekend;
-  document.getElementById('totalDaysLabel').textContent = t.totalDays;
-  document.getElementById('passedLabel').textContent = t.passed;
   document.getElementById('nameInput').placeholder = t.namePlaceholder;
-  document.getElementById('nameBtn').textContent = t.nameBtn;
-  document.querySelector('.footer').textContent = t.footer;
+  document.getElementById('wishInput').placeholder = t.wishPh;
+  document.getElementById('wishBtn').textContent = t.wishBtn;
+  document.getElementById('wishTitle').textContent = t.wishTitle;
+  document.getElementById('treeTitle').textContent = t.treeTitle;
+  if (localStorage.getItem('timeCapsule')) document.getElementById('tcPreview').textContent = '🔒 ' + (currentLang === 'id' ? 'Pesan tersimpan' : 'Message saved');
+  else document.getElementById('tcPreview').textContent = t.tcEmpty;
   updateGreeting();
+  renderWishes();
 }
 document.getElementById('langBtn').addEventListener('click', () => {
   currentLang = currentLang === 'id' ? 'en' : 'id';
   localStorage.setItem('lang', currentLang);
   document.getElementById('langBtn').textContent = currentLang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
-  applyLang();
-  updateTodayDate();
+  applyLang(); updateTodayDate();
   showToast(currentLang === 'id' ? '🌐 Bahasa Indonesia' : '🌐 English');
 });
 document.getElementById('langBtn').textContent = currentLang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
 
-// ═══════════════════════════════════════
-// SAVE NAME
-// ═══════════════════════════════════════
+// NAME
 function updateGreeting() {
   const name = localStorage.getItem('userName');
   const t = I18N[currentLang];
-  if (name) {
-    document.getElementById('greeting').textContent = `${t.hi}, ${name}! 🎄 ${currentLang === 'id' ? 'Semoga Natalmu indah!' : 'May your Christmas be beautiful!'}`;
-  } else {
-    document.getElementById('greeting').textContent = I18N[currentLang].greeting.replace(/"/g, '"').slice(0,0) + t.greeting;
-  }
+  document.getElementById('greeting').textContent = name ? `${t.hi}, ${name}! 🎄 ${currentLang === 'id' ? 'Semoga Natalmu indah!' : 'May your Christmas be beautiful!'}` : t.greeting;
 }
 document.getElementById('nameBtn').addEventListener('click', () => {
-  const name = document.getElementById('nameInput').value.trim();
-  if (name) {
-    localStorage.setItem('userName', name);
-    updateGreeting();
-    showToast(`✨ ${currentLang === 'id' ? 'Hai' : 'Hi'}, ${name}!`);
-    document.getElementById('nameForm').style.display = 'none';
-    speakText(`${currentLang === 'id' ? 'Hai' : 'Hi'} ${name}, ${currentLang === 'id' ? 'selamat datang' : 'welcome'}!`);
-  }
+  const n = document.getElementById('nameInput').value.trim();
+  if (n) { localStorage.setItem('userName', n); updateGreeting(); showToast(`✨ ${currentLang === 'id' ? 'Hai' : 'Hi'}, ${n}!`); document.getElementById('nameForm').style.display = 'none'; }
 });
-document.getElementById('nameInput').addEventListener('keypress', e => {
-  if (e.key === 'Enter') document.getElementById('nameBtn').click();
-});
-if (localStorage.getItem('userName')) {
-  document.getElementById('nameForm').style.display = 'none';
-}
+document.getElementById('nameInput').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('nameBtn').click(); });
+if (localStorage.getItem('userName')) document.getElementById('nameForm').style.display = 'none';
 
-// ═══════════════════════════════════════
-// TEXT TO SPEECH
-// ═══════════════════════════════════════
-function speakText(text) {
-  if ('speechSynthesis' in window) {
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = currentLang === 'id' ? 'id-ID' : 'en-US';
-    utt.volume = 0.5;
-    utt.rate = 0.9;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utt);
-  }
-}
-
-// ═══════════════════════════════════════
-// TANGGAL
-// ═══════════════════════════════════════
+// DATE
 const daysID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const monthsEN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-
 function updateTodayDate() {
   const now = new Date();
   const days = currentLang === 'id' ? daysID : daysEN;
   const months = currentLang === 'id' ? monthsID : monthsEN;
-  document.getElementById('todayDate').textContent =
-    `${I18N[currentLang].todayIs} ${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+  document.getElementById('todayDate').textContent = `${I18N[currentLang].todayIs} ${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
 }
-
 function updateClock() {
-  const now = new Date();
-  const wib = new Date(now.toLocaleString("en-US", {timeZone:"Asia/Jakarta"}));
-  const h = String(wib.getHours()).padStart(2,'0');
-  const m = String(wib.getMinutes()).padStart(2,'0');
-  const s = String(wib.getSeconds()).padStart(2,'0');
-  document.getElementById('clockWib').textContent = `⏰ ${h}:${m}:${s} WIB`;
+  const wib = new Date(new Date().toLocaleString("en-US", {timeZone:"Asia/Jakarta"}));
+  document.getElementById('clockWib').textContent = `⏰ ${String(wib.getHours()).padStart(2,'0')}:${String(wib.getMinutes()).padStart(2,'0')}:${String(wib.getSeconds()).padStart(2,'0')} WIB`;
 }
 
-// ═══════════════════════════════════════
-// VISITOR COUNTER
-// ═══════════════════════════════════════
+// VISITOR
 let visitors = parseInt(localStorage.getItem('visitors') || '0');
-if (!sessionStorage.getItem('counted')) {
-  visitors++;
-  localStorage.setItem('visitors', visitors);
-  sessionStorage.setItem('counted', '1');
-}
-function updateVisitorCounter() {
-  document.getElementById('visitorCounter').textContent = `👁️ ${visitors} ${I18N[currentLang].visitors.split(' ')[1] || 'visitors'}`;
-}
+if (!sessionStorage.getItem('counted')) { visitors++; localStorage.setItem('visitors', visitors); sessionStorage.setItem('counted', '1'); }
+document.getElementById('visitorCounter').textContent = `👁️ ${visitors} ${I18N[currentLang].visitors}`;
 
-// ═══════════════════════════════════════
-// SALJU
-// ═══════════════════════════════════════
+// SNOW
 const snowContainer = document.getElementById('snow');
 for (let i = 0; i < 70; i++) {
   const s = document.createElement('div');
@@ -577,9 +504,7 @@ for (let i = 0; i < 20; i++) {
   document.body.appendChild(sp);
 }
 
-// ═══════════════════════════════════════
 // SHOOTING STAR
-// ═══════════════════════════════════════
 setInterval(() => {
   if (Math.random() > 0.5) {
     const star = document.createElement('div');
@@ -592,9 +517,7 @@ setInterval(() => {
   }
 }, 3000);
 
-// ═══════════════════════════════════════
 // CURSOR TRAIL
-// ═══════════════════════════════════════
 let lastTrail = 0;
 document.addEventListener('mousemove', e => {
   const now = Date.now();
@@ -607,13 +530,10 @@ document.addEventListener('mousemove', e => {
   setTimeout(() => p.remove(), 900);
 });
 
-// ═══════════════════════════════════════
-// CLICK EFFECTS (snow + ripple + confetti)
-// ═══════════════════════════════════════
+// CLICK EFFECTS
 const clickEmojis = ['❄️','❅','❆','✨','🌟'];
 document.addEventListener('click', e => {
-  if (e.target.closest('.music-btn,.confetti-btn,.ctrl-btn,.modal,.game-btn,.name-form,.volume-wrap')) return;
-  // Snow
+  if (e.target.closest('button,.modal,.volume-wrap,input,.wish-form,.time-capsule')) return;
   for (let i = 0; i < 3; i++) {
     setTimeout(() => {
       const s = document.createElement('div');
@@ -625,7 +545,6 @@ document.addEventListener('click', e => {
       setTimeout(() => s.remove(), 1500);
     }, i*80);
   }
-  // Ripple
   const r = document.createElement('div');
   r.className = 'ripple';
   r.style.left = e.clientX+'px'; r.style.top = e.clientY+'px';
@@ -633,24 +552,17 @@ document.addEventListener('click', e => {
   setTimeout(() => r.remove(), 1000);
 });
 
-// ═══════════════════════════════════════
 // 3D TILT
-// ═══════════════════════════════════════
 const container = document.getElementById('container');
 document.addEventListener('mousemove', e => {
   const rect = container.getBoundingClientRect();
   const x = e.clientX - rect.left, y = e.clientY - rect.top;
   const cx = rect.width/2, cy = rect.height/2;
-  const rx = ((y-cy)/cy)*-4, ry = ((x-cx)/cx)*4;
-  container.style.transform = `perspective(2000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  container.style.transform = `perspective(2000px) rotateX(${((y-cy)/cy)*-4}deg) rotateY(${((x-cx)/cx)*4}deg)`;
 });
-container.addEventListener('mouseleave', () => {
-  container.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)';
-});
+container.addEventListener('mouseleave', () => container.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)');
 
-// ═══════════════════════════════════════
 // PROGRESS
-// ═══════════════════════════════════════
 function updateProgress() {
   const now = Date.now();
   const total = target - startTime, elapsed = now - startTime;
@@ -658,141 +570,124 @@ function updateProgress() {
   document.getElementById('progressFill').style.width = p+'%';
   document.getElementById('progressPercent').textContent = p.toFixed(1)+'%';
   document.getElementById('passedDays').textContent = Math.floor(elapsed/(1000*60*60*24));
+  updateTree(p);
 }
 
-// ═══════════════════════════════════════
-// WEEKEND COUNTER
-// ═══════════════════════════════════════
+// 🌳 GROWING TREE
+function updateTree(percent) {
+  const stage = Math.floor(percent / 20);
+  const stages = ['treeBase','treeMid','treeTop','treeTip','treeStar'];
+  stages.forEach((id, i) => { document.getElementById(id).style.opacity = i <= stage - 1 ? '1' : '0'; });
+  document.querySelectorAll('[id^=orn]').forEach((o, i) => { o.style.opacity = i < stage * 1.4 ? '1' : '0'; });
+  document.getElementById('treeProgress').textContent = `${I18N[currentLang].treeProgress} ${Math.round(percent)}%`;
+}
+
+// WEEKEND
 function countWeekends() {
-  let count = 0;
-  const now = new Date();
+  let count = 0, d = new Date();
   const t = new Date(CONFIG.targetDate);
-  let d = new Date(now);
-  while (d < t) {
-    if (d.getDay() === 0) count++; // Minggu
-    d.setDate(d.getDate()+1);
-  }
+  while (d < t) { if (d.getDay() === 0) count++; d.setDate(d.getDate()+1); }
   document.getElementById('weekendCount').textContent = count;
 }
 
-// ═══════════════════════════════════════
-// MINI CALENDAR
-// ═══════════════════════════════════════
+// CALENDAR
 function buildCalendar() {
-  const cal = document.getElementById('miniCal');
-  cal.innerHTML = '';
+  const cal = document.getElementById('miniCal'); cal.innerHTML = '';
   const dayLabels = currentLang === 'id' ? ['S','S','R','K','J','S','M'] : ['S','M','T','W','T','F','S'];
-  dayLabels.forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'cal-day';
-    el.textContent = d;
-    cal.appendChild(el);
-  });
+  dayLabels.forEach(d => { const el = document.createElement('div'); el.className = 'cal-day'; el.textContent = d; cal.appendChild(el); });
   const now = new Date();
   for (let i = 1; i <= 31; i++) {
     const el = document.createElement('div');
-    el.className = 'cal-date';
-    el.textContent = i;
+    el.className = 'cal-date'; el.textContent = i;
     const date = new Date(2026, 11, i);
-    if (now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() === i) {
-      el.classList.add('today');
-    } else if (i === 10) {
-      el.classList.add('target');
-    } else if (date < now) {
-      el.classList.add('past');
-    }
+    if (now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() === i) el.classList.add('today');
+    else if (i === 10) el.classList.add('target');
+    else if (date < now) el.classList.add('past');
     cal.appendChild(el);
   }
 }
 
-// ═══════════════════════════════════════
-// RANDOM QUOTES
-// ═══════════════════════════════════════
-const quotesID = [
-  '"Natal bukan tentang hadiah, tapi tentang kasih."',
-  '"Cinta adalah hadiah terindah di hari Natal."',
-  '"Bersyukurlah atas hal-hal kecil hari ini."',
-  '"Kehangatan Natal ada di hati yang berbagi."',
-  '"Setiap hari adalah kesempatan untuk bersinar."'
-];
-const quotesEN = [
-  '"Christmas is not about gifts, but about love."',
-  '"Love is the greatest gift of Christmas."',
-  '"Be grateful for the little things today."',
-  '"The warmth of Christmas lives in giving hearts."',
-  '"Every day is a chance to shine."'
-];
+// QUOTES
+const quotesID = ['"Natal bukan tentang hadiah, tapi tentang kasih."','"Cinta adalah hadiah terindah di hari Natal."','"Bersyukurlah atas hal-hal kecil hari ini."','"Kehangatan Natal ada di hati yang berbagi."','"Setiap hari adalah kesempatan untuk bersinar."'];
+const quotesEN = ['"Christmas is not about gifts, but about love."','"Love is the greatest gift of Christmas."','"Be grateful for the little things today."','"The warmth of Christmas lives in giving hearts."','"Every day is a chance to shine."'];
 let quoteIdx = 0;
 function updateQuote() {
   const list = currentLang === 'id' ? quotesID : quotesEN;
   const box = document.getElementById('quoteBox');
   box.classList.add('fade');
-  setTimeout(() => {
-    box.textContent = list[quoteIdx % list.length];
-    box.classList.remove('fade');
-    quoteIdx++;
-  }, 500);
+  setTimeout(() => { box.textContent = list[quoteIdx % list.length]; box.classList.remove('fade'); quoteIdx++; }, 500);
 }
 setInterval(updateQuote, 8000);
 
-// ═══════════════════════════════════════
-// MUSIK + VOLUME
-// ═══════════════════════════════════════
+// MUSIC + VISUALIZER
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 let isPlaying = false;
 music.volume = 0.5;
+document.getElementById('volumeSlider').addEventListener('input', e => music.volume = e.target.value / 100);
 
-document.getElementById('volumeSlider').addEventListener('input', e => {
-  music.volume = e.target.value / 100;
-});
+// Visualizer bars
+const viz = document.getElementById('viz');
+const bars = [];
+for (let i = 0; i < 60; i++) {
+  const b = document.createElement('div');
+  b.className = 'viz-bar';
+  viz.appendChild(b);
+  bars.push(b);
+}
+let audioCtx, analyser, dataArray;
+function initAudioAnalyzer() {
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const src = audioCtx.createMediaElementSource(music);
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 128;
+      src.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+    }
+  } catch(e) {}
+}
+function animateViz() {
+  if (analyser && isPlaying) {
+    analyser.getByteFrequencyData(dataArray);
+    bars.forEach((b, i) => {
+      const val = dataArray[i % dataArray.length] || 0;
+      b.style.height = Math.max(4, (val / 255) * 55) + 'px';
+    });
+  } else {
+    bars.forEach(b => b.style.height = '4px');
+  }
+  requestAnimationFrame(animateViz);
+}
+animateViz();
 
 function toggleMusic() {
-  if (isPlaying) {
-    music.pause();
-    musicBtn.textContent = '🎵';
-    musicBtn.classList.remove('playing');
-    isPlaying = false;
-  } else {
-    music.play().then(() => {
-      musicBtn.textContent = '⏸';
-      musicBtn.classList.add('playing');
-      isPlaying = true;
-    }).catch(()=>{});
+  if (isPlaying) { music.pause(); musicBtn.textContent = '🎵'; musicBtn.classList.remove('playing'); isPlaying = false; }
+  else {
+    initAudioAnalyzer();
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    music.play().then(() => { musicBtn.textContent = '⏸'; musicBtn.classList.add('playing'); isPlaying = true; }).catch(()=>{});
   }
 }
 musicBtn.addEventListener('click', toggleMusic);
 document.body.addEventListener('click', function autoStart(e) {
-  if (e.target.closest('button,.modal,.music-btn,.confetti-btn,.game-btn,.name-form,.volume-wrap')) return;
-  if (!isPlaying) {
-    music.play().then(() => {
-      musicBtn.textContent = '⏸';
-      musicBtn.classList.add('playing');
-      isPlaying = true;
-    }).catch(()=>{});
-  }
+  if (e.target.closest('button,input,.volume-wrap')) return;
+  if (!isPlaying) { initAudioAnalyzer(); if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); music.play().then(() => { musicBtn.textContent = '⏸'; musicBtn.classList.add('playing'); isPlaying = true; }).catch(()=>{}); }
   document.body.removeEventListener('click', autoStart);
 }, {once:true});
 
-// ═══════════════════════════════════════
 // TOAST
-// ═══════════════════════════════════════
-let toastEl = null;
+const toastEl = document.getElementById('toast');
 function showToast(msg) {
-  if (!toastEl) {
-    toastEl = document.createElement('div');
-    toastEl.className = 'toast';
-    document.body.appendChild(toastEl);
-  }
   toastEl.textContent = msg;
   toastEl.classList.add('show');
   clearTimeout(toastEl._t);
   toastEl._t = setTimeout(() => toastEl.classList.remove('show'), 2500);
 }
 
-// ═══════════════════════════════════════
-// EASTER EGG (klik judul 5x)
-// ═══════════════════════════════════════
+// EASTER EGG
 let titleClicks = 0;
 document.getElementById('titleEgg').addEventListener('click', () => {
   titleClicks++;
@@ -813,123 +708,93 @@ document.getElementById('titleEgg').addEventListener('click', () => {
   }
 });
 
-// ═══════════════════════════════════════
-// SECRET (klik badge 3x)
-// ═══════════════════════════════════════
+// SECRET BADGE
 let badgeClicks = 0;
 document.getElementById('badgeSecret').addEventListener('click', () => {
   badgeClicks++;
-  if (badgeClicks >= 3) {
-    badgeClicks = 0;
-    showToast('💌 Psst... Santa titip pesan: "Jadi anak baik ya!" 🎅');
-  }
+  if (badgeClicks >= 3) { badgeClicks = 0; showToast('💌 Psst... Santa titip pesan: "Jadi anak baik ya!" 🎅'); }
 });
 
-// ═══════════════════════════════════════
 // SANTA CLICK
-// ═══════════════════════════════════════
 document.getElementById('santaClick').addEventListener('click', e => {
   e.stopPropagation();
   showToast('🎅 "Ho Ho Ho! Merry Christmas!"');
-  speakText('Ho Ho Ho! Merry Christmas!');
   for (let i = 0; i < 3; i++) setTimeout(launchFirework, i*200);
 });
 
-// ═══════════════════════════════════════
-// MODAL
-// ═══════════════════════════════════════
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modalTitle');
-const modalContent = document.getElementById('modalContent');
-const modalExtra = document.getElementById('modalExtra');
-function openModal(title, content, extra = '') {
-  modalTitle.textContent = title;
-  modalContent.textContent = content;
-  modalExtra.innerHTML = extra;
-  modal.classList.add('active');
-}
-document.getElementById('modalClose').addEventListener('click', () => modal.classList.remove('active'));
-modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('active'); });
-
-// ═══════════════════════════════════════
-// MINI GAMES
-// ═══════════════════════════════════════
-// 🎁 GIFT
-document.getElementById('btnGift').addEventListener('click', () => {
-  const gifts = ['🎁 Kamu dapat: Pelukan hangat! 🤗','🎄 Kamu dapat: Senyum dari Santa! 😊','⭐ Kamu dapat: Bintang keberuntungan! ✨','🔔 Kamu dapat: Lonceng ajaib! 🔔','🍪 Kamu dapat: Cookie Natal! 🍪','🎅 Kamu dapat: Selfie sama Santa! 📸'];
-  openModal('🎁 Buka Hadiah', gifts[Math.floor(Math.random()*gifts.length)]);
-});
-
-// ❄️ SNOW CLICKER
-let snowScore = 0, snowActive = false;
-document.getElementById('btnSnow').addEventListener('click', () => {
-  snowActive = !snowActive;
-  document.getElementById('snowScore').classList.toggle('active', snowActive);
-  showToast(snowActive ? '❄️ Klik di mana aja buat ngumpulin salju!' : '❄️ Snow clicker OFF');
-});
-document.addEventListener('click', e => {
-  if (snowActive && !e.target.closest('button,.modal')) {
-    snowScore++;
-    document.getElementById('snowScoreVal').textContent = snowScore;
-  }
-});
-
-// 🎰 SPIN WHEEL
-document.getElementById('btnSpin').addEventListener('click', () => {
-  const prizes = ['🎁 Hadiah Misteri','🍪 Cookie Gratis','⭐ 1 Wishes','🎄 Pohon Mini','🎅 Foto Santa','🔔 Lonceng Emas','❄️ Salju Abadi','💝 Cinta'];
-  const spin = Math.random()*360 + 720;
-  openModal('🎰 Spin Wheel', 'Klik tombol di bawah buat muter!', `
-    <div class="wheel-pointer"></div>
-    <div class="wheel" id="wheelEl"></div>
-    <button class="replay-btn" id="spinBtn" style="margin-top:1rem">🎯 PUTAR</button>
-  `);
-  setTimeout(() => {
-    document.getElementById('spinBtn').addEventListener('click', () => {
-      const wheel = document.getElementById('wheelEl');
-      wheel.style.transform = `rotate(${spin}deg)`;
-      setTimeout(() => {
-        const winner = prizes[Math.floor(Math.random()*prizes.length)];
-        modalContent.textContent = `🎉 Kamu dapat: ${winner}`;
-      }, 3100);
-    });
-  }, 100);
-});
-
-// 🧠 QUIZ
-const quizData = [
-  {q:'Siapa yang bagi hadiah pas Natal?', a:['Santa Claus','Bunny','Spongebob'], c:0},
-  {q:'Hewan apa yang narik kereta Santa?', a:['Kucing','Rusa','Panda'], c:1},
-  {q:'Warna khas Natal?', a:['Biru-Ungu','Merah-Hijau','Hitam-Putih'], c:1},
-  {q:'Pohon khas Natal?', a:['Mangga','Pinus/Cemara','Kelapa'], c:1},
-  {q:'Lagu Natal terkenal?', a:['Jingle Bells','Baby Shark','Despacito'], c:0}
-];
-let quizIdx = 0, quizScore = 0;
-document.getElementById('btnQuiz').addEventListener('click', () => {
-  quizIdx = 0; quizScore = 0;
-  showQuiz();
-});
-function showQuiz() {
-  if (quizIdx >= quizData.length) {
-    openModal('🧠 Hasil Kuis', `Skor kamu: ${quizScore}/${quizData.length} ${quizScore === quizData.length ? '🎉 Perfect!' : quizScore >= 3 ? '👍 Bagus!' : '💪 Coba lagi!'}`, `<button class="replay-btn" id="quizRestart" style="margin-top:1rem">🔄 Ulangi</button>`);
-    setTimeout(() => document.getElementById('quizRestart').addEventListener('click', () => { quizIdx = 0; quizScore = 0; showQuiz(); }), 100);
+// 💌 WISH JAR
+function getWishes() { try { return JSON.parse(localStorage.getItem('wishes') || '[]'); } catch { return []; } }
+function saveWishes(w) { localStorage.setItem('wishes', JSON.stringify(w)); }
+function renderWishes() {
+  const list = document.getElementById('wishList');
+  const wishes = getWishes();
+  list.innerHTML = '';
+  if (wishes.length === 0) {
+    list.innerHTML = `<div class="wish-empty">${I18N[currentLang].wishEmpty}</div>`;
     return;
   }
-  const q = quizData[quizIdx];
-  const btns = q.a.map((opt, i) => `<button class="replay-btn" data-i="${i}" style="margin:4px;display:block;width:100%;font-size:.8rem;padding:.6rem 1rem">${opt}</button>`).join('');
-  openModal(`🧠 Soal ${quizIdx+1}/${quizData.length}`, q.q, `<div style="margin-top:1rem">${btns}</div>`);
-  setTimeout(() => {
-    modalExtra.querySelectorAll('button[data-i]').forEach(b => {
-      b.addEventListener('click', () => {
-        if (parseInt(b.dataset.i) === q.c) { quizScore++; showToast('✅ Bener!'); }
-        else showToast('❌ Salah!');
-        quizIdx++;
-        setTimeout(showQuiz, 600);
-      });
+  wishes.forEach((w, i) => {
+    const item = document.createElement('div');
+    item.className = 'wish-item';
+    item.innerHTML = `<span>💫 ${w.replace(/</g,'&lt;')}</span><button data-i="${i}">×</button>`;
+    list.appendChild(item);
+  });
+  list.querySelectorAll('button').forEach(b => {
+    b.addEventListener('click', () => {
+      const w = getWishes(); w.splice(parseInt(b.dataset.i), 1); saveWishes(w); renderWishes();
+      showToast('🗑️ Harapan dihapus');
     });
-  }, 100);
+  });
 }
+document.getElementById('wishBtn').addEventListener('click', () => {
+  const v = document.getElementById('wishInput').value.trim();
+  if (!v) return showToast('⚠️ Tulis dulu harapannya');
+  const w = getWishes(); w.unshift(v); saveWishes(w);
+  document.getElementById('wishInput').value = '';
+  renderWishes();
+  showToast('✨ Harapan tersimpan!');
+});
+document.getElementById('wishInput').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('wishBtn').click(); });
 
-// 🎊 CONFETTI BUTTON
+// 📜 TIME CAPSULE
+const tcKey = 'timeCapsule';
+function getTC() { return localStorage.getItem(tcKey) || ''; }
+function updateTC() {
+  const msg = getTC();
+  const now = Date.now();
+  const openAt = target;
+  const isOpen = now >= openAt;
+  const icon = document.getElementById('tcIcon');
+  const preview = document.getElementById('tcPreview');
+  const btn = document.getElementById('tcBtn');
+  if (!msg) {
+    icon.textContent = '🔒';
+    preview.textContent = I18N[currentLang].tcEmpty;
+    btn.style.display = 'inline-block';
+    return;
+  }
+  if (isOpen) {
+    icon.textContent = '🔓';
+    preview.textContent = '💌 ' + msg;
+    preview.classList.remove('tc-locked');
+    btn.style.display = 'none';
+  } else {
+    icon.textContent = '🔒';
+    preview.textContent = '🔒 ' + (currentLang === 'id' ? 'Pesan tersimpan & terkunci sampai 10 Des 2026' : 'Message saved & locked until Dec 10, 2026');
+    preview.classList.add('tc-locked');
+    btn.style.display = 'none';
+  }
+}
+document.getElementById('tcBtn').addEventListener('click', () => {
+  const msg = prompt(currentLang === 'id' ? 'Tulis pesan untuk dirimu di 10 Des 2026:\n\n(Maksimal 200 karakter)' : 'Write a message for yourself on Dec 10, 2026:\n\n(Max 200 chars)');
+  if (msg && msg.trim()) {
+    localStorage.setItem(tcKey, msg.trim().slice(0, 200));
+    updateTC();
+    showToast('🔒 Pesan tersimpan & terkunci!');
+  }
+});
+
+// 🎊 CONFETTI
 document.getElementById('confettiBtn').addEventListener('click', () => {
   for (let i = 0; i < 50; i++) {
     setTimeout(() => {
@@ -944,16 +809,13 @@ document.getElementById('confettiBtn').addEventListener('click', () => {
   showToast('🎊 Confetti!');
 });
 
-// ═══════════════════════════════════════
 // FIREWORKS
-// ═══════════════════════════════════════
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 let particles = [];
 let fireworksActive = false;
 function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); window.addEventListener('resize', resizeCanvas);
 const colors = ['#ff3b3b','#ffd700','#00e676','#40c4ff','#ff80ab','#ffffff','#ffab40'];
 function createFirework(x, y) {
   const count = 80 + Math.floor(Math.random()*50);
@@ -975,59 +837,41 @@ function animateFireworks() {
     p.vx *= 0.99; p.vy *= 0.99; p.life -= 0.015;
     const radius = Math.max(0.1, p.size*p.life);
     const alpha = Math.max(0, Math.min(1, p.life));
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, radius, 0, Math.PI*2);
+    ctx.beginPath(); ctx.arc(p.x, p.y, radius, 0, Math.PI*2);
     ctx.fillStyle = p.color; ctx.globalAlpha = alpha; ctx.fill();
     ctx.globalAlpha = 1;
   });
   requestAnimationFrame(animateFireworks);
 }
-function launchFirework() {
-  createFirework(Math.random()*canvas.width, Math.random()*(canvas.height*0.6)+100);
-}
+function launchFirework() { createFirework(Math.random()*canvas.width, Math.random()*(canvas.height*0.6)+100); }
 function startFireworks() {
   if (fireworksActive) return;
   fireworksActive = true;
   animateFireworks();
   for (let i = 0; i < 15; i++) setTimeout(launchFirework, i*350);
-  const interval = setInterval(() => {
-    if (!fireworksActive) return clearInterval(interval);
-    launchFirework();
-  }, 700);
-  setTimeout(() => {
-    fireworksActive = false;
-    clearInterval(interval);
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-  }, 60000);
+  const interval = setInterval(() => { if (!fireworksActive) return clearInterval(interval); launchFirework(); }, 700);
+  setTimeout(() => { fireworksActive = false; clearInterval(interval); ctx.clearRect(0,0,canvas.width,canvas.height); }, 60000);
 }
 
-// ═══════════════════════════════════════
-// TICK SOUND
-// ═══════════════════════════════════════
+// TICK
 const tickAudio = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT");
 tickAudio.volume = 0.3;
 let tickPlayed = false;
 
-// ═══════════════════════════════════════
-// COUNTDOWN UTAMA
-// ═══════════════════════════════════════
-let doneTriggered = false;
+// MINI
 function updateMiniCountdown() {
   const diff = newYearTarget - Date.now();
-  if (diff <= 0) {
-    document.getElementById('miniTimer').innerHTML = '🎉 ' + (currentLang === 'id' ? 'Selamat Tahun Baru!' : 'Happy New Year!');
-    return;
-  }
+  if (diff <= 0) { document.getElementById('miniTimer').innerHTML = '🎉 ' + (currentLang === 'id' ? 'Selamat Tahun Baru!' : 'Happy New Year!'); return; }
   document.getElementById('mD').textContent = String(Math.floor(diff/(1000*60*60*24))).padStart(2,'0');
   document.getElementById('mH').textContent = String(Math.floor((diff/(1000*60*60))%24)).padStart(2,'0');
   document.getElementById('mM').textContent = String(Math.floor((diff/(1000*60))%60)).padStart(2,'0');
 }
+
+// MAIN UPDATE
+let doneTriggered = false;
 function update() {
   const diff = target - Date.now();
-  updateTodayDate();
-  updateClock();
-  updateProgress();
-  updateMiniCountdown();
+  updateTodayDate(); updateClock(); updateProgress(); updateMiniCountdown(); updateTC();
   if (diff <= 0) {
     if (!doneTriggered) {
       doneTriggered = true;
@@ -1043,7 +887,6 @@ function update() {
           <button class="replay-btn" onclick="startFireworks()">🎆 Ulangi Kembang Api</button>
         </div>`;
       startFireworks();
-      speakText('Selamat Natal dan Tahun Baru!');
     }
     return;
   }
@@ -1062,33 +905,22 @@ function update() {
   }
 }
 
-// ═══════════════════════════════════════
-// AUTO REFRESH (setiap 30 menit)
-// ═══════════════════════════════════════
 setInterval(() => {
-  if (document.visibilityState === 'visible') {
-    updateTodayDate();
-    buildCalendar();
-    countWeekends();
-    updateVisitorCounter();
-  }
+  if (document.visibilityState === 'visible') { updateTodayDate(); buildCalendar(); countWeekends(); }
 }, 30*60*1000);
 
-// ═══════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════
 applyLang();
 buildCalendar();
 countWeekends();
 updateVisitorCounter();
 updateQuote();
+updateTC();
+renderWishes();
 update();
 setInterval(update, 1000);
 
-// Register service worker (basic PWA)
-if ('serviceWorker' in navigator) {
-  // Skip - need separate file
-}
+function updateVisitorCounter() { document.getElementById('visitorCounter').textContent = `👁️ ${visitors} ${I18N[currentLang].visitors}`; }
 </script>
 </body>
 </html>
