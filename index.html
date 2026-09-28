@@ -126,8 +126,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .tree-title{font-family:'Cinzel',serif;color:#00e676;font-size:.85rem;letter-spacing:3px;margin-bottom:.8rem;position:relative;z-index:1;text-shadow:0 0 15px rgba(0,230,118,.6)}
 .tree-svg{height:120px;width:auto;filter:drop-shadow(0 0 20px rgba(0,230,118,.6));position:relative;z-index:1}
 .tree-progress{font-size:.75rem;color:var(--ts);margin-top:.5rem;letter-spacing:1px;position:relative;z-index:1}
-
-/* 🍪 FORTUNE COOKIE */
 .fortune-section{margin-top:1.5rem;padding:1.5rem 1rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(255,215,0,.06));border:1px solid rgba(255,215,0,.35);border-radius:15px;position:relative;overflow:hidden}
 .fortune-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:3px;margin-bottom:.4rem;text-shadow:0 0 15px rgba(255,215,0,.6)}
 .fortune-sub{font-size:.7rem;color:var(--ts);margin-bottom:1.2rem;letter-spacing:1px}
@@ -144,11 +142,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .fortune-message.show{opacity:1;transform:scale(1)}
 .fortune-message.rare{background:linear-gradient(145deg,rgba(255,215,0,.2),rgba(64,196,255,.15));border-color:#ffd700;color:#fff;box-shadow:0 0 30px rgba(255,215,0,.6);animation:rareGlow 1.5s ease-in-out infinite}
 @keyframes rareGlow{0%,100%{box-shadow:0 0 30px rgba(255,215,0,.6)}50%{box-shadow:0 0 50px rgba(255,215,0,1),0 0 80px rgba(64,196,255,.6)}}
-.fortune-message::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:1rem}
 .fortune-stats{font-size:.7rem;color:var(--ts);margin-top:.9rem;letter-spacing:1px;text-align:center;opacity:.75}
 .fortune-stats span{color:#ffd700;font-weight:700}
-
-/* 🎁 ADVENT CALENDAR */
 .advent{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(255,215,0,.06));border:1px solid rgba(255,215,0,.35);border-radius:15px;position:relative;overflow:hidden}
 .advent-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:3px;margin-bottom:.4rem;text-shadow:0 0 15px rgba(255,215,0,.6)}
 .advent-sub{font-size:.7rem;color:var(--ts);margin-bottom:1rem;letter-spacing:1px}
@@ -168,8 +163,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .advent-box.opened .advent-emoji{display:block}
 @keyframes emojiPop{0%{transform:scale(0) rotate(-180deg)}70%{transform:scale(1.4) rotate(15deg)}100%{transform:scale(1) rotate(0)}}
 .advent-progress{font-size:.72rem;color:var(--ts);margin-top:.9rem;letter-spacing:1px;text-align:center}
-
-/* 💬 REACTION WALL */
 .reaction-wall{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(64,196,255,.05));border:1px solid rgba(64,196,255,.3);border-radius:15px;position:relative}
 .rw-title{font-family:'Cinzel',serif;color:#40c4ff;font-size:.85rem;letter-spacing:3px;margin-bottom:.4rem;text-align:center;text-shadow:0 0 15px rgba(64,196,255,.6)}
 .rw-sub{font-size:.7rem;color:var(--ts);text-align:center;margin-bottom:.9rem}
@@ -181,7 +174,17 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .rw-bubble{position:absolute;font-size:1.2rem;animation:bubbleFloat 3s ease-out forwards;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,215,0,.6))}
 @keyframes bubbleFloat{0%{transform:translateY(0) scale(0);opacity:0}20%{transform:translateY(-10px) scale(1.3);opacity:1}80%{opacity:.9}100%{transform:translateY(-60px) scale(.8);opacity:0}}
 .rw-total{text-align:center;font-size:.7rem;color:var(--ts);margin-top:.6rem;letter-spacing:1px}
-
+/* 🛡️ FIXED CALENDAR - FLEXBOX */
+.mini-calendar{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,215,0,.25);border-radius:15px;backdrop-filter:blur(10px)}
+.cal-title{font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem}
+.cal-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:340px;margin:0 auto;justify-content:center}
+.cal-day,.cal-date{width:calc((100% - 18px) / 7);min-height:28px;display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;border-radius:6px;transition:all .2s}
+.cal-day{font-size:.62rem;color:var(--ts);font-weight:600;letter-spacing:1px;padding:2px 0}
+.cal-date{font-size:.75rem;color:rgba(255,255,255,.75);padding:4px 0}
+.cal-date.today{background:linear-gradient(135deg,#ff3b3b,#ffd700);color:#fff;font-weight:700;box-shadow:0 0 15px rgba(255,215,0,.7);animation:calPulse 2s ease-in-out infinite}
+.cal-date.target{background:linear-gradient(135deg,#00e676,#40c4ff);color:#fff;font-weight:700;box-shadow:0 0 15px rgba(0,230,118,.7)}
+@keyframes calPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.cal-date.past{opacity:.3}
 .quote-box{margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(0,0,0,.3);border-left:3px solid #ffd700;border-radius:10px;font-style:italic;color:var(--ts);font-size:.85rem;min-height:60px;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .5s}
 .quote-box.fade{opacity:0}
 .done-wrap{text-align:center;padding:3rem 1rem;animation:doneIn 1.5s ease forwards}
@@ -215,6 +218,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
   .advent-grid{grid-template-columns:repeat(4,1fr);gap:6px}
   .rw-picker button{width:36px;height:36px;font-size:1.1rem}
   .cookie{font-size:4rem}
+  .cal-day,.cal-date{min-height:24px;font-size:.7rem}
 }
 </style>
 </head>
@@ -361,7 +365,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     <div class="tree-progress" id="treeProgress">Pohon tumbuh: 0%</div>
   </div>
 
-  <!-- 🍪 FORTUNE COOKIE (Pengganti Input Nama) -->
   <div class="fortune-section fade-in d5">
     <div class="fortune-title" id="fortuneTitle">🍪 FORTUNE COOKIE NATAL</div>
     <div class="fortune-sub" id="fortuneSub">Klik cookie untuk dapat pesan keberuntungan!</div>
@@ -373,7 +376,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     <div class="fortune-stats" id="fortuneStats">🎁 Udah buka: <span id="fortuneCount">0</span>× | Total pesan: <span id="fortuneTotal">50</span></div>
   </div>
 
-  <!-- 🎁 ADVENT CALENDAR -->
   <div class="advent fade-in d5">
     <div class="advent-title" id="adventTitle">🎁 KALENDER ADVENT 2026</div>
     <div class="advent-sub" id="adventSub">Buka satu kotak setiap hari menuju Natal</div>
@@ -381,7 +383,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     <div class="advent-progress" id="adventProgress">0/24 kotak dibuka</div>
   </div>
 
-  <!-- 💬 REACTION WALL -->
   <div class="reaction-wall fade-in d5">
     <div class="rw-title" id="rwTitle">💬 WALL OF CHEERS</div>
     <div class="rw-sub" id="rwSub">Kirim emoji ke dinding kebahagiaan!</div>
@@ -427,8 +428,8 @@ document.addEventListener('keydown', e => {
 document.addEventListener('touchstart', e => { if (e.touches.length > 1) e.preventDefault(); }, {passive:false});
 
 const I18N = {
-  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",visitors:"pengunjung",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji dari pengunjung",fortuneTitle:"🍪 FORTUNE COOKIE NATAL",fortuneSub:"Klik cookie untuk dapat pesan keberuntungan!",cookieHint:"👆 Klik aku!",fortuneStats:"🎁 Udah buka:",fortuneTotal:"Total pesan:"},
-  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",visitors:"visitors",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis from visitors",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!",fortuneStats:"🎁 Opened:",fortuneTotal:"Total messages:"}
+  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",visitors:"pengunjung",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji dari pengunjung",fortuneTitle:"🍪 FORTUNE COOKIE NATAL",fortuneSub:"Klik cookie untuk dapat pesan keberuntungan!",cookieHint:"👆 Klik aku!"},
+  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",visitors:"visitors",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis from visitors",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
 
@@ -463,9 +464,7 @@ $('langBtn').addEventListener('click', () => {
 });
 $('langBtn').textContent = currentLang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
 
-function updateGreeting() {
-  setText('greeting', I18N[currentLang].greeting);
-}
+function updateGreeting() { setText('greeting', I18N[currentLang].greeting); }
 const daysID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
 const monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -583,11 +582,28 @@ function countWeekends() {
   while (d < t) { if (d.getDay() === 0) count++; d.setDate(d.getDate()+1); }
   setText('weekendCount', count);
 }
+
+// 📅 CALENDAR - FIXED FLEXBOX
 function buildCalendar() {
   const cal = $('miniCal'); if (!cal) return;
   cal.innerHTML = '';
   const dayLabels = currentLang === 'id' ? ['S','S','R','K','J','S','M'] : ['S','M','T','W','T','F','S'];
-  dayLabels.forEach(d => { const el = document.createElement('div'); el.className = 'cal-day'; el.textContent = d; cal.appendChild(el); });
+  // Day labels
+  dayLabels.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day';
+    el.textContent = d;
+    cal.appendChild(el);
+  });
+  // Empty slots for first week (1 Des 2026 = Selasa)
+  const firstDay = new Date(2026, 11, 1).getDay(); // 0=Sunday
+  // Kalau Indonesia pakai Minggu dulu, di sini sama
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.style.width = 'calc((100% - 18px) / 7)';
+    empty.style.minHeight = '28px';
+    cal.appendChild(empty);
+  }
   const now = new Date();
   for (let i = 1; i <= 31; i++) {
     const el = document.createElement('div');
@@ -673,7 +689,6 @@ function showToast(msg) {
   clearTimeout(toastEl._t);
   toastEl._t = setTimeout(() => toastEl.classList.remove('show'), 3000);
 }
-
 let titleClicks = 0;
 const titleEgg = $('titleEgg');
 if (titleEgg) titleEgg.addEventListener('click', () => {
@@ -707,9 +722,7 @@ if (santaClick) santaClick.addEventListener('click', e => {
   for (let i = 0; i < 3; i++) setTimeout(launchFirework, i*200);
 });
 
-// ═══════════════════════════════════════
 // 🍪 FORTUNE COOKIE
-// ═══════════════════════════════════════
 const FORTUNES_ID = [
   "Keberuntungan besar sedang menantimu di tahun depan! 🌟",
   "Senyummu hari ini akan membawa kebahagiaan untuk orang lain. 😊",
@@ -814,43 +827,33 @@ const FORTUNES_EN = [
   "You'll be surrounded by good people next year. 👥",
   "Blessings & prayers will accompany your every step. 🕊️"
 ];
-
 let fortuneClickCount = parseInt(localStorage.getItem('fortuneCount') || '0');
 let cookieAnimating = false;
-
 function updateFortuneStats() {
   setText('fortuneCount', fortuneClickCount);
   setText('fortuneTotal', currentLang === 'id' ? FORTUNES_ID.length : FORTUNES_EN.length);
 }
-
 const cookieBtn = $('cookieBtn');
 const fortuneMsg = $('fortuneMessage');
 const cookieHint = $('cookieHint');
-
 if (cookieBtn) cookieBtn.addEventListener('click', () => {
   if (cookieAnimating) return;
   cookieAnimating = true;
   fortuneClickCount++;
   localStorage.setItem('fortuneCount', fortuneClickCount);
   updateFortuneStats();
-
   cookieBtn.classList.add('cracked');
   cookieHint.style.display = 'none';
-
-  // Pilih pesan random
   const list = currentLang === 'id' ? FORTUNES_ID : FORTUNES_EN;
   const fortune = list[Math.floor(Math.random() * list.length)];
-  const isRare = Math.random() < 0.15; // 15% langka
-
+  const isRare = Math.random() < 0.15;
   setTimeout(() => {
     fortuneMsg.textContent = '✨ ' + fortune + ' ✨';
     fortuneMsg.classList.add('show');
     if (isRare) {
       fortuneMsg.classList.add('rare');
       showToast('🌟 Pesan langka! Keberuntungan spesial!');
-      // Fireworks kecil
       for (let i = 0; i < 5; i++) setTimeout(launchFirework, i*150);
-      // Confetti
       for (let i = 0; i < 30; i++) {
         setTimeout(() => {
           const c = document.createElement('div');
@@ -865,8 +868,6 @@ if (cookieBtn) cookieBtn.addEventListener('click', () => {
       fortuneMsg.classList.remove('rare');
     }
   }, 700);
-
-  // Reset setelah 5 detik
   setTimeout(() => {
     cookieBtn.classList.remove('cracked');
     cookieBtn.style.opacity = '0';
@@ -881,9 +882,7 @@ if (cookieBtn) cookieBtn.addEventListener('click', () => {
   }, 5000);
 });
 
-// ═══════════════════════════════════════
 // 🎁 ADVENT CALENDAR
-// ═══════════════════════════════════════
 const ADVENT_DATA = [
   {e:'🎄',m:'Pohon Natal melambangkan kehidupan yang selalu hijau!'},
   {e:'🎅',m:'Santa Claus berasal dari Santo Nikolas, uskup abad ke-4.'},
@@ -910,7 +909,6 @@ const ADVENT_DATA = [
   {e:'🎄',m:'Pohon Natal di Rockefeller Center mulai tahun 1931.'},
   {e:'🎉',m:'Besok Natal! Siapkan hadiah & doa terbaikmu!'}
 ];
-
 function buildAdvent() {
   const grid = $('adventGrid'); if (!grid) return;
   grid.innerHTML = '';
@@ -920,13 +918,11 @@ function buildAdvent() {
   let canOpen = [];
   if (y > 2026 || (y === 2026 && m > 11)) canOpen = Array.from({length:24},(_,i)=>i+1);
   else if (y === 2026 && m === 11) canOpen = Array.from({length:Math.min(d,24)},(_,i)=>i+1);
-
   for (let i = 1; i <= 24; i++) {
     const box = document.createElement('div');
     box.className = 'advent-box';
     const isOpened = opened.includes(i);
     const canBe = canOpen.includes(i);
-
     if (isOpened) {
       box.classList.add('opened');
       box.innerHTML = `<div class="advent-num">${i}</div><div class="advent-emoji">${ADVENT_DATA[i-1].e}</div>`;
@@ -963,9 +959,7 @@ function openAdvent(day) {
   setTimeout(buildAdvent, 900);
 }
 
-// ═══════════════════════════════════════
 // 💬 REACTION WALL
-// ═══════════════════════════════════════
 const REACTION_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
 function buildRWPicker() {
   const p = $('rwPicker'); if (!p) return;
@@ -1002,7 +996,6 @@ function updateRWTotal() {
   for (const k in data) total += data[k];
   setText('rwTotal', `${total} ${I18N[currentLang].rwTotal}`);
 }
-
 const confettiBtn = $('confettiBtn');
 if (confettiBtn) confettiBtn.addEventListener('click', () => {
   for (let i = 0; i < 50; i++) {
@@ -1018,6 +1011,7 @@ if (confettiBtn) confettiBtn.addEventListener('click', () => {
   showToast('🎊 Confetti!');
 });
 
+// FIREWORKS
 const canvas = $('fireworks');
 const ctx = canvas ? canvas.getContext('2d') : null;
 let particles = [];
