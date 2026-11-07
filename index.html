@@ -10,32 +10,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
-:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.75)}
+:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.7)}
 html,body{min-height:100vh;overflow-x:hidden}
 body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden; -webkit-font-smoothing:antialiased;}
 
-/* 🖼️ BACKGROUND STATIS */
+/* 🖼️ BACKGROUND STATIS (RINGAN) */
 .bg-layer{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(5,15,10,.7),rgba(5,15,10,.85)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');background-size:cover;background-position:center;background-attachment:fixed;}
 .cinematic-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.9) 100%);}
 
-/* ❄️ SALJU & EFFECT */
+/* ❄️ EFEK SALJU (OPTIMASI GPU PAKAI TRANSFORM) */
 .snow-container{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
-.snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 4px rgba(255,255,255,.8)}
-@keyframes snowfall{0%{transform:translateY(-10vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(110vh) translateX(80px) rotate(720deg);opacity:0}}
-.sparkle{position:fixed;width:3px;height:3px;background:#ffd700;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 8px 2px rgba(255,215,0,.8);animation:sparkleFloat linear infinite}
-@keyframes sparkleFloat{0%{transform:translateY(100vh) scale(0);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
-.shooting-star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 8px 2px rgba(255,255,255,.9);animation:shoot linear}
-.shooting-star::after{content:'';position:absolute;top:50%;right:0;width:100px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.9),transparent);transform:translateY(-50%)}
-@keyframes shoot{0%{transform:translate(0,0) rotate(-45deg);opacity:0}10%{opacity:1}100%{transform:translate(-800px,800px) rotate(-45deg);opacity:0}}
-.click-snow{position:fixed;pointer-events:none;z-index:60;font-size:1.5rem;animation:clickSnow 1s ease forwards}
-@keyframes clickSnow{0%{transform:translate(-50%,-50%) scale(0);opacity:1}50%{opacity:1}100%{transform:translate(-50%,-50%) scale(1.5) translateY(-80px);opacity:0}}
-.cursor-particle{position:fixed;width:5px;height:5px;background:#ffd700;border-radius:50%;pointer-events:none;z-index:9999;box-shadow:0 0 8px 2px rgba(255,215,0,.8);animation:cursorTrail .8s ease-out forwards}
-@keyframes cursorTrail{0%{transform:scale(1) translate(-50%,-50%);opacity:1}100%{transform:scale(0) translate(-50%,-50%) translateY(20px);opacity:0}}
+.snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 6px rgba(255,255,255,.8); will-change: transform;}
+@keyframes snowfall{
+  0%{transform:translate3d(0, -10vh, 0) rotate(0);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translate3d(80px, 110vh, 0) rotate(360deg);opacity:0}
+}
 
 /* 🎅 KARAKTER JALAN */
-.santa-walk{position:fixed;top:15%;left:-120px;font-size:clamp(2rem,5vw,3.5rem);z-index:4;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,59,59,.7));animation:santaWalk 25s linear infinite}
+.santa-walk{position:fixed;top:15%;left:-120px;font-size:clamp(2rem,5vw,3.5rem);z-index:4;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,59,59,.7));animation:santaWalk 25s linear infinite; will-change: transform;}
 @keyframes santaWalk{0%{left:-120px;transform:scaleX(1)}49%{transform:scaleX(1)}50%{left:100%;transform:scaleX(-1)}99%{transform:scaleX(-1)}100%{left:-120px;transform:scaleX(1)}}
-.deer-fly{position:fixed;top:8%;left:-100px;font-size:clamp(1.8rem,4vw,3rem);z-index:4;pointer-events:none;filter:drop-shadow(0 0 10px rgba(255,215,0,.8));animation:deerFly 20s linear infinite;animation-delay:5s}
+.deer-fly{position:fixed;top:8%;left:-100px;font-size:clamp(1.8rem,4vw,3rem);z-index:4;pointer-events:none;filter:drop-shadow(0 0 10px rgba(255,215,0,.8));animation:deerFly 20s linear infinite;animation-delay:5s; will-change: transform;}
 @keyframes deerFly{0%{left:-100px;top:8%}50%{top:5%}100%{left:105%;top:10%}}
 
 #fireworks{position:fixed;inset:0;z-index:50;pointer-events:none}
@@ -52,17 +48,25 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 .music-btn:hover{transform:scale(1.1)}
 .music-btn.playing{animation:musicSpin 3s linear infinite}
 @keyframes musicSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.confetti-btn{position:fixed;bottom:25px;left:25px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#00e676,#40c4ff);border:2px solid rgba(0,230,118,.8);color:#fff;font-size:1.3rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px rgba(0,230,118,.6)}
 
-/* 🛡️ KONTAINER UTAMA */
-.container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);border:1px solid rgba(255,215,0,.3);border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform: translateZ(0); will-change: transform;}
-.container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.8}
+/* 🛡️ KONTAINER UTAMA (GLASSMORPHISM PREMIUM, NO LAG) */
+.container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);border:1px solid rgba(255,215,0,.3);border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.15); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);}
+.container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.9}
 @keyframes borderFlow{to{background-position:300% center}}
 
 .today-date{font-size:.8rem;color:var(--ts);letter-spacing:2px;margin-bottom:1rem}
 .badge{display:inline-block;padding:.4rem 1.2rem;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.5);border-radius:50px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;color:#ffd700;font-weight:600}
-h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 30%,#00e676 70%,#ffd700 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 6s linear infinite;margin-bottom:.5rem;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,215,0,.5))}
+
+/* 🌟 JUDUL SUPER MEWAH (EFEK GLOW BERLAPIS) */
+h1{
+  font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:3px;
+  background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 30%,#00e676 70%,#ffd700 100%);
+  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:holoShine 6s linear infinite;margin-bottom:.5rem;cursor:pointer;
+  filter:drop-shadow(0 0 10px rgba(255,215,0,.6)) drop-shadow(0 0 25px rgba(255,59,59,.3));
+}
 @keyframes holoShine{to{background-position:200% center}}
+
 .subtitle{font-size:clamp(.8rem,1.8vw,1rem);color:var(--ts);letter-spacing:4px;text-transform:uppercase;margin-bottom:.8rem;font-weight:300}
 .greeting{font-size:clamp(.85rem,2vw,1.05rem);color:var(--a2);margin-bottom:1.5rem;font-style:italic;letter-spacing:1px;text-shadow:0 0 10px rgba(255,215,0,.4)}
 .target-date{font-size:clamp(.85rem,2vw,1rem);color:var(--tm);letter-spacing:2px;margin-bottom:2rem;opacity:.9}
@@ -74,13 +78,30 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));background-size:200% auto;border-radius:10px;width:0;transition:width 1s ease;animation:progressShine 3s linear infinite}
 @keyframes progressShine{to{background-position:200% center}}
 
-#timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center}
-.box{position:relative;background:rgba(20,40,30,.8);border:1px solid rgba(255,215,0,.4);padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);border-radius:16px;text-align:center;min-width:clamp(72px,18vw,120px);box-shadow:0 10px 30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,215,0,.2);transition:transform .3s}
-.box:hover{transform:translateY(-5px);border-color:#ffd700;box-shadow:0 15px 40px rgba(255,215,0,.3)}
-.box.box-hari{min-width:clamp(90px,22vw,150px);padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);background:linear-gradient(145deg,rgba(255,59,59,.3),rgba(20,40,30,.9));border:2px solid rgba(255,215,0,.6)}
+/* 💎 KOTAK COUNTDOWN PREMIUM (3D LOOK) */
+#timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center; perspective: 1000px;}
+.box{
+  position:relative; background:linear-gradient(145deg, rgba(30,50,40,.9), rgba(10,20,15,.95));
+  border:1px solid rgba(255,215,0,.4); padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);
+  border-radius:16px; text-align:center; min-width:clamp(72px,18vw,120px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.8), inset 0 2px 5px rgba(255,255,255,.1), inset 0 -2px 10px rgba(0,0,0,.5);
+  transition: transform .3s, border-color .3s;
+}
+.box:hover{ transform: translateY(-5px); border-color: #ffd700; box-shadow: 0 20px 40px rgba(255,215,0,.2), inset 0 2px 5px rgba(255,255,255,.2); }
+.box.box-hari{
+  min-width:clamp(90px,22vw,150px); padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);
+  background: linear-gradient(145deg, rgba(255,59,59,.25), rgba(20,40,30,.95));
+  border: 2px solid rgba(255,215,0,.6);
+  box-shadow: 0 20px 45px rgba(0,0,0,.9), 0 0 30px rgba(255,59,59,.2), inset 0 2px 5px rgba(255,215,0,.2);
+}
 .box.box-hari .num{font-size:clamp(2.5rem,8vw,4.5rem)}
-.num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 10px rgba(255,215,0,.6))}
-.label{font-size:clamp(.6rem,1.5vw,.75rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:2px;margin-top:.7rem;font-weight:600}
+.num{
+  font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));
+}
+.label{font-size:clamp(.6rem,1.5vw,.75rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:2px;margin-top:.7rem;font-weight:600;text-shadow: 0 2px 4px rgba(0,0,0,.8);}
 
 .mini-countdown{margin-top:2rem;padding:1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
 .mini-title{font-size:.75rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
@@ -109,7 +130,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 @keyframes cookieCrack{0%{transform:scale(1) rotate(0)}20%{transform:scale(1.2) rotate(15deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
 .cookie-hint{font-size:.75rem;color:var(--ts);opacity:.7;font-style:italic;position:absolute;bottom:-5px;left:50%;transform:translateX(-50%)}
 
-/* Gaya kotak pesan disesuaikan untuk ayat */
 .fortune-message{min-height:100px;padding:1.2rem;background:rgba(255,215,0,.08);border:1px dashed rgba(255,215,0,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Poppins',sans-serif;font-size:.9rem;line-height:1.6;color:#ffe9a8;opacity:0;transform:scale(.9);transition:all .4s}
 .fortune-message.show{opacity:1;transform:scale(1)}
 .fortune-message.rare{background:rgba(255,215,0,.15);border-color:#ffd700;color:#fff;box-shadow:0 0 20px rgba(255,215,0,.4)}
@@ -174,7 +194,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 @media(max-width:700px){
   .container{padding:1.5rem 1rem}
   .music-btn{width:50px;height:50px;font-size:1.2rem;bottom:15px;right:15px}
-  .confetti-btn{width:44px;height:44px;bottom:15px;left:15px;font-size:1.1rem}
   .advent-grid{grid-template-columns:repeat(4,1fr)}
   .cookie{font-size:4rem}
 }
@@ -205,7 +224,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
   <source src="clavier-music-calm-christmas-piano-262888.mp3" type="audio/mpeg">
 </audio>
 <button class="music-btn" id="musicBtn">🎵</button>
-<button class="confetti-btn" id="confettiBtn">🎊</button>
 
 <div class="container" id="container">
   <p class="today-date fade-in d1" id="todayDate"></p>
@@ -342,7 +360,6 @@ const I18N = {
   en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"📖 CHRISTMAS SCRIPTURE",fortuneSub:"Click the cookie to reveal today's Bible verse",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
-const container = $('container');
 
 function applyLang() {
   const t = I18N[currentLang];
@@ -379,62 +396,20 @@ function updateClock() {
   setText('clockWib', `⏰ ${String(wib.getHours()).padStart(2,'0')}:${String(wib.getMinutes()).padStart(2,'0')}:${String(wib.getSeconds()).padStart(2,'0')} WIB`);
 }
 
-// ❄️ SNOW
+// ❄️ SNOW (DIKURANGIN BIAR RINGAN)
 const snowContainer = $('snow');
 if (snowContainer) {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 30; i++) {
     const s = document.createElement('div'); s.className = 'snowflake';
     const size = Math.random()*5+2;
     s.style.width = size+'px'; s.style.height = size+'px';
     s.style.left = Math.random()*100+'%';
-    s.style.animationDuration = (Math.random()*8+6)+'s';
+    s.style.animationDuration = (Math.random()*10+8)+'s';
     s.style.animationDelay = (Math.random()*10)+'s';
     s.style.opacity = Math.random()*0.7+0.3;
     snowContainer.appendChild(s);
   }
 }
-for (let i = 0; i < 15; i++) {
-  const sp = document.createElement('div'); sp.className = 'sparkle';
-  sp.style.left = Math.random()*100+'%'; sp.style.animationDuration = (Math.random()*8+6)+'s';
-  sp.style.animationDelay = (Math.random()*10)+'s'; document.body.appendChild(sp);
-}
-
-// MOUSE MOVE
-let lastTrail = 0, ticking = false;
-document.addEventListener('mousemove', e => {
-  const now = Date.now();
-  if (now - lastTrail > 80) {
-    lastTrail = now;
-    const p = document.createElement('div'); p.className = 'cursor-particle';
-    p.style.left = e.clientX+'px'; p.style.top = e.clientY+'px';
-    document.body.appendChild(p); setTimeout(() => p.remove(), 800);
-  }
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      if(container) {
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left, y = e.clientY - rect.top;
-        const cx = rect.width/2, cy = rect.height/2;
-        container.style.transform = `perspective(2000px) rotateX(${((y-cy)/cy)*-4}deg) rotateY(${((x-cx)/cx)*4}deg) translateZ(0)`;
-      }
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
-// CLICK EFFECTS
-document.addEventListener('click', e => {
-  if (e.target.closest('button,.volume-wrap,input,.advent-box,.rw-picker,.cookie')) return;
-  for (let i = 0; i < 2; i++) {
-    setTimeout(() => {
-      const s = document.createElement('div'); s.className = 'click-snow';
-      s.textContent = ['❄️','✨','🌟'][Math.floor(Math.random()*3)];
-      s.style.left = (e.clientX + (Math.random()-.5)*40)+'px'; s.style.top = e.clientY+'px';
-      document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
-    }, i*100);
-  }
-});
 
 // PROGRESS
 function updateProgress() {
@@ -556,7 +531,7 @@ $('cookieBtn').addEventListener('click', () => {
     $('cookieBtn').classList.remove('cracked'); 
     $('cookieHint').style.display='block'; 
     $('fortuneMessage').classList.remove('show'); 
-  }, 7000); // Diberi waktu 7 detik agar cukup untuk membaca ayat
+  }, 7000);
 });
 
 // ADVENT
