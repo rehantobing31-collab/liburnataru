@@ -14,11 +14,11 @@
 html,body{min-height:100vh;overflow-x:hidden}
 body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden; -webkit-font-smoothing:antialiased;}
 
-/* 🖼️ BACKGROUND STATIS (RINGAN) */
+/* 🖼️ BACKGROUND STATIS */
 .bg-layer{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(5,15,10,.7),rgba(5,15,10,.85)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');background-size:cover;background-position:center;background-attachment:fixed;}
 .cinematic-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.9) 100%);}
 
-/* ❄️ SALJU & EFFECT (CSS ONLY, NO JS LOOP) */
+/* ❄️ SALJU & EFFECT */
 .snow-container{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 4px rgba(255,255,255,.8)}
 @keyframes snowfall{0%{transform:translateY(-10vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(110vh) translateX(80px) rotate(720deg);opacity:0}}
@@ -54,7 +54,7 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 @keyframes musicSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .confetti-btn{position:fixed;bottom:25px;left:25px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#00e676,#40c4ff);border:2px solid rgba(0,230,118,.8);color:#fff;font-size:1.3rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px rgba(0,230,118,.6)}
 
-/* 🛡️ KONTAINER UTAMA (OPTIMIZED BLUR) */
+/* 🛡️ KONTAINER UTAMA */
 .container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);border:1px solid rgba(255,215,0,.3);border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform: translateZ(0); will-change: transform;}
 .container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.8}
 @keyframes borderFlow{to{background-position:300% center}}
@@ -97,6 +97,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 .tree-svg{height:110px;width:auto;filter:drop-shadow(0 0 10px rgba(0,230,118,.4))}
 .tree-progress{font-size:.75rem;color:var(--ts);margin-top:.5rem}
 
+/* 🍪 FIRMAN NATAL */
 .fortune-section{margin-top:1.5rem;padding:1.5rem 1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
 .fortune-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:2px;margin-bottom:.4rem}
 .fortune-sub{font-size:.7rem;color:var(--ts);margin-bottom:1.2rem}
@@ -107,7 +108,9 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 @keyframes cookieFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
 @keyframes cookieCrack{0%{transform:scale(1) rotate(0)}20%{transform:scale(1.2) rotate(15deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
 .cookie-hint{font-size:.75rem;color:var(--ts);opacity:.7;font-style:italic;position:absolute;bottom:-5px;left:50%;transform:translateX(-50%)}
-.fortune-message{min-height:70px;padding:1rem;background:rgba(255,215,0,.08);border:1px dashed rgba(255,215,0,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Cinzel',serif;font-size:.95rem;color:#ffe9a8;opacity:0;transform:scale(.9);transition:all .4s}
+
+/* Gaya kotak pesan disesuaikan untuk ayat */
+.fortune-message{min-height:100px;padding:1.2rem;background:rgba(255,215,0,.08);border:1px dashed rgba(255,215,0,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Poppins',sans-serif;font-size:.9rem;line-height:1.6;color:#ffe9a8;opacity:0;transform:scale(.9);transition:all .4s}
 .fortune-message.show{opacity:1;transform:scale(1)}
 .fortune-message.rare{background:rgba(255,215,0,.15);border-color:#ffd700;color:#fff;box-shadow:0 0 20px rgba(255,215,0,.4)}
 .fortune-stats{font-size:.7rem;color:var(--ts);margin-top:.9rem;text-align:center}
@@ -284,8 +287,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
   </div>
 
   <div class="fortune-section fade-in d5">
-    <div class="fortune-title" id="fortuneTitle">🍪 FORTUNE COOKIE NATAL</div>
-    <div class="fortune-sub" id="fortuneSub">Klik cookie untuk dapat pesan keberuntungan!</div>
+    <div class="fortune-title" id="fortuneTitle">📖 FIRMAN NATAL</div>
+    <div class="fortune-sub" id="fortuneSub">Klik cookie untuk membuka ayat Alkitab hari ini</div>
     <div class="cookie-stage">
       <div class="cookie" id="cookieBtn">🍪</div>
       <div class="cookie-hint" id="cookieHint">👆 Klik aku!</div>
@@ -335,11 +338,11 @@ function setText(id, txt) { const el = $(id); if (el) el.textContent = txt; }
 ['contextmenu','selectstart','dragstart','copy','cut'].forEach(evt => document.addEventListener(evt, e => e.preventDefault()));
 
 const I18N = {
-  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji",fortuneTitle:"🍪 FORTUNE COOKIE NATAL",fortuneSub:"Klik cookie untuk dapat pesan keberuntungan!",cookieHint:"👆 Klik aku!"},
-  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!"}
+  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji",fortuneTitle:"📖 FIRMAN NATAL",fortuneSub:"Klik cookie untuk membuka ayat Alkitab hari ini",cookieHint:"👆 Klik aku!"},
+  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"📖 CHRISTMAS SCRIPTURE",fortuneSub:"Click the cookie to reveal today's Bible verse",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
-const container = $('container'); // Tambahkan ini agar tidak error
+const container = $('container');
 
 function applyLang() {
   const t = I18N[currentLang];
@@ -498,23 +501,62 @@ $('musicBtn').addEventListener('click', toggleMusic);
 
 // TOAST
 const toastEl = $('toast');
-function showToast(msg) { if (!toastEl) return; toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastEl._t); toastEl._t=setTimeout(()=>toastEl.classList.remove('show'),2500); }
+function showToast(msg) { if (!toastEl) return; toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastEl._t); toastEl._t=setTimeout(()=>toastEl.classList.remove('show'),3500); }
 
 // EASTER EGG
 let titleClicks = 0;
 $('titleEgg').addEventListener('click', () => { if (++titleClicks >= 5) { titleClicks=0; showToast('🎁 Kejutan! Selamat Natal! 🎄'); for(let i=0;i<5;i++) setTimeout(launchFirework, i*200); }});
 
-// FORTUNE COOKIE
-const FORTUNES = ["Keberuntungan besar sedang menantimu! 🌟","Senyummu membawa kebahagiaan. 😊","Rezekimu berlimpah musim ini. ❄️","Orang tersayang selalu sehat. ❤️","Mimpimu akan jadi kenyataan! ✨","Kebahagiaan ada di hal sederhana. 🎁","Hatimu kuat melewati apapun. 💪","Kejutan indah menantimu. 🎄","Peluang baru sambut dengan senyum! 🎆","Cinta menemukan jalannya. 💕","Kesehatan & rezeki mengalir. 💰","Doamu segera dikabulkan. 🙏","Dikelilingi orang tulus. 👨‍👩‍👧","Petualangan indah di depan! 🗺️","Bintang keberuntunganmu bersinar. ⭐","Kamu lebih hebat dari dugaan. 🦁","Penuh tawa & kehangatan. 🏠","Sesuatu baik akan datang. 🌈","Bertemu seseorang istimewa. 🤝","Rezeki tak salah alamat. 💎","Hati tenang saat berserah. 🕊️","Keajaiban Natal itu nyata. 🎅","Impian terwujud cepat. 🚀","Kasih selalu menyertaimu. 💝","Keberanianmu berbuah manis. 🍯","Alasan seseorang tersenyum. 😊","Yang hilang diganti lebih baik. 🌱","Tahun depan penuh berkah. 🌾","Kebaikanmu berlipat ganda. ✨","Yang dirindukan sedang datang. 📦","Kamu pantas dapat yang terbaik. 👑","Keluarga selalu dilindungi. 🛡️","Jangan menyerah, hasil dekat. 🔥","Sahabat sejati selalu ada. 🤗","Punya kekuatan melewati ini. 🌊","Cahayamu menerangi banyak orang. 💡","Langkahmu makin dekat tujuan. 👣","Musim ini penuh berkat. 🎊","Kebahagiaan di tempat tak terduga. 🗝️","Hati ringan & bahagia tahun depan. 🎈","Kamu berkat bagi sekitar. 🌟","Kerja keras berbuah manis. 🍎","Kesabaran terbayar indah. 🌸","Senyum manis membawa untung. 🍀","Jangan lupa bahagia. 😄","Kedamaian menyertaimu. 🔥","Cinta sejati di waktu tepat. 💒","Tahun pertumbuhan & belajar. 🌳","Dikelilingi orang baik. 👥","Restu menyertai langkahmu. 🕊️"];
+// 📖 AYAT ALKITAB (FIRMAN NATAL)
+const VERSES = [
+  "Yohanes 3:16 - Karena begitu besar kasih Allah akan dunia ini, sehingga Ia telah mengaruniakan Anak-Nya yang tunggal, supaya setiap orang yang percaya kepada-Nya tidak binasa, melainkan beroleh hidup yang kekal.",
+  "Lukas 2:11 - Hari ini telah lahir bagimu Juruselamat, yaitu Kristus, Tuhan, di kota Daud.",
+  "Yesaya 9:6 - Sebab seorang anak telah lahir untuk kita, seorang putera telah diberikan untuk kita; lambang pemerintahan ada di atas bahunya, dan namanya disebutkan orang: Penasihat Ajaib, Allah yang Perkasa, Bapa yang Kekal, Raja Damai.",
+  "Yeremia 29:11 - Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan.",
+  "Filipi 4:13 - Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.",
+  "Mazmur 23:1 - TUHAN adalah gembalaku, takkan kekurangan aku.",
+  "Roma 15:13 - Semoga Allah, sumber pengharapan, memenuhi kamu dengan segala sukacita dan damai sejahtera dalam imanmu, sehingga oleh kuasa Roh Kudus kamu berlimpah-limpah dalam pengharapan.",
+  "Yohanes 14:27 - Damai sejahtera Kutinggalkan bagimu. Damai sejahtera-Ku Kuberikan kepadamu, dan apa yang Kuberikan tidak seperti yang diberikan oleh dunia kepadamu. Janganlah gelisah dan gentar hatimu.",
+  "Yesaya 41:10 - Janganlah takut, sebab Aku menyertai engkau, janganlah bimbang, sebab Aku ini Allahmu; Aku akan meneguhkan, bahkan akan menolong engkau; Aku akan memegang engkau dengan tangan kanan-Ku yang membawa kemenangan.",
+  "Matius 11:28 - Marilah kepada-Ku, semua yang letih lesu dan berbeban berat, Aku akan memberi kelegaan kepadamu.",
+  "Mazmur 118:24 - Inilah hari yang dijadikan TUHAN, marilah kita bersorak-sorak dan bersukacita karenanya!",
+  "Amsal 3:5-6 - Percayalah kepada TUHAN dengan segenap hatimu, dan janganlah bersandar kepada pengertianmu sendiri. Akuilah Dia dalam segala lakumu, maka Ia akan meluruskan jalanmu.",
+  "1 Korintus 13:13 - Demikianlah tinggal ketiga hal ini, yaitu iman, pengharapan dan kasih, dan yang paling besar di antaranya ialah kasih.",
+  "Roma 8:28 - Kita tahu sekarang, bahwa Allah turut bekerja dalam segala sesuatu untuk mendatangkan kebaikan bagi mereka yang mengasihi Dia, yaitu bagi mereka yang terpanggil sesuai dengan rencana Allah.",
+  "Wahyu 3:20 - Lihat, Aku berdiri di muka pintu dan mengetok; jikalau ada orang yang mendengar suara-Ku dan membukakan pintu, Aku akan masuk mendapatkannya dan Aku makan bersama-sama dengan dia, dan ia bersama-sama dengan Aku.",
+  "Matius 1:21 - Ia akan melahirkan anak laki-laki dan engkau akan menamakan Dia Yesus, karena Dialah yang akan menyelamatkan umat-Nya dari dosa mereka.",
+  "Lukas 2:14 - Kemuliaan bagi Allah di tempat yang mahatinggi dan damai sejahtera di bumi di antara manusia yang berkenan kepada-Nya.",
+  "Mazmur 136:1 - Bersyukurlah kepada TUHAN, sebab Ia baik! Bahwasanya untuk selama-lamanya kasih setia-Nya.",
+  "Yohanes 8:12 - Maka Yesus berkata pula kepada orang banyak, kata-Nya: Akulah terang dunia; barangsiapa mengikut Aku, ia tidak akan berjalan dalam kegelapan, melainkan ia akan mempunyai terang hidup.",
+  "Efesus 2:8 - Sebab karena kasih karunia kamu diselamatkan oleh iman; itu bukan hasil usahamu, tetapi pemberian Allah."
+];
+
 let fortuneCount = parseInt(localStorage.getItem('fortuneCount') || '0');
 function updateFortuneStats() { setText('fortuneCount', fortuneCount); }
+
 $('cookieBtn').addEventListener('click', () => {
   if ($('cookieBtn').classList.contains('cracked')) return;
-  fortuneCount++; localStorage.setItem('fortuneCount', fortuneCount); updateFortuneStats();
-  $('cookieBtn').classList.add('cracked'); $('cookieHint').style.display='none';
-  const msg = FORTUNES[Math.floor(Math.random()*FORTUNES.length)];
-  setTimeout(() => { $('fortuneMessage').textContent = '✨ ' + msg + ' ✨'; $('fortuneMessage').classList.add('show'); }, 500);
-  setTimeout(() => { $('cookieBtn').classList.remove('cracked'); $('cookieHint').style.display='block'; $('fortuneMessage').classList.remove('show'); }, 4000);
+  
+  fortuneCount++; 
+  localStorage.setItem('fortuneCount', fortuneCount); 
+  updateFortuneStats();
+  
+  $('cookieBtn').classList.add('cracked'); 
+  $('cookieHint').style.display='none';
+  
+  // Ambil 1 ayat random
+  const msg = VERSES[Math.floor(Math.random()*VERSES.length)];
+  
+  setTimeout(() => { 
+    $('fortuneMessage').textContent = '📖 ' + msg; 
+    $('fortuneMessage').classList.add('show'); 
+  }, 500);
+  
+  setTimeout(() => { 
+    $('cookieBtn').classList.remove('cracked'); 
+    $('cookieHint').style.display='block'; 
+    $('fortuneMessage').classList.remove('show'); 
+  }, 7000); // Diberi waktu 7 detik agar cukup untuk membaca ayat
 });
 
 // ADVENT
@@ -534,7 +576,7 @@ function buildAdvent() {
   setText('adventProgress', `${opened.length}/24 ${I18N[currentLang].adventProgress}`);
 }
 
-// REACTION (FIXED)
+// REACTION
 const RW_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
 function getReactions() {
   try { return JSON.parse(localStorage.getItem('reactions') || '{}'); } catch { return {}; }
