@@ -339,6 +339,7 @@ const I18N = {
   en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
+const container = $('container'); // Tambahkan ini agar tidak error
 
 function applyLang() {
   const t = I18N[currentLang];
@@ -375,7 +376,7 @@ function updateClock() {
   setText('clockWib', `⏰ ${String(wib.getHours()).padStart(2,'0')}:${String(wib.getMinutes()).padStart(2,'0')}:${String(wib.getSeconds()).padStart(2,'0')} WIB`);
 }
 
-// ❄️ SNOW (Optimized)
+// ❄️ SNOW
 const snowContainer = $('snow');
 if (snowContainer) {
   for (let i = 0; i < 50; i++) {
@@ -395,11 +396,11 @@ for (let i = 0; i < 15; i++) {
   sp.style.animationDelay = (Math.random()*10)+'s'; document.body.appendChild(sp);
 }
 
-// MOUSE MOVE (Throttled)
+// MOUSE MOVE
 let lastTrail = 0, ticking = false;
 document.addEventListener('mousemove', e => {
   const now = Date.now();
-  if (now - lastTrail > 80) { // Kurangi frekuensi
+  if (now - lastTrail > 80) {
     lastTrail = now;
     const p = document.createElement('div'); p.className = 'cursor-particle';
     p.style.left = e.clientX+'px'; p.style.top = e.clientY+'px';
@@ -481,22 +482,17 @@ function updateQuote() {
   setTimeout(() => { box.textContent = (currentLang === 'id' ? quotesID : quotesEN)[quoteIdx % 4]; box.classList.remove('fade'); quoteIdx++; }, 400);
 }
 
-// MUSIC & VIZ
+// MUSIC
 const music = $('bgMusic'), musicBtn = $('musicBtn'); let isPlaying = false;
 if (music) music.volume = 0.5;
 $('volumeSlider').addEventListener('input', e => { if (music) music.volume = e.target.value / 100; });
-const bars = []; if ($('viz')) for (let i = 0; i < 60; i++) { const b = document.createElement('div'); b.className='viz-bar'; $('viz').appendChild(b); bars.push(b); }
 let audioCtx, analyser, dataArray;
 function initAudio() {
   try { if (!audioCtx && music) { audioCtx = new (window.AudioContext||window.webkitAudioContext)(); const src = audioCtx.createMediaElementSource(music); analyser = audioCtx.createAnalyser(); analyser.fftSize=128; src.connect(analyser); analyser.connect(audioCtx.destination); dataArray = new Uint8Array(analyser.frequencyBinCount); } } catch(e){}
 }
-function animateViz() {
-  if (analyser && isPlaying) { analyser.getByteFrequencyData(dataArray); bars.forEach((b,i)=>{b.style.height=Math.max(4,(dataArray[i%dataArray.length]/255)*55)+'px';}); requestAnimationFrame(animateViz); }
-  else { bars.forEach(b => b.style.height='4px'); } // Berhenti loop jika mati
-}
 function toggleMusic() {
-  if (isPlaying) { music.pause(); musicBtn.textContent='🎵'; musicBtn.classList.remove('playing'); isPlaying=false; bars.forEach(b=>b.style.height='4px'); }
-  else { initAudio(); if (audioCtx && audioCtx.state==='suspended') audioCtx.resume(); music.play().then(()=>{ musicBtn.textContent='⏸'; musicBtn.classList.add('playing'); isPlaying=true; animateViz(); }).catch(()=>{}); }
+  if (isPlaying) { music.pause(); musicBtn.textContent='🎵'; musicBtn.classList.remove('playing'); isPlaying=false; }
+  else { initAudio(); if (audioCtx && audioCtx.state==='suspended') audioCtx.resume(); music.play().then(()=>{ musicBtn.textContent='⏸'; musicBtn.classList.add('playing'); isPlaying=true; }).catch(()=>{}); }
 }
 $('musicBtn').addEventListener('click', toggleMusic);
 
@@ -538,11 +534,38 @@ function buildAdvent() {
   setText('adventProgress', `${opened.length}/24 ${I18N[currentLang].adventProgress}`);
 }
 
-// REACTION
+// REACTION (FIXED)
 const RW_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
+function getReactions() {
+  try { return JSON.parse(localStorage.getItem('reactions') || '{}'); } catch { return {}; }
+}
+function updateRWTotal() {
+  const data = getReactions();
+  let total = 0;
+  for (const k in data) total += data[k];
+  setText('rwTotal', `${total} ${I18N[currentLang].rwTotal}`);
+}
 function buildRW() {
   const p = $('rwPicker'); if(!p) return; p.innerHTML='';
-  RW_EMOJIS.forEach(e => { const b=document.createElement('button'); b.textContent=e; b.onclick=()=>{ const w=$('rwWall'), el=document.createElement('div'); el.className='rw-bubble'; el.textContent=e; el.style.left=(Math.random()*80+10)+'%'; el.style.bottom='10px'; w.appendChild(el); setTimeout(()=>el.remove(),3000); showToast(e+' Dikirim!'); }; p.appendChild(b); });
+  RW_EMOJIS.forEach(e => { 
+    const b=document.createElement('button'); 
+    b.textContent=e; 
+    b.onclick=()=>{ 
+      const data = getReactions();
+      data[e] = (data[e] || 0) + 1;
+      localStorage.setItem('reactions', JSON.stringify(data));
+      updateRWTotal();
+      const w=$('rwWall'), el=document.createElement('div'); 
+      el.className='rw-bubble'; 
+      el.textContent=e; 
+      el.style.left=(Math.random()*80+10)+'%'; 
+      el.style.bottom='10px'; 
+      w.appendChild(el); 
+      setTimeout(()=>el.remove(),3000); 
+      showToast(e+' Dikirim!'); 
+    }; 
+    p.appendChild(b); 
+  });
 }
 
 // FIREWORKS
