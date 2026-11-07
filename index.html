@@ -5,265 +5,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>🎄 Countdown Nataru 2026 🎄</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
 <meta name="theme-color" content="#0d1f17">
 <meta name="description" content="Countdown menuju Hari Natal 2026">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
-:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.4)}
+:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.75)}
 html,body{min-height:100vh;overflow-x:hidden}
-body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden}
-#loader{position:fixed;inset:0;background:radial-gradient(ellipse at center,#0d1f17,#000);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity 1s,visibility 1s}
-#loader.hide{opacity:0;visibility:hidden}
-.loader-icon{font-size:5rem;animation:loaderSpin 2s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(255,215,0,.8))}
-@keyframes loaderSpin{0%,100%{transform:rotate(-15deg) scale(1)}50%{transform:rotate(15deg) scale(1.2)}}
-.loader-text{margin-top:1.5rem;font-family:'Cinzel',serif;color:#ffd700;letter-spacing:6px;font-size:.9rem;animation:loaderPulse 1.5s ease-in-out infinite}
-@keyframes loaderPulse{0%,100%{opacity:.5}50%{opacity:1}}
-.loader-bar{margin-top:1.5rem;width:200px;height:3px;background:rgba(255,215,0,.2);border-radius:3px;overflow:hidden}
-.loader-bar::after{content:'';display:block;height:100%;width:40%;background:linear-gradient(90deg,transparent,#ffd700,transparent);animation:loaderBar 1.5s ease-in-out infinite}
-@keyframes loaderBar{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
-.video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;opacity:.55;filter:brightness(.6) saturate(1.2)}
-.video-fallback{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(5,15,10,.65),rgba(5,15,10,.85)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80') center/cover}
-.cinematic-overlay{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.9) 100%)}
-.wave-bg{position:fixed;top:0;left:0;width:200%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.45;background:radial-gradient(ellipse at 20% 30%,rgba(0,230,118,.18),transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(255,59,59,.18),transparent 50%);animation:waveMove 15s ease-in-out infinite alternate}
-@keyframes waveMove{0%{transform:translateX(0) scale(1)}100%{transform:translateX(-50%) scale(1.15)}}
-.overlay{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(255,100,100,.12),transparent 30%),radial-gradient(circle at 80% 70%,rgba(100,255,150,.1),transparent 30%)}
-.grain{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grainShift .5s steps(2) infinite}
-@keyframes grainShift{0%{transform:translate(0,0)}50%{transform:translate(-2px,2px)}100%{transform:translate(2px,-2px)}}
-.bokeh{position:fixed;border-radius:50%;z-index:2;pointer-events:none;filter:blur(15px);animation:bokehFloat 8s ease-in-out infinite}
-.b1{top:10%;left:8%;width:60px;height:60px;background:rgba(255,100,100,.6)}
-.b2{top:25%;right:12%;width:80px;height:80px;background:rgba(255,215,0,.5);animation-delay:1s}
-.b3{bottom:20%;left:15%;width:70px;height:70px;background:rgba(100,255,150,.4);animation-delay:2s}
-.b4{bottom:30%;right:20%;width:50px;height:50px;background:rgba(255,200,100,.5);animation-delay:3s}
-@keyframes bokehFloat{0%,100%{transform:translate(0,0) scale(1);opacity:.7}50%{transform:translate(20px,-30px) scale(1.2);opacity:1}}
-.santa-walk{position:fixed;top:15%;left:-120px;font-size:clamp(2rem,5vw,3.5rem);z-index:4;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 15px rgba(255,59,59,.7));animation:santaWalk 25s linear infinite}
-@keyframes santaWalk{0%{left:-120px;transform:scaleX(1)}49%{transform:scaleX(1)}50%{left:100%;transform:scaleX(-1)}99%{transform:scaleX(-1)}100%{left:-120px;transform:scaleX(1)}}
-.deer-fly{position:fixed;top:8%;left:-100px;font-size:clamp(1.8rem,4vw,3rem);z-index:4;pointer-events:none;filter:drop-shadow(0 0 12px rgba(255,215,0,.8));animation:deerFly 20s linear infinite;animation-delay:5s}
-@keyframes deerFly{0%{left:-100px;top:8%}50%{top:5%}100%{left:105%;top:10%}}
-.penguin{position:fixed;bottom:0;left:-80px;font-size:clamp(1.8rem,4vw,2.5rem);z-index:4;pointer-events:none;filter:drop-shadow(0 0 10px rgba(64,196,255,.7));animation:penguinWalk 30s linear infinite;animation-delay:10s}
-@keyframes penguinWalk{0%{left:-80px}100%{left:105%}}
+body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden; -webkit-font-smoothing:antialiased;}
+
+/* 🖼️ BACKGROUND STATIS (RINGAN) */
+.bg-layer{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(5,15,10,.7),rgba(5,15,10,.85)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');background-size:cover;background-position:center;background-attachment:fixed;}
+.cinematic-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.9) 100%);}
+
+/* ❄️ SALJU & EFFECT (CSS ONLY, NO JS LOOP) */
 .snow-container{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
-.snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 6px rgba(255,255,255,.9)}
+.snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 4px rgba(255,255,255,.8)}
 @keyframes snowfall{0%{transform:translateY(-10vh) translateX(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(110vh) translateX(80px) rotate(720deg);opacity:0}}
-.click-snow{position:fixed;pointer-events:none;z-index:60;font-size:1.5rem;animation:clickSnow 1.5s ease forwards}
-@keyframes clickSnow{0%{transform:translate(-50%,-50%) scale(0);opacity:1}50%{opacity:1}100%{transform:translate(-50%,-50%) scale(2) translateY(-100px);opacity:0}}
-.ripple{position:fixed;border:2px solid rgba(255,215,0,.7);border-radius:50%;pointer-events:none;z-index:55;animation:rippleAnim 1s ease-out forwards}
-@keyframes rippleAnim{0%{width:0;height:0;opacity:1;transform:translate(-50%,-50%)}100%{width:200px;height:200px;opacity:0;transform:translate(-50%,-50%)}}
-.sparkle{position:fixed;width:4px;height:4px;background:#ffd700;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 10px 3px rgba(255,215,0,.8);animation:sparkleFloat linear infinite}
+.sparkle{position:fixed;width:3px;height:3px;background:#ffd700;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 8px 2px rgba(255,215,0,.8);animation:sparkleFloat linear infinite}
 @keyframes sparkleFloat{0%{transform:translateY(100vh) scale(0);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
-.shooting-star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 10px 2px rgba(255,255,255,.9);animation:shoot linear}
-.shooting-star::after{content:'';position:absolute;top:50%;right:0;width:150px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.9),transparent);transform:translateY(-50%)}
+.shooting-star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;z-index:2;pointer-events:none;box-shadow:0 0 8px 2px rgba(255,255,255,.9);animation:shoot linear}
+.shooting-star::after{content:'';position:absolute;top:50%;right:0;width:100px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.9),transparent);transform:translateY(-50%)}
 @keyframes shoot{0%{transform:translate(0,0) rotate(-45deg);opacity:0}10%{opacity:1}100%{transform:translate(-800px,800px) rotate(-45deg);opacity:0}}
-.cursor-particle{position:fixed;width:6px;height:6px;background:#ffd700;border-radius:50%;pointer-events:none;z-index:9999;box-shadow:0 0 10px 3px rgba(255,215,0,.9);animation:cursorTrail .9s ease-out forwards}
-@keyframes cursorTrail{0%{transform:scale(1) translate(-50%,-50%);opacity:1}100%{transform:scale(0) translate(-50%,-50%) translateY(30px);opacity:0}}
+.click-snow{position:fixed;pointer-events:none;z-index:60;font-size:1.5rem;animation:clickSnow 1s ease forwards}
+@keyframes clickSnow{0%{transform:translate(-50%,-50%) scale(0);opacity:1}50%{opacity:1}100%{transform:translate(-50%,-50%) scale(1.5) translateY(-80px);opacity:0}}
+.cursor-particle{position:fixed;width:5px;height:5px;background:#ffd700;border-radius:50%;pointer-events:none;z-index:9999;box-shadow:0 0 8px 2px rgba(255,215,0,.8);animation:cursorTrail .8s ease-out forwards}
+@keyframes cursorTrail{0%{transform:scale(1) translate(-50%,-50%);opacity:1}100%{transform:scale(0) translate(-50%,-50%) translateY(20px);opacity:0}}
+
+/* 🎅 KARAKTER JALAN */
+.santa-walk{position:fixed;top:15%;left:-120px;font-size:clamp(2rem,5vw,3.5rem);z-index:4;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,59,59,.7));animation:santaWalk 25s linear infinite}
+@keyframes santaWalk{0%{left:-120px;transform:scaleX(1)}49%{transform:scaleX(1)}50%{left:100%;transform:scaleX(-1)}99%{transform:scaleX(-1)}100%{left:-120px;transform:scaleX(1)}}
+.deer-fly{position:fixed;top:8%;left:-100px;font-size:clamp(1.8rem,4vw,3rem);z-index:4;pointer-events:none;filter:drop-shadow(0 0 10px rgba(255,215,0,.8));animation:deerFly 20s linear infinite;animation-delay:5s}
+@keyframes deerFly{0%{left:-100px;top:8%}50%{top:5%}100%{left:105%;top:10%}}
+
 #fireworks{position:fixed;inset:0;z-index:50;pointer-events:none}
+
+/* TOP BAR & CONTROLS */
 .top-left{position:fixed;top:15px;left:15px;z-index:100;display:flex;flex-direction:column;gap:6px}
-.clock-wib{padding:8px 14px;background:rgba(10,20,15,.8);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.5);border-radius:50px;color:#ffd700;font-family:'Cinzel',serif;font-size:.8rem;font-weight:700;letter-spacing:2px;box-shadow:0 0 20px rgba(255,215,0,.4);animation:clockPulse 2s ease-in-out infinite}
-.visitor-counter{padding:6px 12px;background:rgba(10,20,15,.75);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.3);border-radius:50px;color:#a8e6c0;font-size:.65rem;letter-spacing:1px}
-@keyframes clockPulse{0%,100%{box-shadow:0 0 20px rgba(255,215,0,.4)}50%{box-shadow:0 0 30px rgba(255,215,0,.7)}}
-.top-right{position:fixed;top:15px;right:15px;z-index:100;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.volume-wrap{position:relative;background:rgba(10,20,15,.8);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);border-radius:50px;padding:6px 12px;display:flex;align-items:center;gap:8px;color:#ffd700;font-size:.8rem}
-.volume-wrap input[type=range]{width:70px;-webkit-appearance:none;height:4px;background:rgba(255,215,0,.3);border-radius:3px;outline:none}
-.volume-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:#ffd700;border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(255,215,0,.8)}
-.lang-btn{padding:8px 12px;background:rgba(10,20,15,.8);backdrop-filter:blur(10px);border:1px solid rgba(255,215,0,.4);border-radius:50px;color:#ffd700;font-size:.7rem;font-weight:700;cursor:pointer;letter-spacing:1px}
-.music-btn{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#b91c1c,#ffd700);border:2px solid rgba(255,215,0,.8);color:#fff;font-size:1.5rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 25px rgba(255,215,0,.7),0 0 50px rgba(255,59,59,.4);transition:all .3s;animation:musicPulse 2s ease-in-out infinite}
-.music-btn:hover{transform:scale(1.15) rotate(10deg)}
+.clock-wib{padding:8px 14px;background:rgba(10,20,15,.8);border:1px solid rgba(255,215,0,.5);border-radius:50px;color:#ffd700;font-family:'Cinzel',serif;font-size:.8rem;font-weight:700;letter-spacing:2px}
+.top-right{position:fixed;top:15px;right:15px;z-index:100;display:flex;gap:8px;align-items:center}
+.volume-wrap{background:rgba(10,20,15,.8);border:1px solid rgba(255,215,0,.4);border-radius:50px;padding:6px 12px;display:flex;align-items:center;gap:8px;color:#ffd700;font-size:.8rem}
+.volume-wrap input[type=range]{width:60px;-webkit-appearance:none;height:4px;background:rgba(255,215,0,.3);border-radius:3px;outline:none}
+.volume-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:#ffd700;border-radius:50%;cursor:pointer}
+.lang-btn{padding:8px 12px;background:rgba(10,20,15,.8);border:1px solid rgba(255,215,0,.4);border-radius:50px;color:#ffd700;font-size:.7rem;font-weight:700;cursor:pointer}
+.music-btn{position:fixed;bottom:25px;right:25px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#b91c1c,#ffd700);border:2px solid rgba(255,215,0,.8);color:#fff;font-size:1.5rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(255,215,0,.6);transition:transform .2s}
+.music-btn:hover{transform:scale(1.1)}
 .music-btn.playing{animation:musicSpin 3s linear infinite}
-@keyframes musicPulse{0%,100%{box-shadow:0 0 25px rgba(255,215,0,.7),0 0 50px rgba(255,59,59,.4)}50%{box-shadow:0 0 40px rgba(255,215,0,1),0 0 80px rgba(255,59,59,.7)}}
 @keyframes musicSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-.confetti-btn{position:fixed;bottom:25px;left:25px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#00e676,#40c4ff);border:2px solid rgba(0,230,118,.8);color:#fff;font-size:1.3rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(0,230,118,.7);transition:all .3s}
-.confetti-btn:hover{transform:scale(1.15) rotate(-10deg)}
-.candle-area{position:fixed;bottom:15px;right:100px;z-index:8;display:flex;flex-direction:column;align-items:center;pointer-events:none}
-.candle{width:20px;height:50px;background:linear-gradient(180deg,#fff5e0,#ffd7a0,#e8b878);border-radius:3px 3px 2px 2px;position:relative;box-shadow:inset -3px 0 6px rgba(0,0,0,.15),0 0 20px rgba(255,200,100,.3)}
-.candle::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:#4a3520;border-radius:2px}
-.flame{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:12px;height:22px;background:radial-gradient(ellipse at bottom,#fff8dc 0%,#ffd700 30%,#ff8c00 60%,#ff3b3b 90%,transparent 100%);border-radius:50% 50% 30% 30%/60% 60% 40% 40%;animation:flameFlick .15s infinite alternate;filter:blur(1px);box-shadow:0 0 15px 3px rgba(255,180,0,.6)}
-@keyframes flameFlick{0%{transform:translateX(-50%) scale(1) rotate(-2deg);opacity:.95}100%{transform:translateX(-50%) scale(1.1) rotate(2deg);opacity:1}}
-.glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:100px;height:100px;background:radial-gradient(circle,rgba(255,200,100,.4) 0%,transparent 70%);border-radius:50%;animation:glowPulse 2s ease-in-out infinite;pointer-events:none}
-@keyframes glowPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.15)}}
-.viz{position:fixed;bottom:0;left:0;width:100%;height:60px;z-index:5;pointer-events:none;display:flex;align-items:flex-end;justify-content:space-around;padding:0 5px;gap:2px;opacity:.7}
-.viz-bar{flex:1;background:linear-gradient(180deg,transparent,#ffd700,#ff3b3b);border-radius:3px 3px 0 0;height:4px;transition:height .1s ease;min-height:3px;box-shadow:0 0 8px rgba(255,215,0,.6)}
-.container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);border-radius:24px;box-shadow:0 0 100px rgba(255,215,0,.25),0 40px 100px rgba(0,0,0,.9),0 20px 50px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
-.container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff80ab,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.9}
+.confetti-btn{position:fixed;bottom:25px;left:25px;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#00e676,#40c4ff);border:2px solid rgba(0,230,118,.8);color:#fff;font-size:1.3rem;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px rgba(0,230,118,.6)}
+
+/* 🛡️ KONTAINER UTAMA (OPTIMIZED BLUR) */
+.container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);border:1px solid rgba(255,215,0,.3);border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.1); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transform: translateZ(0); will-change: transform;}
+.container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.8}
 @keyframes borderFlow{to{background-position:300% center}}
-.container::after{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent);border-radius:24px 24px 0 0;pointer-events:none}
-.today-date{font-size:.8rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem;opacity:.85}
-.badge{display:inline-block;padding:.4rem 1.2rem;background:linear-gradient(135deg,rgba(255,59,59,.3),rgba(0,230,118,.3));border:1px solid rgba(255,215,0,.5);border-radius:50px;font-size:.75rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;color:#ffd700;font-weight:600;cursor:pointer;animation:badgePulse 2s ease-in-out infinite}
-@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,215,0,.4)}50%{box-shadow:0 0 0 12px rgba(255,215,0,0)}}
-h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 15%,#00e676 30%,#40c4ff 45%,#ff80ab 60%,#ffd700 75%,#ff3b3b 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 8s linear infinite;margin-bottom:.5rem;cursor:pointer;filter:drop-shadow(0 0 15px rgba(255,215,0,.6)) drop-shadow(0 0 30px rgba(255,59,59,.4)) drop-shadow(0 0 60px rgba(0,230,118,.3))}
-@keyframes holoShine{to{background-position:400% center}}
-.subtitle{font-size:clamp(.8rem,1.8vw,1rem);color:var(--ts);letter-spacing:6px;text-transform:uppercase;margin-bottom:.8rem;font-weight:300}
-.greeting{font-size:clamp(.85rem,2vw,1.05rem);color:var(--a2);margin-bottom:1.5rem;font-style:italic;letter-spacing:1px;text-shadow:0 0 15px rgba(255,215,0,.6)}
-.target-date{font-size:clamp(.85rem,2vw,1rem);color:var(--tm);letter-spacing:3px;margin-bottom:2rem;opacity:.9}
-.target-date span{color:var(--a2);font-weight:700;text-shadow:0 0 15px rgba(255,215,0,.6)}
+
+.today-date{font-size:.8rem;color:var(--ts);letter-spacing:2px;margin-bottom:1rem}
+.badge{display:inline-block;padding:.4rem 1.2rem;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.5);border-radius:50px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;color:#ffd700;font-weight:600}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 30%,#00e676 70%,#ffd700 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 6s linear infinite;margin-bottom:.5rem;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,215,0,.5))}
+@keyframes holoShine{to{background-position:200% center}}
+.subtitle{font-size:clamp(.8rem,1.8vw,1rem);color:var(--ts);letter-spacing:4px;text-transform:uppercase;margin-bottom:.8rem;font-weight:300}
+.greeting{font-size:clamp(.85rem,2vw,1.05rem);color:var(--a2);margin-bottom:1.5rem;font-style:italic;letter-spacing:1px;text-shadow:0 0 10px rgba(255,215,0,.4)}
+.target-date{font-size:clamp(.85rem,2vw,1rem);color:var(--tm);letter-spacing:2px;margin-bottom:2rem;opacity:.9}
+.target-date span{color:var(--a2);font-weight:700;text-shadow:0 0 10px rgba(255,215,0,.5)}
+
 .progress-wrap{margin:0 auto 2rem;max-width:600px;width:100%}
 .progress-info{display:flex;justify-content:space-between;font-size:.75rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;font-weight:600}
-.progress-bar{width:100%;height:10px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;border:1px solid rgba(255,215,0,.3);box-shadow:inset 0 2px 5px rgba(0,0,0,.5)}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));background-size:200% auto;border-radius:10px;width:0;transition:width 1s ease;animation:progressShine 3s linear infinite;box-shadow:0 0 15px rgba(255,215,0,.7)}
+.progress-bar{width:100%;height:8px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;border:1px solid rgba(255,215,0,.3);box-shadow:inset 0 2px 4px rgba(0,0,0,.5)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));background-size:200% auto;border-radius:10px;width:0;transition:width 1s ease;animation:progressShine 3s linear infinite}
 @keyframes progressShine{to{background-position:200% center}}
-#timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center;perspective:2000px}
-.box{position:relative;background:linear-gradient(145deg,rgba(20,40,30,.9),rgba(10,20,15,.98));border:1px solid rgba(255,215,0,.4);padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);border-radius:16px;text-align:center;min-width:clamp(72px,18vw,125px);box-shadow:0 20px 45px rgba(0,0,0,.7),0 0 40px rgba(255,215,0,.2),inset 0 1px 0 rgba(255,215,0,.3);backdrop-filter:blur(15px);transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden;transform-style:preserve-3d}
-.box.box-hari{min-width:clamp(90px,22vw,160px);padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);background:linear-gradient(145deg,rgba(255,59,59,.4),rgba(20,40,30,.98));border:2px solid rgba(255,215,0,.7);box-shadow:0 25px 60px rgba(0,0,0,.8),0 0 80px rgba(255,215,0,.5),0 0 140px rgba(255,59,59,.3),inset 0 1px 0 rgba(255,215,0,.7);animation:hariPulse 3s ease-in-out infinite;transform:translateZ(20px)}
-@keyframes hariPulse{0%,100%{box-shadow:0 25px 60px rgba(0,0,0,.8),0 0 80px rgba(255,215,0,.5),0 0 140px rgba(255,59,59,.3)}50%{box-shadow:0 25px 60px rgba(0,0,0,.8),0 0 120px rgba(255,215,0,.8),0 0 200px rgba(255,59,59,.5)}}
-.box.box-hari .num{font-size:clamp(2.5rem,8vw,4.8rem)}
-.box::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,215,0,.4),transparent);transition:left .7s;pointer-events:none}
-.box:hover::before{left:100%}
-.box::after{content:'';position:absolute;bottom:-35px;left:5%;width:90%;height:35px;background:linear-gradient(180deg,rgba(255,215,0,.25),transparent);border-radius:50%;filter:blur(10px);pointer-events:none}
-.num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.6rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(255,215,0,.9));display:inline-block}
-.label{font-size:clamp(.6rem,1.5vw,.78rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:3px;margin-top:.7rem;font-weight:600;text-shadow:0 0 12px rgba(255,215,0,.6)}
-.mini-countdown{margin-top:2rem;padding:1rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,215,0,.3);border-radius:15px;backdrop-filter:blur(10px)}
-.mini-title{font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem}
+
+#timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center}
+.box{position:relative;background:rgba(20,40,30,.8);border:1px solid rgba(255,215,0,.4);padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);border-radius:16px;text-align:center;min-width:clamp(72px,18vw,120px);box-shadow:0 10px 30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,215,0,.2);transition:transform .3s}
+.box:hover{transform:translateY(-5px);border-color:#ffd700;box-shadow:0 15px 40px rgba(255,215,0,.3)}
+.box.box-hari{min-width:clamp(90px,22vw,150px);padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);background:linear-gradient(145deg,rgba(255,59,59,.3),rgba(20,40,30,.9));border:2px solid rgba(255,215,0,.6)}
+.box.box-hari .num{font-size:clamp(2.5rem,8vw,4.5rem)}
+.num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 10px rgba(255,215,0,.6))}
+.label{font-size:clamp(.6rem,1.5vw,.75rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:2px;margin-top:.7rem;font-weight:600}
+
+.mini-countdown{margin-top:2rem;padding:1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
+.mini-title{font-size:.75rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
 .mini-timer{display:flex;justify-content:center;gap:15px;font-family:'Cinzel',serif;font-size:clamp(.9rem,2.5vw,1.1rem);color:var(--a2);font-weight:700;flex-wrap:wrap}
-.mini-timer span{color:var(--tm);font-weight:400;opacity:.7}
+
 .extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:1.5rem}
-.info-card{padding:.9rem .7rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(255,215,0,.05));border:1px solid rgba(255,215,0,.25);border-radius:12px;backdrop-filter:blur(10px);transition:all .3s;text-align:center}
-.info-card:hover{border-color:rgba(255,215,0,.6);transform:translateY(-4px);box-shadow:0 10px 25px rgba(255,215,0,.3)}
+.info-card{padding:.9rem .7rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.2);border-radius:12px;transition:all .3s;text-align:center}
+.info-card:hover{border-color:rgba(255,215,0,.6);transform:translateY(-3px)}
 .info-label{font-size:.65rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem;opacity:.75}
-.info-value{font-family:'Cinzel',serif;font-size:1.2rem;color:#ffd700;font-weight:700;text-shadow:0 0 15px rgba(255,215,0,.6)}
-.tree-display{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(0,230,118,.06));border:1px solid rgba(0,230,118,.3);border-radius:15px;text-align:center;position:relative;overflow:hidden}
-.tree-display::before{content:'';position:absolute;inset:-50%;background:radial-gradient(circle,rgba(0,230,118,.15),transparent 60%);animation:treeGlow 4s ease-in-out infinite;pointer-events:none}
-@keyframes treeGlow{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.1)}}
-.tree-title{font-family:'Cinzel',serif;color:#00e676;font-size:.85rem;letter-spacing:3px;margin-bottom:.8rem;position:relative;z-index:1;text-shadow:0 0 15px rgba(0,230,118,.6)}
-.tree-svg{height:120px;width:auto;filter:drop-shadow(0 0 20px rgba(0,230,118,.6));position:relative;z-index:1}
-.tree-progress{font-size:.75rem;color:var(--ts);margin-top:.5rem;letter-spacing:1px;position:relative;z-index:1}
-.fortune-section{margin-top:1.5rem;padding:1.5rem 1rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(255,215,0,.06));border:1px solid rgba(255,215,0,.35);border-radius:15px;position:relative;overflow:hidden}
-.fortune-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:3px;margin-bottom:.4rem;text-shadow:0 0 15px rgba(255,215,0,.6)}
-.fortune-sub{font-size:.7rem;color:var(--ts);margin-bottom:1.2rem;letter-spacing:1px}
-.cookie-stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:140px;margin-bottom:1rem}
-.cookie{font-size:5rem;cursor:pointer;transition:all .3s;filter:drop-shadow(0 0 20px rgba(255,180,100,.6));animation:cookieFloat 3s ease-in-out infinite;user-select:none;position:relative;z-index:2}
-.cookie:hover{transform:scale(1.15) rotate(-5deg);filter:drop-shadow(0 0 35px rgba(255,180,100,.9))}
-.cookie:active{transform:scale(.95)}
-.cookie.cracked{animation:cookieCrack .8s ease forwards;pointer-events:none}
-@keyframes cookieFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
-@keyframes cookieCrack{0%{transform:scale(1) rotate(0)}20%{transform:scale(1.2) rotate(15deg)}40%{transform:scale(1) rotate(-15deg) translateX(-10px)}60%{transform:scale(1) rotate(15deg) translateX(10px)}80%{transform:scale(.9) rotate(-10deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
-.cookie-hint{font-size:.75rem;color:var(--ts);opacity:.7;font-style:italic;animation:hintPulse 2s ease-in-out infinite;position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);white-space:nowrap}
-@keyframes hintPulse{0%,100%{opacity:.5}50%{opacity:1}}
-.fortune-message{min-height:80px;padding:1rem 1.2rem;background:linear-gradient(145deg,rgba(255,215,0,.1),rgba(255,59,59,.05));border:1px dashed rgba(255,215,0,.5);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Cinzel',serif;font-size:.95rem;color:#ffe9a8;line-height:1.5;letter-spacing:.5px;position:relative;opacity:0;transform:scale(.8);transition:all .5s cubic-bezier(.34,1.56,.64,1)}
+.info-value{font-family:'Cinzel',serif;font-size:1.2rem;color:#ffd700;font-weight:700}
+
+.tree-display{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.4);border:1px solid rgba(0,230,118,.3);border-radius:15px;text-align:center}
+.tree-title{font-family:'Cinzel',serif;color:#00e676;font-size:.85rem;letter-spacing:2px;margin-bottom:.8rem}
+.tree-svg{height:110px;width:auto;filter:drop-shadow(0 0 10px rgba(0,230,118,.4))}
+.tree-progress{font-size:.75rem;color:var(--ts);margin-top:.5rem}
+
+.fortune-section{margin-top:1.5rem;padding:1.5rem 1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
+.fortune-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:2px;margin-bottom:.4rem}
+.fortune-sub{font-size:.7rem;color:var(--ts);margin-bottom:1.2rem}
+.cookie-stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:120px;margin-bottom:1rem}
+.cookie{font-size:5rem;cursor:pointer;transition:all .2s;filter:drop-shadow(0 0 15px rgba(255,180,100,.5));animation:cookieFloat 3s ease-in-out infinite}
+.cookie:hover{transform:scale(1.1) rotate(-5deg)}
+.cookie.cracked{animation:cookieCrack .6s ease forwards;pointer-events:none}
+@keyframes cookieFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes cookieCrack{0%{transform:scale(1) rotate(0)}20%{transform:scale(1.2) rotate(15deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
+.cookie-hint{font-size:.75rem;color:var(--ts);opacity:.7;font-style:italic;position:absolute;bottom:-5px;left:50%;transform:translateX(-50%)}
+.fortune-message{min-height:70px;padding:1rem;background:rgba(255,215,0,.08);border:1px dashed rgba(255,215,0,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Cinzel',serif;font-size:.95rem;color:#ffe9a8;opacity:0;transform:scale(.9);transition:all .4s}
 .fortune-message.show{opacity:1;transform:scale(1)}
-.fortune-message.rare{background:linear-gradient(145deg,rgba(255,215,0,.2),rgba(64,196,255,.15));border-color:#ffd700;color:#fff;box-shadow:0 0 30px rgba(255,215,0,.6);animation:rareGlow 1.5s ease-in-out infinite}
-@keyframes rareGlow{0%,100%{box-shadow:0 0 30px rgba(255,215,0,.6)}50%{box-shadow:0 0 50px rgba(255,215,0,1),0 0 80px rgba(64,196,255,.6)}}
-.fortune-stats{font-size:.7rem;color:var(--ts);margin-top:.9rem;letter-spacing:1px;text-align:center;opacity:.75}
+.fortune-message.rare{background:rgba(255,215,0,.15);border-color:#ffd700;color:#fff;box-shadow:0 0 20px rgba(255,215,0,.4)}
+.fortune-stats{font-size:.7rem;color:var(--ts);margin-top:.9rem;text-align:center}
 .fortune-stats span{color:#ffd700;font-weight:700}
-.advent{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(255,215,0,.06));border:1px solid rgba(255,215,0,.35);border-radius:15px;position:relative;overflow:hidden}
-.advent-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:3px;margin-bottom:.4rem;text-shadow:0 0 15px rgba(255,215,0,.6)}
-.advent-sub{font-size:.7rem;color:var(--ts);margin-bottom:1rem;letter-spacing:1px}
-.advent-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:480px;margin:0 auto}
-.advent-box{aspect-ratio:1;background:linear-gradient(135deg,#b91c1c,#7a0f0f);border:2px solid rgba(255,215,0,.5);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;font-family:'Cinzel',serif;box-shadow:inset 0 0 15px rgba(0,0,0,.3)}
-.advent-box:not(.locked):not(.opened):hover{transform:scale(1.12) rotate(3deg);box-shadow:0 0 25px rgba(255,215,0,.9);z-index:2;border-color:#ffd700}
-.advent-box.opened{background:linear-gradient(135deg,#0f5d35,#0a3d23);border-color:rgba(0,230,118,.6);cursor:default;box-shadow:0 0 15px rgba(0,230,118,.5),inset 0 0 15px rgba(0,230,118,.2)}
-.advent-box.locked{background:linear-gradient(135deg,rgba(40,40,40,.9),rgba(20,20,20,.95));color:rgba(255,215,0,.25);cursor:not-allowed;border-color:rgba(255,215,0,.15)}
-.advent-box.today{border-color:#ffd700;box-shadow:0 0 25px rgba(255,215,0,.9);animation:adventPulse 1.5s ease-in-out infinite}
-@keyframes adventPulse{0%,100%{transform:scale(1);box-shadow:0 0 25px rgba(255,215,0,.9)}50%{transform:scale(1.08);box-shadow:0 0 40px rgba(255,215,0,1)}}
-.advent-num{position:absolute;top:3px;left:5px;font-size:.55rem;color:rgba(255,255,255,.7);font-weight:600}
-.advent-box.locked .advent-num{color:rgba(255,215,0,.25)}
-.advent-box.opened .advent-num{color:rgba(0,230,118,.6)}
-.advent-day{font-size:1.1rem;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,.8)}
+
+.advent{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
+.advent-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:2px;margin-bottom:.4rem}
+.advent-sub{font-size:.7rem;color:var(--ts);margin-bottom:1rem}
+.advent-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:460px;margin:0 auto}
+.advent-box{aspect-ratio:1;background:linear-gradient(135deg,#b91c1c,#7a0f0f);border:2px solid rgba(255,215,0,.4);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;position:relative;overflow:hidden}
+.advent-box:not(.locked):not(.opened):hover{transform:scale(1.1);box-shadow:0 0 15px rgba(255,215,0,.8);z-index:2}
+.advent-box.opened{background:linear-gradient(135deg,#0f5d35,#0a3d23);border-color:rgba(0,230,118,.5);cursor:default}
+.advent-box.locked{background:rgba(40,40,40,.9);color:rgba(255,215,0,.2);cursor:not-allowed;border-color:rgba(255,215,0,.1)}
+.advent-box.today{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.8);animation:adventPulse 1.5s infinite}
+@keyframes adventPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.advent-num{position:absolute;top:2px;left:4px;font-size:.5rem;color:rgba(255,255,255,.6);font-weight:600}
+.advent-day{font-size:1rem;font-weight:900;color:#ffd700}
 .advent-box.opened .advent-day{display:none}
-.advent-emoji{font-size:1.5rem;display:none;animation:emojiPop .6s cubic-bezier(.34,1.56,.64,1)}
+.advent-emoji{font-size:1.3rem;display:none}
 .advent-box.opened .advent-emoji{display:block}
-@keyframes emojiPop{0%{transform:scale(0) rotate(-180deg)}70%{transform:scale(1.4) rotate(15deg)}100%{transform:scale(1) rotate(0)}}
-.advent-progress{font-size:.72rem;color:var(--ts);margin-top:.9rem;letter-spacing:1px;text-align:center}
-.reaction-wall{margin-top:1.5rem;padding:1.2rem;background:linear-gradient(145deg,rgba(0,0,0,.4),rgba(64,196,255,.05));border:1px solid rgba(64,196,255,.3);border-radius:15px;position:relative}
-.rw-title{font-family:'Cinzel',serif;color:#40c4ff;font-size:.85rem;letter-spacing:3px;margin-bottom:.4rem;text-align:center;text-shadow:0 0 15px rgba(64,196,255,.6)}
+.advent-progress{font-size:.72rem;color:var(--ts);margin-top:.8rem;text-align:center}
+
+.reaction-wall{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.4);border:1px solid rgba(64,196,255,.3);border-radius:15px}
+.rw-title{font-family:'Cinzel',serif;color:#40c4ff;font-size:.85rem;letter-spacing:2px;margin-bottom:.4rem;text-align:center}
 .rw-sub{font-size:.7rem;color:var(--ts);text-align:center;margin-bottom:.9rem}
 .rw-picker{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:.9rem}
-.rw-picker button{width:40px;height:40px;border-radius:10px;background:rgba(64,196,255,.1);border:1px solid rgba(64,196,255,.3);font-size:1.3rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;padding:0}
-.rw-picker button:hover{transform:scale(1.2) translateY(-3px);background:rgba(64,196,255,.25);box-shadow:0 5px 15px rgba(64,196,255,.5)}
-.rw-picker button:active{transform:scale(.95)}
-.rw-wall{position:relative;min-height:80px;background:rgba(0,0,0,.3);border-radius:10px;padding:8px;overflow:hidden}
-.rw-bubble{position:absolute;font-size:1.2rem;animation:bubbleFloat 3s ease-out forwards;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,215,0,.6))}
-@keyframes bubbleFloat{0%{transform:translateY(0) scale(0);opacity:0}20%{transform:translateY(-10px) scale(1.3);opacity:1}80%{opacity:.9}100%{transform:translateY(-60px) scale(.8);opacity:0}}
-.rw-total{text-align:center;font-size:.7rem;color:var(--ts);margin-top:.6rem;letter-spacing:1px}
-/* 🛡️ FIXED CALENDAR - FLEXBOX */
-.mini-calendar{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.35);border:1px solid rgba(255,215,0,.25);border-radius:15px;backdrop-filter:blur(10px)}
-.cal-title{font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem}
-.cal-grid{display:flex;flex-wrap:wrap;gap:3px;max-width:340px;margin:0 auto;justify-content:center}
-.cal-day,.cal-date{width:calc((100% - 18px) / 7);min-height:28px;display:flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;border-radius:6px;transition:all .2s}
-.cal-day{font-size:.62rem;color:var(--ts);font-weight:600;letter-spacing:1px;padding:2px 0}
-.cal-date{font-size:.75rem;color:rgba(255,255,255,.75);padding:4px 0}
-.cal-date.today{background:linear-gradient(135deg,#ff3b3b,#ffd700);color:#fff;font-weight:700;box-shadow:0 0 15px rgba(255,215,0,.7);animation:calPulse 2s ease-in-out infinite}
-.cal-date.target{background:linear-gradient(135deg,#00e676,#40c4ff);color:#fff;font-weight:700;box-shadow:0 0 15px rgba(0,230,118,.7)}
-@keyframes calPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.rw-picker button{width:36px;height:36px;border-radius:8px;background:rgba(64,196,255,.1);border:1px solid rgba(64,196,255,.3);font-size:1.2rem;cursor:pointer;transition:transform .2s;display:flex;align-items:center;justify-content:center}
+.rw-picker button:hover{transform:scale(1.15)}
+.rw-wall{position:relative;min-height:60px;background:rgba(0,0,0,.3);border-radius:8px;padding:8px;overflow:hidden}
+.rw-bubble{position:absolute;font-size:1.2rem;animation:bubbleFloat 3s ease-out forwards;pointer-events:none}
+@keyframes bubbleFloat{0%{transform:translateY(0) scale(0);opacity:0}20%{transform:translateY(-10px) scale(1.2);opacity:1}80%{opacity:.9}100%{transform:translateY(-50px) scale(.8);opacity:0}}
+.rw-total{text-align:center;font-size:.7rem;color:var(--ts);margin-top:.6rem}
+
+.mini-calendar{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.2);border-radius:15px}
+.cal-title{font-size:.75rem;color:var(--ts);letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem}
+.cal-grid{display:flex;flex-wrap:wrap;gap:2px;max-width:320px;margin:0 auto;justify-content:center}
+.cal-day,.cal-date{width:calc((100% - 12px) / 7);min-height:26px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:.7rem}
+.cal-day{color:var(--ts);font-weight:600}
+.cal-date{color:rgba(255,255,255,.75)}
+.cal-date.today{background:linear-gradient(135deg,#ff3b3b,#ffd700);color:#fff;font-weight:700}
+.cal-date.target{background:linear-gradient(135deg,#00e676,#40c4ff);color:#fff;font-weight:700}
 .cal-date.past{opacity:.3}
-.quote-box{margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(0,0,0,.3);border-left:3px solid #ffd700;border-radius:10px;font-style:italic;color:var(--ts);font-size:.85rem;min-height:60px;display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .5s}
+
+.quote-box{margin-top:1.5rem;padding:1rem;background:rgba(0,0,0,.3);border-left:3px solid #ffd700;border-radius:8px;font-style:italic;color:var(--ts);font-size:.85rem;min-height:50px;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
 .quote-box.fade{opacity:0}
-.done-wrap{text-align:center;padding:3rem 1rem;animation:doneIn 1.5s ease forwards}
-@keyframes doneIn{0%{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
-.done-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,7vw,4rem);font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,var(--a1),var(--a2),#fff,var(--a3),var(--a2),var(--a1));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 2s linear infinite;filter:drop-shadow(0 0 40px rgba(255,215,0,1));margin-bottom:1rem;line-height:1.2}
-.done-sub{font-size:clamp(1rem,3vw,1.5rem);color:var(--a2);letter-spacing:3px;margin-bottom:1.5rem;font-style:italic;text-shadow:0 0 20px rgba(255,215,0,.8)}
-.done-emoji{font-size:clamp(2rem,6vw,4rem);letter-spacing:15px;animation:bounce 1.5s ease-in-out infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.done-divider{width:200px;height:1px;margin:1.5rem auto;background:linear-gradient(90deg,transparent,#ffd700,transparent);box-shadow:0 0 15px rgba(255,215,0,.8)}
-.done-message{font-size:clamp(.9rem,2vw,1.1rem);color:var(--ts);letter-spacing:2px;line-height:1.8;max-width:500px;margin:0 auto;opacity:.9}
-.replay-btn{margin-top:1.5rem;padding:.8rem 2rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:2px solid #ffd700;color:#fff;font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;border-radius:50px;cursor:pointer;box-shadow:0 0 30px rgba(255,215,0,.6);transition:all .3s}
-.replay-btn:hover{transform:scale(1.1);box-shadow:0 0 50px rgba(255,215,0,1)}
-.footer{position:relative;z-index:10;margin-top:2rem;font-size:.75rem;color:var(--ts);letter-spacing:4px;text-transform:uppercase;font-weight:300}
-.fade-in{opacity:0;transform:translateY(20px);animation:fadeIn 1.2s ease forwards}
+
+.done-wrap{text-align:center;padding:3rem 1rem}
+.done-title{font-family:'Cinzel',serif;font-size:clamp(1.8rem,7vw,3.5rem);font-weight:900;background:linear-gradient(135deg,var(--a1),var(--a2),#fff,var(--a3));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 2s linear infinite;margin-bottom:1rem;line-height:1.2}
+.done-sub{font-size:clamp(1rem,3vw,1.4rem);color:var(--a2);margin-bottom:1.5rem;font-style:italic}
+.done-emoji{font-size:clamp(2rem,6vw,3.5rem);animation:bounce 1.5s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.replay-btn{margin-top:1.5rem;padding:.8rem 2rem;background:linear-gradient(135deg,#b91c1c,#ffd700);border:2px solid #ffd700;color:#fff;font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;border-radius:50px;cursor:pointer}
+
+.footer{position:relative;z-index:10;margin-top:2rem;font-size:.75rem;color:var(--ts);letter-spacing:3px;text-transform:uppercase}
+.fade-in{opacity:0;transform:translateY(15px);animation:fadeIn 1s ease forwards}
 @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
-.d1{animation-delay:.2s}.d2{animation-delay:.4s}.d3{animation-delay:.6s}.d4{animation-delay:.8s}.d5{animation-delay:1s}
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(10,20,15,.95);color:#ffd700;padding:12px 24px;border-radius:50px;border:1px solid rgba(255,215,0,.5);font-size:.85rem;letter-spacing:1px;z-index:99999;transition:transform .4s ease;box-shadow:0 0 30px rgba(255,215,0,.5);max-width:90vw;text-align:center}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(10,20,15,.95);color:#ffd700;padding:10px 20px;border-radius:50px;border:1px solid rgba(255,215,0,.5);font-size:.8rem;z-index:99999;transition:transform .3s ease;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
+
 @media(max-width:700px){
-  .container{padding:1.5rem 1rem;border-radius:18px}
+  .container{padding:1.5rem 1rem}
   .music-btn{width:50px;height:50px;font-size:1.2rem;bottom:15px;right:15px}
   .confetti-btn{width:44px;height:44px;bottom:15px;left:15px;font-size:1.1rem}
-  .top-left{top:10px;left:10px}
-  .top-right{top:10px;right:10px;gap:5px}
-  .volume-wrap{padding:5px 8px}
-  .volume-wrap input[type=range]{width:50px}
-  .clock-wib{font-size:.7rem;padding:6px 10px}
-  .visitor-counter{font-size:.6rem}
-  .candle-area{right:15px;bottom:80px;transform:scale(.7)}
-  .viz{height:40px}
-  .advent-grid{grid-template-columns:repeat(4,1fr);gap:6px}
-  .rw-picker button{width:36px;height:36px;font-size:1.1rem}
+  .advent-grid{grid-template-columns:repeat(4,1fr)}
   .cookie{font-size:4rem}
-  .cal-day,.cal-date{min-height:24px;font-size:.7rem}
 }
 </style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
 
-<div id="loader">
-  <div class="loader-icon">🎄</div>
-  <div class="loader-text">MERRY CHRISTMAS</div>
-  <div class="loader-bar"></div>
-</div>
-
-<video class="video-bg" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80">
-  <source src="https://cdn.pixabay.com/video/2020/12/17/57985-493096062_large.mp4" type="video/mp4">
-  <source src="https://cdn.pixabay.com/video/2022/12/11/143099-781039663_large.mp4" type="video/mp4">
-</video>
-<div class="video-fallback"></div>
+<div class="bg-layer"></div>
 <div class="cinematic-overlay"></div>
-<div class="wave-bg"></div>
-<div class="overlay"></div>
-<div class="grain"></div>
-
-<div class="bokeh b1"></div>
-<div class="bokeh b2"></div>
-<div class="bokeh b3"></div>
-<div class="bokeh b4"></div>
-
 <div class="snow-container" id="snow"></div>
 <canvas id="fireworks"></canvas>
 
 <div class="santa-walk" id="santaClick">🎅</div>
 <div class="deer-fly">🦌</div>
-<div class="penguin">🐧</div>
-
-<div class="candle-area">
-  <div class="candle">
-    <div class="glow"></div>
-    <div class="flame"></div>
-  </div>
-</div>
-
-<div class="viz" id="viz"></div>
 
 <div class="top-left">
   <div class="clock-wib" id="clockWib">⏰ 00:00:00 WIB</div>
-  <div class="visitor-counter" id="visitorCounter">👁️ 0 pengunjung</div>
 </div>
 
 <div class="top-right">
@@ -276,8 +201,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
   <source src="clavier-music-calm-christmas-piano-262888.mp3" type="audio/mpeg">
 </audio>
-<button class="music-btn" id="musicBtn" title="Play / Pause Musik">🎵</button>
-<button class="confetti-btn" id="confettiBtn" title="Confetti!">🎊</button>
+<button class="music-btn" id="musicBtn">🎵</button>
+<button class="confetti-btn" id="confettiBtn">🎊</button>
 
 <div class="container" id="container">
   <p class="today-date fade-in d1" id="todayDate"></p>
@@ -349,18 +274,11 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     <div class="tree-title" id="treeTitle">🎄 POHON NATALMU</div>
     <svg class="tree-svg" viewBox="0 0 100 120" id="treeSvg">
       <rect x="46" y="105" width="8" height="12" fill="#5d3a1a"/>
-      <polygon points="50,90 20,105 80,105" fill="#0d4d2c" id="treeBase" opacity="0" style="transition:opacity .8s"/>
-      <polygon points="50,70 25,90 75,90" fill="#0f5d35" id="treeMid" opacity="0" style="transition:opacity .8s"/>
-      <polygon points="50,50 28,72 72,72" fill="#116b3e" id="treeTop" opacity="0" style="transition:opacity .8s"/>
-      <polygon points="50,32 32,54 68,54" fill="#148047" id="treeTip" opacity="0" style="transition:opacity .8s"/>
-      <text x="50" y="28" text-anchor="middle" font-size="14" id="treeStar" opacity="0" style="transition:opacity .8s">⭐</text>
-      <circle cx="40" cy="95" r="2" fill="#ff3b3b" id="orn1" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="60" cy="85" r="2" fill="#ffd700" id="orn2" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="50" cy="75" r="2" fill="#40c4ff" id="orn3" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="35" cy="65" r="2" fill="#ff80ab" id="orn4" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="65" cy="60" r="2" fill="#ffd700" id="orn5" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="45" cy="45" r="2" fill="#ff3b3b" id="orn6" opacity="0" style="transition:opacity .5s"/>
-      <circle cx="55" cy="40" r="2" fill="#00e676" id="orn7" opacity="0" style="transition:opacity .5s"/>
+      <polygon points="50,90 20,105 80,105" fill="#0d4d2c" id="treeBase" opacity="0" style="transition:opacity .5s"/>
+      <polygon points="50,70 25,90 75,90" fill="#0f5d35" id="treeMid" opacity="0" style="transition:opacity .5s"/>
+      <polygon points="50,50 28,72 72,72" fill="#116b3e" id="treeTop" opacity="0" style="transition:opacity .5s"/>
+      <polygon points="50,32 32,54 68,54" fill="#148047" id="treeTip" opacity="0" style="transition:opacity .5s"/>
+      <text x="50" y="28" text-anchor="middle" font-size="14" id="treeStar" opacity="0" style="transition:opacity .5s">⭐</text>
     </svg>
     <div class="tree-progress" id="treeProgress">Pohon tumbuh: 0%</div>
   </div>
@@ -372,8 +290,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
       <div class="cookie" id="cookieBtn">🍪</div>
       <div class="cookie-hint" id="cookieHint">👆 Klik aku!</div>
     </div>
-    <div class="fortune-message" id="fortuneMessage">Pesan keberuntunganmu akan muncul di sini...</div>
-    <div class="fortune-stats" id="fortuneStats">🎁 Udah buka: <span id="fortuneCount">0</span>× | Total pesan: <span id="fortuneTotal">50</span></div>
+    <div class="fortune-message" id="fortuneMessage"></div>
+    <div class="fortune-stats" id="fortuneStats">🎁 Udah buka: <span id="fortuneCount">0</span>×</div>
   </div>
 
   <div class="advent fade-in d5">
@@ -388,7 +306,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
     <div class="rw-sub" id="rwSub">Kirim emoji ke dinding kebahagiaan!</div>
     <div class="rw-picker" id="rwPicker"></div>
     <div class="rw-wall" id="rwWall"></div>
-    <div class="rw-total" id="rwTotal">0 emoji dari pengunjung</div>
+    <div class="rw-total" id="rwTotal">0 emoji</div>
   </div>
 
   <div class="mini-calendar fade-in d5">
@@ -400,13 +318,12 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 </div>
 
 <div class="footer fade-in d5">✦ Selamat Menyambut Nataru ✦</div>
-
 <div class="toast" id="toast"></div>
 
 <script>
 const CONFIG = {
-  targetDate: "2026-12-25T00:00:00+07:00", // 🎯 DIUBAH KE 25 DESEMBER 2026
-  startDate: "2025-12-25T00:00:00+07:00",  // 📊 1 tahun penuh
+  targetDate: "2026-12-25T00:00:00+07:00",
+  startDate: "2025-12-25T00:00:00+07:00",
   newYearDate: "2027-01-01T00:00:00+07:00"
 };
 const target = new Date(CONFIG.targetDate).getTime();
@@ -414,709 +331,250 @@ const startTime = new Date(CONFIG.startDate).getTime();
 const newYearTarget = new Date(CONFIG.newYearDate).getTime();
 function $(id) { return document.getElementById(id); }
 function setText(id, txt) { const el = $(id); if (el) el.textContent = txt; }
-function setStyle(id, prop, val) { const el = $(id); if (el) el.style[prop] = val; }
-setTimeout(() => { const l = $('loader'); if (l) l.classList.add('hide'); }, 2500);
 
 ['contextmenu','selectstart','dragstart','copy','cut'].forEach(evt => document.addEventListener(evt, e => e.preventDefault()));
-document.addEventListener('keydown', e => {
-  const k = e.key.toLowerCase();
-  if (e.ctrlKey && ['a','c','u','s','p'].includes(k)) return e.preventDefault();
-  if (e.metaKey && ['a','c','u','s','p'].includes(k)) return e.preventDefault();
-  if (e.key === 'F12') return e.preventDefault();
-  if (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(k)) return e.preventDefault();
-});
-document.addEventListener('touchstart', e => { if (e.touches.length > 1) e.preventDefault(); }, {passive:false});
 
 const I18N = {
-  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",visitors:"pengunjung",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji dari pengunjung",fortuneTitle:"🍪 FORTUNE COOKIE NATAL",fortuneSub:"Klik cookie untuk dapat pesan keberuntungan!",cookieHint:"👆 Klik aku!"},
-  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",visitors:"visitors",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis from visitors",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!"}
+  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji",fortuneTitle:"🍪 FORTUNE COOKIE NATAL",fortuneSub:"Klik cookie untuk dapat pesan keberuntungan!",cookieHint:"👆 Klik aku!"},
+  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"🍪 CHRISTMAS FORTUNE COOKIE",fortuneSub:"Click the cookie to get your fortune!",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
 
 function applyLang() {
   const t = I18N[currentLang];
-  setText('subtitle', t.subtitle);
-  setText('progressLabel', t.progress);
+  setText('subtitle', t.subtitle); setText('progressLabel', t.progress);
   setText('lblD', t.lblD); setText('lblH', t.lblH); setText('lblM', t.lblM); setText('lblS', t.lblS);
-  setText('miniTitle', t.miniTitle);
-  setText('mDl', t.mDl); setText('mHl', t.mHl); setText('mMl', t.mMl);
+  setText('miniTitle', t.miniTitle); setText('mDl', t.mDl); setText('mHl', t.mHl); setText('mMl', t.mMl);
   setText('weekendLabel', t.weekend); setText('totalDaysLabel', t.totalDays);
   setText('passedLabel', t.passed); setText('remainLabel', t.remain);
-  setText('calTitle', t.calTitle);
-  setText('treeTitle', t.treeTitle);
+  setText('calTitle', t.calTitle); setText('treeTitle', t.treeTitle);
   setText('adventTitle', t.adventTitle); setText('adventSub', t.adventSub);
   setText('rwTitle', t.rwTitle); setText('rwSub', t.rwSub);
   setText('fortuneTitle', t.fortuneTitle); setText('fortuneSub', t.fortuneSub);
   setText('cookieHint', t.cookieHint);
-  const ft = document.querySelector('.footer'); if (ft) ft.textContent = currentLang === 'id' ? '✦ Selamat Menyambut Nataru ✦' : '✦ Merry Christmas ✦';
-  updateGreeting();
-  updateVisitorCounter();
-  buildAdvent();
-  updateRWTotal();
-  updateFortuneStats();
+  updateGreeting(); buildAdvent(); updateRWTotal(); updateFortuneStats();
 }
 $('langBtn').addEventListener('click', () => {
   currentLang = currentLang === 'id' ? 'en' : 'id';
   localStorage.setItem('lang', currentLang);
   $('langBtn').textContent = currentLang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
   applyLang(); updateTodayDate();
-  showToast(currentLang === 'id' ? '🌐 Bahasa Indonesia' : '🌐 English');
 });
 $('langBtn').textContent = currentLang === 'id' ? '🇮🇩 ID' : '🇬🇧 EN';
 
 function updateGreeting() { setText('greeting', I18N[currentLang].greeting); }
-const daysID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
-const monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const monthsEN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const daysID = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"], monthsID = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+const daysEN = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], monthsEN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 function updateTodayDate() {
   const now = new Date();
-  const days = currentLang === 'id' ? daysID : daysEN;
-  const months = currentLang === 'id' ? monthsID : monthsEN;
+  const days = currentLang === 'id' ? daysID : daysEN, months = currentLang === 'id' ? monthsID : monthsEN;
   setText('todayDate', `${I18N[currentLang].todayIs} ${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`);
 }
 function updateClock() {
   const wib = new Date(new Date().toLocaleString("en-US", {timeZone:"Asia/Jakarta"}));
   setText('clockWib', `⏰ ${String(wib.getHours()).padStart(2,'0')}:${String(wib.getMinutes()).padStart(2,'0')}:${String(wib.getSeconds()).padStart(2,'0')} WIB`);
 }
-let visitors = parseInt(localStorage.getItem('visitors') || '0');
-if (!sessionStorage.getItem('counted')) { visitors++; localStorage.setItem('visitors', visitors); sessionStorage.setItem('counted', '1'); }
-function updateVisitorCounter() { setText('visitorCounter', `👁️ ${visitors} ${I18N[currentLang].visitors}`); }
 
+// ❄️ SNOW (Optimized)
 const snowContainer = $('snow');
 if (snowContainer) {
-  for (let i = 0; i < 70; i++) {
-    const s = document.createElement('div');
-    s.className = 'snowflake';
-    const size = Math.random()*6+2;
+  for (let i = 0; i < 50; i++) {
+    const s = document.createElement('div'); s.className = 'snowflake';
+    const size = Math.random()*5+2;
     s.style.width = size+'px'; s.style.height = size+'px';
     s.style.left = Math.random()*100+'%';
-    s.style.animationDuration = (Math.random()*10+6)+'s';
-    s.style.animationDelay = (Math.random()*12)+'s';
+    s.style.animationDuration = (Math.random()*8+6)+'s';
+    s.style.animationDelay = (Math.random()*10)+'s';
     s.style.opacity = Math.random()*0.7+0.3;
-    if (Math.random() > 0.7) { s.style.filter = 'blur(2px)'; s.style.opacity = 0.4; }
     snowContainer.appendChild(s);
   }
 }
-for (let i = 0; i < 20; i++) {
-  const sp = document.createElement('div');
-  sp.className = 'sparkle';
-  sp.style.left = Math.random()*100+'%';
-  sp.style.animationDuration = (Math.random()*8+6)+'s';
-  sp.style.animationDelay = (Math.random()*10)+'s';
-  document.body.appendChild(sp);
+for (let i = 0; i < 15; i++) {
+  const sp = document.createElement('div'); sp.className = 'sparkle';
+  sp.style.left = Math.random()*100+'%'; sp.style.animationDuration = (Math.random()*8+6)+'s';
+  sp.style.animationDelay = (Math.random()*10)+'s'; document.body.appendChild(sp);
 }
-setInterval(() => {
-  if (Math.random() > 0.5) {
-    const star = document.createElement('div');
-    star.className = 'shooting-star';
-    star.style.top = Math.random()*50+'%';
-    star.style.right = '-50px';
-    star.style.animationDuration = (Math.random()*1.5+1.5)+'s';
-    document.body.appendChild(star);
-    setTimeout(() => star.remove(), 3500);
-  }
-}, 3000);
-let lastTrail = 0;
-document.addEventListener('mousemove', e => {
-  const now = Date.now();
-  if (now - lastTrail < 40) return;
-  lastTrail = now;
-  const p = document.createElement('div');
-  p.className = 'cursor-particle';
-  p.style.left = e.clientX+'px'; p.style.top = e.clientY+'px';
-  document.body.appendChild(p);
-  setTimeout(() => p.remove(), 900);
-});
-const clickEmojis = ['❄️','❅','❆','✨','🌟'];
-document.addEventListener('click', e => {
-  if (e.target.closest('button,.modal,.volume-wrap,input,.advent-box,.rw-picker,.cookie')) return;
-  for (let i = 0; i < 3; i++) {
-    setTimeout(() => {
-      const s = document.createElement('div');
-      s.className = 'click-snow';
-      s.textContent = clickEmojis[Math.floor(Math.random()*clickEmojis.length)];
-      s.style.left = (e.clientX + (Math.random()-.5)*60)+'px';
-      s.style.top = e.clientY+'px';
-      document.body.appendChild(s);
-      setTimeout(() => s.remove(), 1500);
-    }, i*80);
-  }
-  const r = document.createElement('div');
-  r.className = 'ripple';
-  r.style.left = e.clientX+'px'; r.style.top = e.clientY+'px';
-  document.body.appendChild(r);
-  setTimeout(() => r.remove(), 1000);
-});
-const container = $('container');
-document.addEventListener('mousemove', e => {
-  if (!container) return;
-  const rect = container.getBoundingClientRect();
-  const x = e.clientX - rect.left, y = e.clientY - rect.top;
-  const cx = rect.width/2, cy = rect.height/2;
-  container.style.transform = `perspective(2000px) rotateX(${((y-cy)/cy)*-4}deg) rotateY(${((x-cx)/cx)*4}deg)`;
-});
-container.addEventListener('mouseleave', () => { if (container) container.style.transform = 'perspective(2000px) rotateX(0) rotateY(0)'; });
 
-function updateProgress() {
+// MOUSE MOVE (Throttled)
+let lastTrail = 0, ticking = false;
+document.addEventListener('mousemove', e => {
   const now = Date.now();
-  const total = target - startTime, elapsed = now - startTime;
+  if (now - lastTrail > 80) { // Kurangi frekuensi
+    lastTrail = now;
+    const p = document.createElement('div'); p.className = 'cursor-particle';
+    p.style.left = e.clientX+'px'; p.style.top = e.clientY+'px';
+    document.body.appendChild(p); setTimeout(() => p.remove(), 800);
+  }
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      if(container) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left, y = e.clientY - rect.top;
+        const cx = rect.width/2, cy = rect.height/2;
+        container.style.transform = `perspective(2000px) rotateX(${((y-cy)/cy)*-4}deg) rotateY(${((x-cx)/cx)*4}deg) translateZ(0)`;
+      }
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// CLICK EFFECTS
+document.addEventListener('click', e => {
+  if (e.target.closest('button,.volume-wrap,input,.advent-box,.rw-picker,.cookie')) return;
+  for (let i = 0; i < 2; i++) {
+    setTimeout(() => {
+      const s = document.createElement('div'); s.className = 'click-snow';
+      s.textContent = ['❄️','✨','🌟'][Math.floor(Math.random()*3)];
+      s.style.left = (e.clientX + (Math.random()-.5)*40)+'px'; s.style.top = e.clientY+'px';
+      document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
+    }, i*100);
+  }
+});
+
+// PROGRESS
+function updateProgress() {
+  const now = Date.now(), total = target - startTime, elapsed = now - startTime;
   let p = Math.max(0, Math.min(100, (elapsed/total)*100));
-  setStyle('progressFill', 'width', p+'%');
+  $('progressFill').style.width = p+'%';
   setText('progressPercent', p.toFixed(1)+'%');
   setText('passedDays', Math.floor(elapsed/(1000*60*60*24)));
-  const remain = target - now;
-  setText('remainDays', Math.max(0, Math.floor(remain/(1000*60*60*24))));
+  setText('remainDays', Math.max(0, Math.floor((target - now)/(1000*60*60*24))));
   updateTree(p);
 }
 function updateTree(percent) {
-  const stage = Math.floor(percent / 20);
-  const stages = ['treeBase','treeMid','treeTop','treeTip','treeStar'];
+  const stage = Math.floor(percent / 20), stages = ['treeBase','treeMid','treeTop','treeTip','treeStar'];
   stages.forEach((id, i) => { const el = $(id); if (el) el.style.opacity = i <= stage - 1 ? '1' : '0'; });
-  document.querySelectorAll('[id^=orn]').forEach((o, i) => { o.style.opacity = i < stage * 1.4 ? '1' : '0'; });
   setText('treeProgress', `${I18N[currentLang].treeProgress} ${Math.round(percent)}%`);
 }
 function countWeekends() {
-  let count = 0, d = new Date();
-  const t = new Date(CONFIG.targetDate);
+  let count = 0, d = new Date(), t = new Date(CONFIG.targetDate);
   while (d < t) { if (d.getDay() === 0) count++; d.setDate(d.getDate()+1); }
   setText('weekendCount', count);
 }
 
-// 📅 CALENDAR - FIXED FLEXBOX
+// CALENDAR
 function buildCalendar() {
-  const cal = $('miniCal'); if (!cal) return;
-  cal.innerHTML = '';
-  const dayLabels = currentLang === 'id' ? ['S','S','R','K','J','S','M'] : ['S','M','T','W','T','F','S'];
-  dayLabels.forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'cal-day';
-    el.textContent = d;
-    cal.appendChild(el);
+  const cal = $('miniCal'); if (!cal) return; cal.innerHTML = '';
+  (currentLang === 'id' ? ['S','S','R','K','J','S','M'] : ['S','M','T','W','T','F','S']).forEach(d => {
+    const el = document.createElement('div'); el.className = 'cal-day'; el.textContent = d; cal.appendChild(el);
   });
-  const firstDay = new Date(2026, 11, 1).getDay(); // 1 Des 2026 = Selasa
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement('div');
-    empty.style.width = 'calc((100% - 18px) / 7)';
-    empty.style.minHeight = '28px';
-    cal.appendChild(empty);
-  }
+  const firstDay = new Date(2026, 11, 1).getDay();
+  for (let i = 0; i < firstDay; i++) { const empty = document.createElement('div'); empty.style.width='calc((100% - 12px)/7)'; empty.style.minHeight='26px'; cal.appendChild(empty); }
   const now = new Date();
   for (let i = 1; i <= 31; i++) {
-    const el = document.createElement('div');
-    el.className = 'cal-date'; el.textContent = i;
+    const el = document.createElement('div'); el.className = 'cal-date'; el.textContent = i;
     const date = new Date(2026, 11, i);
     if (now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() === i) el.classList.add('today');
-    else if (i === 25) el.classList.add('target'); // 🎯 HIGHLIGHT TANGGAL 25
+    else if (i === 25) el.classList.add('target');
     else if (date < now) el.classList.add('past');
     cal.appendChild(el);
   }
 }
-const quotesID = ['"Natal bukan tentang hadiah, tapi tentang kasih."','"Cinta adalah hadiah terindah di hari Natal."','"Bersyukurlah atas hal-hal kecil hari ini."','"Kehangatan Natal ada di hati yang berbagi."','"Setiap hari adalah kesempatan untuk bersinar."'];
-const quotesEN = ['"Christmas is not about gifts, but about love."','"Love is the greatest gift of Christmas."','"Be grateful for the little things today."','"The warmth of Christmas lives in giving hearts."','"Every day is a chance to shine."'];
+
+// QUOTES
+const quotesID = ['"Natal bukan tentang hadiah, tapi tentang kasih."','"Cinta adalah hadiah terindah."','"Bersyukurlah atas hal kecil hari ini."','"Kehangatan Natal ada di hati yang berbagi."'];
+const quotesEN = ['"Christmas is not about gifts, but about love."','"Love is the greatest gift."','"Be grateful for the little things today."','"The warmth of Christmas lives in giving hearts."'];
 let quoteIdx = 0;
 function updateQuote() {
-  const list = currentLang === 'id' ? quotesID : quotesEN;
-  const box = $('quoteBox'); if (!box) return;
-  box.classList.add('fade');
-  setTimeout(() => { box.textContent = list[quoteIdx % list.length]; box.classList.remove('fade'); quoteIdx++; }, 500);
+  const box = $('quoteBox'); if (!box) return; box.classList.add('fade');
+  setTimeout(() => { box.textContent = (currentLang === 'id' ? quotesID : quotesEN)[quoteIdx % 4]; box.classList.remove('fade'); quoteIdx++; }, 400);
 }
-setInterval(updateQuote, 8000);
 
-const music = $('bgMusic');
-const musicBtn = $('musicBtn');
-let isPlaying = false;
+// MUSIC & VIZ
+const music = $('bgMusic'), musicBtn = $('musicBtn'); let isPlaying = false;
 if (music) music.volume = 0.5;
-const volSlider = $('volumeSlider');
-if (volSlider) volSlider.addEventListener('input', e => { if (music) music.volume = e.target.value / 100; });
-const viz = $('viz');
-const bars = [];
-if (viz) {
-  for (let i = 0; i < 60; i++) {
-    const b = document.createElement('div');
-    b.className = 'viz-bar';
-    viz.appendChild(b);
-    bars.push(b);
-  }
-}
+$('volumeSlider').addEventListener('input', e => { if (music) music.volume = e.target.value / 100; });
+const bars = []; if ($('viz')) for (let i = 0; i < 60; i++) { const b = document.createElement('div'); b.className='viz-bar'; $('viz').appendChild(b); bars.push(b); }
 let audioCtx, analyser, dataArray;
-function initAudioAnalyzer() {
-  try {
-    if (!audioCtx && music) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const src = audioCtx.createMediaElementSource(music);
-      analyser = audioCtx.createAnalyser();
-      analyser.fftSize = 128;
-      src.connect(analyser);
-      analyser.connect(audioCtx.destination);
-      dataArray = new Uint8Array(analyser.frequencyBinCount);
-    }
-  } catch(e) {}
+function initAudio() {
+  try { if (!audioCtx && music) { audioCtx = new (window.AudioContext||window.webkitAudioContext)(); const src = audioCtx.createMediaElementSource(music); analyser = audioCtx.createAnalyser(); analyser.fftSize=128; src.connect(analyser); analyser.connect(audioCtx.destination); dataArray = new Uint8Array(analyser.frequencyBinCount); } } catch(e){}
 }
 function animateViz() {
-  if (analyser && isPlaying) {
-    analyser.getByteFrequencyData(dataArray);
-    bars.forEach((b, i) => { const val = dataArray[i % dataArray.length] || 0; b.style.height = Math.max(4, (val / 255) * 55) + 'px'; });
-  } else {
-    bars.forEach(b => b.style.height = '4px');
-  }
-  requestAnimationFrame(animateViz);
+  if (analyser && isPlaying) { analyser.getByteFrequencyData(dataArray); bars.forEach((b,i)=>{b.style.height=Math.max(4,(dataArray[i%dataArray.length]/255)*55)+'px';}); requestAnimationFrame(animateViz); }
+  else { bars.forEach(b => b.style.height='4px'); } // Berhenti loop jika mati
 }
-animateViz();
 function toggleMusic() {
-  if (isPlaying) { music.pause(); musicBtn.textContent = '🎵'; musicBtn.classList.remove('playing'); isPlaying = false; }
-  else {
-    initAudioAnalyzer();
-    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-    music.play().then(() => { musicBtn.textContent = '⏸'; musicBtn.classList.add('playing'); isPlaying = true; }).catch(()=>{});
-  }
+  if (isPlaying) { music.pause(); musicBtn.textContent='🎵'; musicBtn.classList.remove('playing'); isPlaying=false; bars.forEach(b=>b.style.height='4px'); }
+  else { initAudio(); if (audioCtx && audioCtx.state==='suspended') audioCtx.resume(); music.play().then(()=>{ musicBtn.textContent='⏸'; musicBtn.classList.add('playing'); isPlaying=true; animateViz(); }).catch(()=>{}); }
 }
-if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
-document.body.addEventListener('click', function autoStart(e) {
-  if (e.target.closest('button,input,.volume-wrap')) return;
-  if (!isPlaying && music) { initAudioAnalyzer(); if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); music.play().then(() => { musicBtn.textContent = '⏸'; musicBtn.classList.add('playing'); isPlaying = true; }).catch(()=>{}); }
-  document.body.removeEventListener('click', autoStart);
-}, {once:true});
+$('musicBtn').addEventListener('click', toggleMusic);
 
+// TOAST
 const toastEl = $('toast');
-function showToast(msg) {
-  if (!toastEl) return;
-  toastEl.textContent = msg;
-  toastEl.classList.add('show');
-  clearTimeout(toastEl._t);
-  toastEl._t = setTimeout(() => toastEl.classList.remove('show'), 3000);
-}
+function showToast(msg) { if (!toastEl) return; toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastEl._t); toastEl._t=setTimeout(()=>toastEl.classList.remove('show'),2500); }
+
+// EASTER EGG
 let titleClicks = 0;
-const titleEgg = $('titleEgg');
-if (titleEgg) titleEgg.addEventListener('click', () => {
-  titleClicks++;
-  if (titleClicks >= 5) {
-    titleClicks = 0;
-    showToast('🎁 Kejutan! Selamat Natal ya! 🎄');
-    for (let i = 0; i < 5; i++) setTimeout(launchFirework, i*200);
-    for (let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        const e = document.createElement('div');
-        e.textContent = ['🎁','🎅','🎄','⭐','🔔','✨'][Math.floor(Math.random()*6)];
-        e.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-50px;font-size:${Math.random()*2+1.5}rem;z-index:9999;pointer-events:none;transition:transform 4s linear,opacity 4s`;
-        document.body.appendChild(e);
-        setTimeout(() => { e.style.transform = `translateY(${window.innerHeight+100}px) rotate(360deg)`; e.style.opacity = '0'; }, 50);
-        setTimeout(() => e.remove(), 4000);
-      }, i*80);
-    }
-  }
-});
-let badgeClicks = 0;
-const badgeSecret = $('badgeSecret');
-if (badgeSecret) badgeSecret.addEventListener('click', () => {
-  badgeClicks++;
-  if (badgeClicks >= 3) { badgeClicks = 0; showToast('💌 Psst... Santa titip pesan: "Jadi anak baik ya!" 🎅'); }
-});
-const santaClick = $('santaClick');
-if (santaClick) santaClick.addEventListener('click', e => {
-  e.stopPropagation();
-  showToast('🎅 "Ho Ho Ho! Merry Christmas!"');
-  for (let i = 0; i < 3; i++) setTimeout(launchFirework, i*200);
+$('titleEgg').addEventListener('click', () => { if (++titleClicks >= 5) { titleClicks=0; showToast('🎁 Kejutan! Selamat Natal! 🎄'); for(let i=0;i<5;i++) setTimeout(launchFirework, i*200); }});
+
+// FORTUNE COOKIE
+const FORTUNES = ["Keberuntungan besar sedang menantimu! 🌟","Senyummu membawa kebahagiaan. 😊","Rezekimu berlimpah musim ini. ❄️","Orang tersayang selalu sehat. ❤️","Mimpimu akan jadi kenyataan! ✨","Kebahagiaan ada di hal sederhana. 🎁","Hatimu kuat melewati apapun. 💪","Kejutan indah menantimu. 🎄","Peluang baru sambut dengan senyum! 🎆","Cinta menemukan jalannya. 💕","Kesehatan & rezeki mengalir. 💰","Doamu segera dikabulkan. 🙏","Dikelilingi orang tulus. 👨‍👩‍👧","Petualangan indah di depan! 🗺️","Bintang keberuntunganmu bersinar. ⭐","Kamu lebih hebat dari dugaan. 🦁","Penuh tawa & kehangatan. 🏠","Sesuatu baik akan datang. 🌈","Bertemu seseorang istimewa. 🤝","Rezeki tak salah alamat. 💎","Hati tenang saat berserah. 🕊️","Keajaiban Natal itu nyata. 🎅","Impian terwujud cepat. 🚀","Kasih selalu menyertaimu. 💝","Keberanianmu berbuah manis. 🍯","Alasan seseorang tersenyum. 😊","Yang hilang diganti lebih baik. 🌱","Tahun depan penuh berkah. 🌾","Kebaikanmu berlipat ganda. ✨","Yang dirindukan sedang datang. 📦","Kamu pantas dapat yang terbaik. 👑","Keluarga selalu dilindungi. 🛡️","Jangan menyerah, hasil dekat. 🔥","Sahabat sejati selalu ada. 🤗","Punya kekuatan melewati ini. 🌊","Cahayamu menerangi banyak orang. 💡","Langkahmu makin dekat tujuan. 👣","Musim ini penuh berkat. 🎊","Kebahagiaan di tempat tak terduga. 🗝️","Hati ringan & bahagia tahun depan. 🎈","Kamu berkat bagi sekitar. 🌟","Kerja keras berbuah manis. 🍎","Kesabaran terbayar indah. 🌸","Senyum manis membawa untung. 🍀","Jangan lupa bahagia. 😄","Kedamaian menyertaimu. 🔥","Cinta sejati di waktu tepat. 💒","Tahun pertumbuhan & belajar. 🌳","Dikelilingi orang baik. 👥","Restu menyertai langkahmu. 🕊️"];
+let fortuneCount = parseInt(localStorage.getItem('fortuneCount') || '0');
+function updateFortuneStats() { setText('fortuneCount', fortuneCount); }
+$('cookieBtn').addEventListener('click', () => {
+  if ($('cookieBtn').classList.contains('cracked')) return;
+  fortuneCount++; localStorage.setItem('fortuneCount', fortuneCount); updateFortuneStats();
+  $('cookieBtn').classList.add('cracked'); $('cookieHint').style.display='none';
+  const msg = FORTUNES[Math.floor(Math.random()*FORTUNES.length)];
+  setTimeout(() => { $('fortuneMessage').textContent = '✨ ' + msg + ' ✨'; $('fortuneMessage').classList.add('show'); }, 500);
+  setTimeout(() => { $('cookieBtn').classList.remove('cracked'); $('cookieHint').style.display='block'; $('fortuneMessage').classList.remove('show'); }, 4000);
 });
 
-// 🍪 FORTUNE COOKIE
-const FORTUNES_ID = [
-  "Keberuntungan besar sedang menantimu di tahun depan! 🌟",
-  "Senyummu hari ini akan membawa kebahagiaan untuk orang lain. 😊",
-  "Rezekimu tahun ini akan berlimpah seperti salju di musim dingin. ❄️",
-  "Orang yang kamu sayangi akan selalu sehat & bahagia. ❤️",
-  "Jangan takut bermimpi besar — mimpi itu akan jadi kenyataan! ✨",
-  "Kebahagiaan ada di hal-hal sederhana. Nikmatilah hari ini. 🎁",
-  "Hatimu kuat, lebih kuat dari yang kamu kira. 💪",
-  "Natal ini akan membawa kejutan indah untukmu. 🎄",
-  "Tahun baru membawa peluang baru — sambut dengan senyum! 🎆",
-  "Cinta akan menemukan jalannya kepadamu. 💕",
-  "Kesehatan & rezeki mengalir deras tahun ini. 💰",
-  "Doa yang kamu panjatkan akan segera dikabulkan. 🙏",
-  "Kamu dikelilingi orang-orang yang tulus menyayangimu. 👨‍👩‍👧",
-  "Petualangan indah sedang menantimu di 2027! 🗺️",
-  "Bintang keberuntunganmu sedang bersinar terang. ⭐",
-  "Kamu lebih hebat dari yang kamu pikirkan. Banggalah! 🦁",
-  "Musim ini penuh dengan tawa & kehangatan keluarga. 🏠",
-  "Sesuatu yang baik akan datang minggu ini. 🌈",
-  "Kamu akan bertemu seseorang yang mengubah hidupmu. 🤝",
-  "Rezeki tidak akan pernah salah alamat. 💎",
-  "Hatimu akan tenang saat kamu berserah. 🕊️",
-  "Keajaiban Natal benar-benar ada untukmu tahun ini. 🎅",
-  "Impianmu akan terwujud lebih cepat dari dugaan. 🚀",
-  "Cinta & kasih akan selalu menyertaimu. 💝",
-  "Keberanianmu akan membawa hasil yang manis. 🍯",
-  "Kamu adalah alasan seseorang tersenyum hari ini. 😊",
-  "Yang hilang akan digantikan dengan yang lebih baik. 🌱",
-  "Tahun depan penuh dengan keberkahan untukmu. 🌾",
-  "Kebaikanmu akan kembali berlipat ganda. ✨",
-  "Semua yang kamu rindukan sedang dalam perjalanan. 📦",
-  "Kamu pantas mendapatkan semua hal baik di dunia. 👑",
-  "Keluargamu akan selalu dalam lindungan-Nya. 🛡️",
-  "Jangan pernah menyerah — hasilnya sudah dekat. 🔥",
-  "Sahabat sejatimu akan selalu ada untukmu. 🤗",
-  "Kamu punya kekuatan untuk melewati apapun. 🌊",
-  "Cahaya kecilmu bisa menerangi banyak orang. 💡",
-  "Setiap langkahmu membawa kamu lebih dekat ke tujuan. 👣",
-  "Musim ini adalah musim berkat untukmu. 🎊",
-  "Kamu akan menemukan kebahagiaan di tempat tak terduga. 🗝️",
-  "Tahun depan hatimu akan lebih ringan & bahagia. 🎈",
-  "Kamu adalah berkat untuk orang di sekitarmu. 🌟",
-  "Kerja kerasmu akan segera berbuah manis. 🍎",
-  "Kesabaranmu akan terbayar dengan hal indah. 🌸",
-  "Senyum manismu membawa keberuntungan. 🍀",
-  "Jangan lupa bahagia — kamu berhak atasnya. 😄",
-  "Kehangatan Natal akan membawa kedamaian untukmu. 🔥",
-  "Cinta sejati akan datang di waktu yang tepat. 💒",
-  "Tahun ini penuh dengan pertumbuhan & pembelajaran. 🌳",
-  "Kamu akan dikelilingi orang-orang baik tahun depan. 👥",
-  "Restu & doa akan menyertai setiap langkahmu. 🕊️"
-];
-const FORTUNES_EN = [
-  "A great fortune awaits you in the coming year! 🌟",
-  "Your smile today will bring happiness to others. 😊",
-  "Your blessings will flow like snow in winter. ❄️",
-  "Your loved ones will always be healthy & happy. ❤️",
-  "Don't be afraid to dream big — dreams come true! ✨",
-  "Happiness is in the simple things. Enjoy today. 🎁",
-  "Your heart is strong, stronger than you think. 💪",
-  "This Christmas will bring you a beautiful surprise. 🎄",
-  "New year brings new opportunities — greet them with a smile! 🎆",
-  "Love will find its way to you. 💕",
-  "Health & prosperity will flow this year. 💰",
-  "The prayers you whisper will soon be answered. 🙏",
-  "You are surrounded by people who truly love you. 👨‍👩‍👧",
-  "A beautiful adventure awaits you in 2027! 🗺️",
-  "Your lucky star is shining brightly. ⭐",
-  "You're more amazing than you think. Be proud! 🦁",
-  "This season is full of laughter & family warmth. 🏠",
-  "Something good is coming this week. 🌈",
-  "You'll meet someone who changes your life. 🤝",
-  "Blessings never go to the wrong address. 💎",
-  "Your heart will find peace when you surrender. 🕊️",
-  "Christmas miracles really exist for you this year. 🎅",
-  "Your dreams will come true sooner than expected. 🚀",
-  "Love & kindness will always accompany you. 💝",
-  "Your courage will bring sweet results. 🍯",
-  "You're the reason someone smiles today. 😊",
-  "What's lost will be replaced with something better. 🌱",
-  "Next year is full of blessings for you. 🌾",
-  "Your kindness will come back multiplied. ✨",
-  "All you long for is on its way. 📦",
-  "You deserve all the good things in the world. 👑",
-  "Your family will always be under His protection. 🛡️",
-  "Never give up — the result is near. 🔥",
-  "Your true friend will always be there for you. 🤗",
-  "You have the strength to overcome anything. 🌊",
-  "Your small light can illuminate many. 💡",
-  "Every step brings you closer to your goal. 👣",
-  "This season is a season of blessing for you. 🎊",
-  "You'll find joy in unexpected places. 🗝️",
-  "Next year your heart will be lighter & happier. 🎈",
-  "You're a blessing to those around you. 🌟",
-  "Your hard work will soon bear sweet fruit. 🍎",
-  "Your patience will be rewarded with beautiful things. 🌸",
-  "Your sweet smile brings good luck. 🍀",
-  "Don't forget to be happy — you deserve it. 😄",
-  "The warmth of Christmas will bring you peace. 🔥",
-  "True love will come at the right time. 💒",
-  "This year is full of growth & learning. 🌳",
-  "You'll be surrounded by good people next year. 👥",
-  "Blessings & prayers will accompany your every step. 🕊️"
-];
-let fortuneClickCount = parseInt(localStorage.getItem('fortuneCount') || '0');
-let cookieAnimating = false;
-function updateFortuneStats() {
-  setText('fortuneCount', fortuneClickCount);
-  setText('fortuneTotal', currentLang === 'id' ? FORTUNES_ID.length : FORTUNES_EN.length);
-}
-const cookieBtn = $('cookieBtn');
-const fortuneMsg = $('fortuneMessage');
-const cookieHint = $('cookieHint');
-if (cookieBtn) cookieBtn.addEventListener('click', () => {
-  if (cookieAnimating) return;
-  cookieAnimating = true;
-  fortuneClickCount++;
-  localStorage.setItem('fortuneCount', fortuneClickCount);
-  updateFortuneStats();
-  cookieBtn.classList.add('cracked');
-  cookieHint.style.display = 'none';
-  const list = currentLang === 'id' ? FORTUNES_ID : FORTUNES_EN;
-  const fortune = list[Math.floor(Math.random() * list.length)];
-  const isRare = Math.random() < 0.15;
-  setTimeout(() => {
-    fortuneMsg.textContent = '✨ ' + fortune + ' ✨';
-    fortuneMsg.classList.add('show');
-    if (isRare) {
-      fortuneMsg.classList.add('rare');
-      showToast('🌟 Pesan langka! Keberuntungan spesial!');
-      for (let i = 0; i < 5; i++) setTimeout(launchFirework, i*150);
-      for (let i = 0; i < 30; i++) {
-        setTimeout(() => {
-          const c = document.createElement('div');
-          c.textContent = ['✨','🌟','⭐','💫'][Math.floor(Math.random()*4)];
-          c.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-30px;font-size:${Math.random()*1.5+1}rem;z-index:9999;pointer-events:none;transition:transform 3s linear,opacity 3s`;
-          document.body.appendChild(c);
-          setTimeout(() => { c.style.transform = `translateY(${window.innerHeight+100}px) rotate(${Math.random()*720}deg)`; c.style.opacity = '0'; }, 50);
-          setTimeout(() => c.remove(), 3100);
-        }, i*40);
-      }
-    } else {
-      fortuneMsg.classList.remove('rare');
-    }
-  }, 700);
-  setTimeout(() => {
-    cookieBtn.classList.remove('cracked');
-    cookieBtn.style.opacity = '0';
-    cookieBtn.style.transform = 'scale(0)';
-    setTimeout(() => {
-      cookieBtn.style.transition = 'all .4s';
-      cookieBtn.style.opacity = '1';
-      cookieBtn.style.transform = 'scale(1)';
-      cookieHint.style.display = 'block';
-      cookieAnimating = false;
-    }, 300);
-  }, 5000);
-});
-
-// 🎁 ADVENT CALENDAR
-const ADVENT_DATA = [
-  {e:'🎄',m:'Pohon Natal melambangkan kehidupan yang selalu hijau!'},
-  {e:'🎅',m:'Santa Claus berasal dari Santo Nikolas, uskup abad ke-4.'},
-  {e:'⭐',m:'Bintang Natal mengingatkan pada Bintang Betlehem.'},
-  {e:'🔔',m:'Lonceng Natal melambangkan sukacita & panggilan ibadah.'},
-  {e:'🦌',m:'Rusa Santa ada 8: Dasher, Dancer, Prancer, Vixen, Comet, Cupid, Donner, Blitzen.'},
-  {e:'🎁',m:'Tradisi tukar kado berasal dari Romawi kuno, lho!'},
-  {e:'🕯️',m:'Lilin Natal melambangkan terang yang mengusir kegelapan.'},
-  {e:'🍪',m:'Gingerbread pertama dibuat di Eropa abad pertengahan.'},
-  {e:'☃️',m:'Manusia salju jadi simbol musim dingin sejak abad pertengahan.'},
-  {e:'🍬',m:'Candy cane bentuknya menyerupai tongkat gembala.'},
-  {e:'🎶',m:'"Jingle Bells" awalnya lagu Thanksgiving, bukan Natal!'},
-  {e:'🎀',m:'Warna merah-hijau: hijau = kehidupan, merah = kasih.'},
-  {e:'🥛',m:'Susu + cookies untuk Santa jadi tradisi AS tahun 1930-an.'},
-  {e:'🎄',m:'Pohon Natal pertama dicatat tahun 1510 di Riga, Latvia.'},
-  {e:'🌰',m:'Chestnut roasting jadi lagu populer sejak tahun 1946.'},
-  {e:'🎁',m:'Kado dibungkus pertama kali di Jerman abad ke-16.'},
-  {e:'🕊️',m:'Merpati adalah simbol perdamaian & kasih.'},
-  {e:'✨',m:'Tinsel pertama dibuat dari perak asli di Jerman, 1610.'},
-  {e:'🦌',m:'Rudolph diciptakan tahun 1939 oleh Montgomery Ward.'},
-  {e:'🎅',m:'Santa tinggal di Kutub Utara menurut legenda modern.'},
-  {e:'🎶',m:'"Silent Night" pertama kali dinyanyikan tahun 1818 di Austria.'},
-  {e:'🎁',m:'Kotak hadiah berwarna merah-keemasan dari tradisi Eropa.'},
-  {e:'🎄',m:'Pohon Natal di Rockefeller Center mulai tahun 1931.'},
-  {e:'🎉',m:'Besok Natal! Siapkan hadiah & doa terbaikmu!'}
-];
+// ADVENT
+const ADVENT = [{e:'🎄',m:'Pohon Natal lambang kehidupan!'},{e:'🎅',m:'Santa dari Santo Nikolas.'},{e:'⭐',m:'Bintang Betlehem.'},{e:'🔔',m:'Lonceng sukacita.'},{e:'🦌',m:'Rusa Santa ada 8.'},{e:'🎁',m:'Tradisi tukar kado Romawi.'},{e:'🕯️',m:'Lilin lambang terang.'},{e:'🍪',m:'Gingerbread abad pertengahan.'},{e:'☃️',m:'Simbol musim dingin.'},{e:'🍬',m:'Candy cane tongkat gembala.'},{e:'🎶',m:'Jingle Bells lagu Thanksgiving!'},{e:'🎀',m:'Hijau=kehidupan, Merah=kasih.'},{e:'🥛',m:'Susu+cookies tradisi AS.'},{e:'🎄',m:'Pohon Natal pertama 1510.'},{e:'🌰',m:'Chestnut roasting populer 1946.'},{e:'🎁',m:'Kado dibungkus dari Jerman.'},{e:'🕊️',m:'Merpati simbol damai.'},{e:'✨',m:'Tinsel dari perak Jerman.'},{e:'🦌',m:'Rudolph diciptakan 1939.'},{e:'🎅',m:'Santa di Kutub Utara.'},{e:'🎶',m:'Silent Night 1818.'},{e:'🎁',m:'Kotak merah-keemasan Eropa.'},{e:'🎄',m:'Rockefeller mulai 1931.'},{e:'🎉',m:'Besok Natal! Siapkan hadiah!'}];
 function buildAdvent() {
-  const grid = $('adventGrid'); if (!grid) return;
-  grid.innerHTML = '';
+  const grid = $('adventGrid'); if (!grid) return; grid.innerHTML='';
   const opened = JSON.parse(localStorage.getItem('adventOpened') || '[]');
-  const now = new Date();
-  const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
-  let canOpen = [];
-  if (y > 2026 || (y === 2026 && m > 11)) canOpen = Array.from({length:24},(_,i)=>i+1);
-  else if (y === 2026 && m === 11) canOpen = Array.from({length:Math.min(d,24)},(_,i)=>i+1);
-  for (let i = 1; i <= 24; i++) {
-    const box = document.createElement('div');
-    box.className = 'advent-box';
-    const isOpened = opened.includes(i);
-    const canBe = canOpen.includes(i);
-    if (isOpened) {
-      box.classList.add('opened');
-      box.innerHTML = `<div class="advent-num">${i}</div><div class="advent-emoji">${ADVENT_DATA[i-1].e}</div>`;
-      box.title = ADVENT_DATA[i-1].m;
-    } else if (canBe) {
-      if (y === 2026 && m === 11 && d === i) box.classList.add('today');
-      box.innerHTML = `<div class="advent-num">${i}</div><div class="advent-day">${i}</div>`;
-      box.addEventListener('click', () => openAdvent(i));
-    } else {
-      box.classList.add('locked');
-      box.innerHTML = `<div class="advent-num">${i}</div><div class="advent-day">🔒</div>`;
-    }
+  const now = new Date(), y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+  let can = []; if (y>2026||(y===2026&&m>11)) can = Array.from({length:24},(_,i)=>i+1); else if (y===2026&&m===11) can = Array.from({length:Math.min(d,24)},(_,i)=>i+1);
+  for (let i=1;i<=24;i++) {
+    const box = document.createElement('div'); box.className='advent-box';
+    if (opened.includes(i)) { box.classList.add('opened'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-emoji">${ADVENT[i-1].e}</div>`; }
+    else if (can.includes(i)) { if(y===2026&&m===11&&d===i) box.classList.add('today'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-day">${i}</div>`; box.onclick=()=>{ const op=JSON.parse(localStorage.getItem('adventOpened')||'[]'); op.push(i); localStorage.setItem('adventOpened',JSON.stringify(op)); showToast(ADVENT[i-1].e+' '+ADVENT[i-1].m); buildAdvent(); }; }
+    else { box.classList.add('locked'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-day">🔒</div>`; }
     grid.appendChild(box);
   }
-  setText('adventProgress', `${opened.length}/24 ${I18N[currentLang].adventProgress}${opened.length === 24 ? ' 🎉' : ''}`);
-}
-function openAdvent(day) {
-  const opened = JSON.parse(localStorage.getItem('adventOpened') || '[]');
-  if (opened.includes(day)) return;
-  opened.push(day);
-  localStorage.setItem('adventOpened', JSON.stringify(opened));
-  const data = ADVENT_DATA[day-1];
-  showToast(`${data.e} ${data.m}`);
-  for (let i = 0; i < 20; i++) {
-    setTimeout(() => {
-      const c = document.createElement('div');
-      c.textContent = ['🎊','✨','⭐','🎁','🎄'][Math.floor(Math.random()*5)];
-      c.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-30px;font-size:${Math.random()*1.5+1}rem;z-index:9999;pointer-events:none;transition:transform 3s linear,opacity 3s`;
-      document.body.appendChild(c);
-      setTimeout(() => { c.style.transform = `translateY(${window.innerHeight+100}px) rotate(${Math.random()*720}deg)`; c.style.opacity = '0'; }, 50);
-      setTimeout(() => c.remove(), 3100);
-    }, i*40);
-  }
-  setTimeout(buildAdvent, 900);
+  setText('adventProgress', `${opened.length}/24 ${I18N[currentLang].adventProgress}`);
 }
 
-// 💬 REACTION WALL
-const REACTION_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
-function buildRWPicker() {
-  const p = $('rwPicker'); if (!p) return;
-  p.innerHTML = '';
-  REACTION_EMOJIS.forEach(emoji => {
-    const b = document.createElement('button');
-    b.textContent = emoji;
-    b.addEventListener('click', () => sendReaction(emoji));
-    p.appendChild(b);
-  });
+// REACTION
+const RW_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
+function buildRW() {
+  const p = $('rwPicker'); if(!p) return; p.innerHTML='';
+  RW_EMOJIS.forEach(e => { const b=document.createElement('button'); b.textContent=e; b.onclick=()=>{ const w=$('rwWall'), el=document.createElement('div'); el.className='rw-bubble'; el.textContent=e; el.style.left=(Math.random()*80+10)+'%'; el.style.bottom='10px'; w.appendChild(el); setTimeout(()=>el.remove(),3000); showToast(e+' Dikirim!'); }; p.appendChild(b); });
 }
-function getReactions() {
-  try { return JSON.parse(localStorage.getItem('reactions') || '{}'); } catch { return {}; }
-}
-function sendReaction(emoji) {
-  const data = getReactions();
-  data[emoji] = (data[emoji] || 0) + 1;
-  localStorage.setItem('reactions', JSON.stringify(data));
-  const wall = $('rwWall'); if (!wall) return;
-  const b = document.createElement('div');
-  b.className = 'rw-bubble';
-  b.textContent = emoji;
-  b.style.left = (Math.random() * 80 + 10) + '%';
-  b.style.bottom = '10px';
-  b.style.fontSize = (Math.random() * 1 + 1.2) + 'rem';
-  wall.appendChild(b);
-  setTimeout(() => b.remove(), 3000);
-  updateRWTotal();
-  showToast(`${emoji} Dikirim!`);
-}
-function updateRWTotal() {
-  const data = getReactions();
-  let total = 0;
-  for (const k in data) total += data[k];
-  setText('rwTotal', `${total} ${I18N[currentLang].rwTotal}`);
-}
-const confettiBtn = $('confettiBtn');
-if (confettiBtn) confettiBtn.addEventListener('click', () => {
-  for (let i = 0; i < 50; i++) {
-    setTimeout(() => {
-      const c = document.createElement('div');
-      c.textContent = ['🎊','🎉','✨','⭐','🎁'][Math.floor(Math.random()*5)];
-      c.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-30px;font-size:${Math.random()*1.5+1}rem;z-index:9999;pointer-events:none;transition:transform 3s linear,opacity 3s`;
-      document.body.appendChild(c);
-      setTimeout(() => { c.style.transform = `translateY(${window.innerHeight+100}px) rotate(${Math.random()*720}deg)`; c.style.opacity = '0'; }, 50);
-      setTimeout(() => c.remove(), 3100);
-    }, i*30);
-  }
-  showToast('🎊 Confetti!');
-});
 
 // FIREWORKS
-const canvas = $('fireworks');
-const ctx = canvas ? canvas.getContext('2d') : null;
-let particles = [];
-let fireworksActive = false;
-function resizeCanvas() { if (canvas) { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } }
-resizeCanvas(); window.addEventListener('resize', resizeCanvas);
-const colors = ['#ff3b3b','#ffd700','#00e676','#40c4ff','#ff80ab','#ffffff','#ffab40'];
-function createFirework(x, y) {
-  const count = 80 + Math.floor(Math.random()*50);
-  for (let i = 0; i < count; i++) {
-    const angle = (Math.PI*2*i)/count + Math.random()*0.2;
-    const speed = Math.random()*7+2;
-    particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:1,color:colors[Math.floor(Math.random()*colors.length)],size:Math.random()*3+1});
-  }
-}
-function animateFireworks() {
-  if (!fireworksActive || !ctx) return;
-  ctx.globalCompositeOperation = 'destination-out';
-  ctx.fillStyle = 'rgba(0,0,0,.15)';
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.globalCompositeOperation = 'lighter';
-  particles = particles.filter(p => p.life > 0);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy; p.vy += 0.08;
-    p.vx *= 0.99; p.vy *= 0.99; p.life -= 0.015;
-    const radius = Math.max(0.1, p.size*p.life);
-    const alpha = Math.max(0, Math.min(1, p.life));
-    ctx.beginPath(); ctx.arc(p.x, p.y, radius, 0, Math.PI*2);
-    ctx.fillStyle = p.color; ctx.globalAlpha = alpha; ctx.fill();
-    ctx.globalAlpha = 1;
-  });
-  requestAnimationFrame(animateFireworks);
-}
-function launchFirework() { if (canvas) createFirework(Math.random()*canvas.width, Math.random()*(canvas.height*0.6)+100); }
-function startFireworks() {
-  if (fireworksActive || !canvas) return;
-  fireworksActive = true;
-  animateFireworks();
-  for (let i = 0; i < 15; i++) setTimeout(launchFirework, i*350);
-  const interval = setInterval(() => { if (!fireworksActive) return clearInterval(interval); launchFirework(); }, 700);
-  setTimeout(() => { fireworksActive = false; clearInterval(interval); ctx.clearRect(0,0,canvas.width,canvas.height); }, 60000);
+const canvas = $('fireworks'), ctx = canvas ? canvas.getContext('2d') : null; let particles=[], fwActive=false;
+if (canvas) { canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+function launchFirework() { if(!canvas) return; const x=Math.random()*canvas.width, y=Math.random()*(canvas.height*0.6)+100; for(let i=0;i<60;i++){ const a=(Math.PI*2*i)/60; const s=Math.random()*6+2; particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1,color:['#ff3b3b','#ffd700','#00e676','#40c4ff'][Math.floor(Math.random()*4)],size:Math.random()*2+1}); } }
+function animateFW() {
+  if(!fwActive||!ctx) return; ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='rgba(0,0,0,.2)'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.globalCompositeOperation='lighter';
+  particles = particles.filter(p=>p.life>0);
+  particles.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; p.vy+=0.08; p.life-=0.02; ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(0.1,p.size*p.life),0,Math.PI*2); ctx.fillStyle=p.color; ctx.globalAlpha=Math.max(0,p.life); ctx.fill(); });
+  requestAnimationFrame(animateFW);
 }
 
-const tickAudio = new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT");
-tickAudio.volume = 0.3;
-let tickPlayed = false;
-function updateMiniCountdown() {
-  const diff = newYearTarget - Date.now();
-  if (diff <= 0) {
-    const mt = $('miniTimer'); if (mt) mt.innerHTML = '🎉 ' + (currentLang === 'id' ? 'Selamat Tahun Baru!' : 'Happy New Year!');
-    return;
-  }
-  setText('mD', String(Math.floor(diff/(1000*60*60*24))).padStart(2,'0'));
-  setText('mH', String(Math.floor((diff/(1000*60*60))%24)).padStart(2,'0'));
-  setText('mM', String(Math.floor((diff/(1000*60))%60)).padStart(2,'0'));
-}
-let doneTriggered = false;
+// MAIN
+let done = false;
 function update() {
   const diff = target - Date.now();
-  updateTodayDate(); updateClock(); updateProgress(); updateMiniCountdown();
+  updateTodayDate(); updateClock(); updateProgress();
+  const nDiff = newYearTarget - Date.now();
+  if (nDiff > 0) { $('mD').textContent=String(Math.floor(nDiff/(1000*60*60*24))).padStart(2,'0'); $('mH').textContent=String(Math.floor((nDiff/(1000*60*60))%24)).padStart(2,'0'); $('mM').textContent=String(Math.floor((nDiff/(1000*60))%60)).padStart(2,'0'); }
+  
   if (diff <= 0) {
-    if (!doneTriggered) {
-      doneTriggered = true;
-      const t = $('timer');
-      if (t) t.outerHTML = `
-        <div class="done-wrap">
-          <div class="done-emoji">🎄 🎁 🎅 🎁 🎄</div>
-          <h2 class="done-title">SELAMAT NATAL<br>& TAHUN BARU 2027</h2>
-          <div class="done-divider"></div>
-          <p class="done-sub">✨ Selamat menikmati libur Nataru! ✨</p>
-          <p class="done-message">Semoga libur ini penuh sukacita,<br>kebersamaan, dan momen indah<br>bersama orang tersayang.</p>
-          <div class="done-divider"></div>
-          <div class="done-emoji">🎊 ✨ 🎊</div>
-          <button class="replay-btn" onclick="startFireworks()">🎆 Ulangi Kembang Api</button>
-        </div>`;
-      startFireworks();
-    }
+    if (!done) { done=true; $('timer').outerHTML = `<div class="done-wrap"><div class="done-emoji">🎄 🎁 🎅 🎁 🎄</div><h2 class="done-title">SELAMAT NATAL<br>& TAHUN BARU 2027</h2><p class="done-sub">✨ Selamat menikmati libur Nataru! ✨</p><div class="done-emoji">🎊 ✨ 🎊</div><button class="replay-btn" onclick="startFW()">🎆 Ulangi Kembang Api</button></div>`; startFW(); }
     return;
   }
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff/(1000*60*60))%24);
-  const m = Math.floor((diff/(1000*60))%60);
-  const s = Math.floor((diff/1000)%60);
-  setText('d', String(d).padStart(2,'0'));
-  setText('h', String(h).padStart(2,'0'));
-  setText('m', String(m).padStart(2,'0'));
-  setText('s', String(s).padStart(2,'0'));
-  if (d === 0 && h === 0 && m === 0 && s <= 10 && s > 0 && !tickPlayed) {
-    tickAudio.play().catch(()=>{});
-    tickPlayed = true;
-    setTimeout(() => tickPlayed = false, 1000);
-  }
+  const d=Math.floor(diff/86400000), h=Math.floor((diff/3600000)%24), m=Math.floor((diff/60000)%60), s=Math.floor((diff/1000)%60);
+  setText('d',String(d).padStart(2,'0')); setText('h',String(h).padStart(2,'0')); setText('m',String(m).padStart(2,'0')); setText('s',String(s).padStart(2,'0'));
 }
-setInterval(() => {
-  if (document.visibilityState === 'visible') { updateTodayDate(); buildCalendar(); countWeekends(); buildAdvent(); }
-}, 60*1000);
+function startFW() { if(fwActive||!canvas) return; fwActive=true; animateFW(); for(let i=0;i<5;i++) setTimeout(launchFirework,i*300); setTimeout(()=>{ fwActive=false; ctx.clearRect(0,0,canvas.width,canvas.height); }, 15000); }
 
-applyLang();
-buildCalendar();
-countWeekends();
-updateVisitorCounter();
-updateQuote();
-buildAdvent();
-buildRWPicker();
-updateRWTotal();
-updateFortuneStats();
-update();
-setInterval(update, 1000);
+applyLang(); buildCalendar(); countWeekends(); buildAdvent(); buildRW(); updateFortuneStats(); update(); setInterval(update, 1000); setInterval(updateQuote, 8000);
+window.addEventListener('resize', () => { if(canvas){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; } });
 </script>
 </body>
 </html>
