@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
 <meta name="theme-color" content="#0d1f17">
-<meta name="description" content="Countdown menuju Libur Nataru 2026">
+<meta name="description" content="Countdown menuju Hari Natal 2026">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
@@ -287,7 +287,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 
   <p class="greeting fade-in d3" id="greeting">"Semoga tahun ini penuh berkat & kebahagiaan 🎁"</p>
   <p class="target-date fade-in d3">
-    📅 <span>10 Desember 2026</span> • 00:00 WIB
+    📅 <span>25 Desember 2026</span> • 00:00 WIB
   </p>
 
   <div class="progress-wrap fade-in d4">
@@ -405,8 +405,8 @@ h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:9
 
 <script>
 const CONFIG = {
-  targetDate: "2026-12-10T00:00:00+07:00",
-  startDate: "2025-12-10T00:00:00+07:00",
+  targetDate: "2026-12-25T00:00:00+07:00", // 🎯 DIUBAH KE 25 DESEMBER 2026
+  startDate: "2025-12-25T00:00:00+07:00",  // 📊 1 tahun penuh
   newYearDate: "2027-01-01T00:00:00+07:00"
 };
 const target = new Date(CONFIG.targetDate).getTime();
@@ -588,16 +588,13 @@ function buildCalendar() {
   const cal = $('miniCal'); if (!cal) return;
   cal.innerHTML = '';
   const dayLabels = currentLang === 'id' ? ['S','S','R','K','J','S','M'] : ['S','M','T','W','T','F','S'];
-  // Day labels
   dayLabels.forEach(d => {
     const el = document.createElement('div');
     el.className = 'cal-day';
     el.textContent = d;
     cal.appendChild(el);
   });
-  // Empty slots for first week (1 Des 2026 = Selasa)
-  const firstDay = new Date(2026, 11, 1).getDay(); // 0=Sunday
-  // Kalau Indonesia pakai Minggu dulu, di sini sama
+  const firstDay = new Date(2026, 11, 1).getDay(); // 1 Des 2026 = Selasa
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
     empty.style.width = 'calc((100% - 18px) / 7)';
@@ -610,7 +607,7 @@ function buildCalendar() {
     el.className = 'cal-date'; el.textContent = i;
     const date = new Date(2026, 11, i);
     if (now.getFullYear() === 2026 && now.getMonth() === 11 && now.getDate() === i) el.classList.add('today');
-    else if (i === 10) el.classList.add('target');
+    else if (i === 25) el.classList.add('target'); // 🎯 HIGHLIGHT TANGGAL 25
     else if (date < now) el.classList.add('past');
     cal.appendChild(el);
   }
