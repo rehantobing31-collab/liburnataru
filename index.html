@@ -10,23 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
-:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.7)}
+:root{--a1:#ff3b3b;--a2:#ffd700;--a3:#00e676;--tm:#fff;--ts:#a8e6c0;--pb:rgba(10,20,15,.75)}
 html,body{min-height:100vh;overflow-x:hidden}
 body{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--tm);font-family:'Poppins',sans-serif;padding:20px;position:relative;background:#050a08;overflow-x:hidden; -webkit-font-smoothing:antialiased;}
 
-/* 🖼️ BACKGROUND STATIS (RINGAN) */
+/* 🖼️ BACKGROUND STATIS */
 .bg-layer{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(5,15,10,.7),rgba(5,15,10,.85)),url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=1920&q=80');background-size:cover;background-position:center;background-attachment:fixed;}
 .cinematic-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 0%,transparent 30%,rgba(0,0,0,.9) 100%);}
 
-/* ❄️ EFEK SALJU (OPTIMASI GPU PAKAI TRANSFORM) */
+/* ❄️ SALJU */
 .snow-container{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}
 .snowflake{position:absolute;top:-20px;background:#fff;border-radius:50%;animation:snowfall linear infinite;box-shadow:0 0 6px rgba(255,255,255,.8); will-change: transform;}
-@keyframes snowfall{
-  0%{transform:translate3d(0, -10vh, 0) rotate(0);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
-  100%{transform:translate3d(80px, 110vh, 0) rotate(360deg);opacity:0}
-}
+@keyframes snowfall{0%{transform:translate3d(0, -10vh, 0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translate3d(80px, 110vh, 0) rotate(360deg);opacity:0}}
 
 /* 🎅 KARAKTER JALAN */
 .santa-walk{position:fixed;top:15%;left:-120px;font-size:clamp(2rem,5vw,3.5rem);z-index:4;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,59,59,.7));animation:santaWalk 25s linear infinite; will-change: transform;}
@@ -49,7 +44,7 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 .music-btn.playing{animation:musicSpin 3s linear infinite}
 @keyframes musicSpin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 
-/* 🛡️ KONTAINER UTAMA (GLASSMORPHISM PREMIUM, NO LAG) */
+/* 🛡️ KONTAINER UTAMA */
 .container{position:relative;z-index:10;text-align:center;max-width:950px;width:100%;padding:2.5rem 2rem;background:var(--pb);border:1px solid rgba(255,215,0,.3);border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.15); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);}
 .container::before{content:'';position:absolute;inset:-2px;border-radius:26px;padding:2px;background:linear-gradient(90deg,#ff3b3b,#ffd700,#00e676,#40c4ff,#ff3b3b);background-size:300% 100%;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderFlow 6s linear infinite;z-index:-1;pointer-events:none;opacity:.9}
 @keyframes borderFlow{to{background-position:300% center}}
@@ -57,14 +52,7 @@ body{display:flex;flex-direction:column;justify-content:center;align-items:cente
 .today-date{font-size:.8rem;color:var(--ts);letter-spacing:2px;margin-bottom:1rem}
 .badge{display:inline-block;padding:.4rem 1.2rem;background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.5);border-radius:50px;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;color:#ffd700;font-weight:600}
 
-/* 🌟 JUDUL SUPER MEWAH (EFEK GLOW BERLAPIS) */
-h1{
-  font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:3px;
-  background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 30%,#00e676 70%,#ffd700 100%);
-  background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:holoShine 6s linear infinite;margin-bottom:.5rem;cursor:pointer;
-  filter:drop-shadow(0 0 10px rgba(255,215,0,.6)) drop-shadow(0 0 25px rgba(255,59,59,.3));
-}
+h1{font-family:'Cinzel',serif;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:3px;background:linear-gradient(135deg,#ff3b3b 0%,#ffd700 30%,#00e676 70%,#ffd700 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:holoShine 6s linear infinite;margin-bottom:.5rem;cursor:pointer;filter:drop-shadow(0 0 10px rgba(255,215,0,.6)) drop-shadow(0 0 25px rgba(255,59,59,.3));}
 @keyframes holoShine{to{background-position:200% center}}
 
 .subtitle{font-size:clamp(.8rem,1.8vw,1rem);color:var(--ts);letter-spacing:4px;text-transform:uppercase;margin-bottom:.8rem;font-weight:300}
@@ -78,29 +66,12 @@ h1{
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));background-size:200% auto;border-radius:10px;width:0;transition:width 1s ease;animation:progressShine 3s linear infinite}
 @keyframes progressShine{to{background-position:200% center}}
 
-/* 💎 KOTAK COUNTDOWN PREMIUM (3D LOOK) */
 #timer{display:flex;gap:clamp(.5rem,2vw,1.2rem);flex-wrap:wrap;justify-content:center; perspective: 1000px;}
-.box{
-  position:relative; background:linear-gradient(145deg, rgba(30,50,40,.9), rgba(10,20,15,.95));
-  border:1px solid rgba(255,215,0,.4); padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem);
-  border-radius:16px; text-align:center; min-width:clamp(72px,18vw,120px);
-  box-shadow: 0 15px 35px rgba(0,0,0,.8), inset 0 2px 5px rgba(255,255,255,.1), inset 0 -2px 10px rgba(0,0,0,.5);
-  transition: transform .3s, border-color .3s;
-}
+.box{position:relative; background:linear-gradient(145deg, rgba(30,50,40,.9), rgba(10,20,15,.95)); border:1px solid rgba(255,215,0,.4); padding:clamp(1rem,3vw,1.8rem) clamp(.9rem,3vw,2rem); border-radius:16px; text-align:center; min-width:clamp(72px,18vw,120px); box-shadow: 0 15px 35px rgba(0,0,0,.8), inset 0 2px 5px rgba(255,255,255,.1), inset 0 -2px 10px rgba(0,0,0,.5); transition: transform .3s, border-color .3s;}
 .box:hover{ transform: translateY(-5px); border-color: #ffd700; box-shadow: 0 20px 40px rgba(255,215,0,.2), inset 0 2px 5px rgba(255,255,255,.2); }
-.box.box-hari{
-  min-width:clamp(90px,22vw,150px); padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem);
-  background: linear-gradient(145deg, rgba(255,59,59,.25), rgba(20,40,30,.95));
-  border: 2px solid rgba(255,215,0,.6);
-  box-shadow: 0 20px 45px rgba(0,0,0,.9), 0 0 30px rgba(255,59,59,.2), inset 0 2px 5px rgba(255,215,0,.2);
-}
+.box.box-hari{min-width:clamp(90px,22vw,150px); padding:clamp(1.2rem,4vw,2.2rem) clamp(1rem,3.5vw,2.5rem); background: linear-gradient(145deg, rgba(255,59,59,.25), rgba(20,40,30,.95)); border: 2px solid rgba(255,215,0,.6); box-shadow: 0 20px 45px rgba(0,0,0,.9), 0 0 30px rgba(255,59,59,.2), inset 0 2px 5px rgba(255,215,0,.2);}
 .box.box-hari .num{font-size:clamp(2.5rem,8vw,4.5rem)}
-.num{
-  font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;
-  background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));
-}
+.num{font-family:'Cinzel',serif;font-size:clamp(1.9rem,6vw,3.5rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff 0%,var(--a2) 50%,var(--a1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 2px 5px rgba(0,0,0,.5));}
 .label{font-size:clamp(.6rem,1.5vw,.75rem);color:#ffe9a8;text-transform:uppercase;letter-spacing:2px;margin-top:.7rem;font-weight:600;text-shadow: 0 2px 4px rgba(0,0,0,.8);}
 
 .mini-countdown{margin-top:2rem;padding:1rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
@@ -129,36 +100,38 @@ h1{
 @keyframes cookieFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
 @keyframes cookieCrack{0%{transform:scale(1) rotate(0)}20%{transform:scale(1.2) rotate(15deg)}100%{transform:scale(0) rotate(180deg);opacity:0}}
 .cookie-hint{font-size:.75rem;color:var(--ts);opacity:.7;font-style:italic;position:absolute;bottom:-5px;left:50%;transform:translateX(-50%)}
-
 .fortune-message{min-height:100px;padding:1.2rem;background:rgba(255,215,0,.08);border:1px dashed rgba(255,215,0,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Poppins',sans-serif;font-size:.9rem;line-height:1.6;color:#ffe9a8;opacity:0;transform:scale(.9);transition:all .4s}
 .fortune-message.show{opacity:1;transform:scale(1)}
-.fortune-message.rare{background:rgba(255,215,0,.15);border-color:#ffd700;color:#fff;box-shadow:0 0 20px rgba(255,215,0,.4)}
 .fortune-stats{font-size:.7rem;color:var(--ts);margin-top:.9rem;text-align:center}
 .fortune-stats span{color:#ffd700;font-weight:700}
 
+/* 🎁 KALENDER ADVENT (DAUR ULANG JADI KOTAK BERKAT) */
 .advent{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.4);border:1px solid rgba(255,215,0,.3);border-radius:15px}
 .advent-title{font-family:'Cinzel',serif;color:#ffd700;font-size:.9rem;letter-spacing:2px;margin-bottom:.4rem}
 .advent-sub{font-size:.7rem;color:var(--ts);margin-bottom:1rem}
 .advent-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:460px;margin:0 auto}
 .advent-box{aspect-ratio:1;background:linear-gradient(135deg,#b91c1c,#7a0f0f);border:2px solid rgba(255,215,0,.4);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;position:relative;overflow:hidden}
-.advent-box:not(.locked):not(.opened):hover{transform:scale(1.1);box-shadow:0 0 15px rgba(255,215,0,.8);z-index:2}
+.advent-box:hover{transform:scale(1.1);box-shadow:0 0 15px rgba(255,215,0,.8);z-index:2;border-color:#ffd700}
 .advent-box.opened{background:linear-gradient(135deg,#0f5d35,#0a3d23);border-color:rgba(0,230,118,.5);cursor:default}
-.advent-box.locked{background:rgba(40,40,40,.9);color:rgba(255,215,0,.2);cursor:not-allowed;border-color:rgba(255,215,0,.1)}
-.advent-box.today{border-color:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.8);animation:adventPulse 1.5s infinite}
-@keyframes adventPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .advent-num{position:absolute;top:2px;left:4px;font-size:.5rem;color:rgba(255,255,255,.6);font-weight:600}
-.advent-day{font-size:1rem;font-weight:900;color:#ffd700}
+.advent-day{font-size:1rem;font-weight:900;color:#ffd700;text-shadow: 0 0 5px rgba(255,215,0,.5);}
 .advent-box.opened .advent-day{display:none}
-.advent-emoji{font-size:1.3rem;display:none}
+.advent-emoji{font-size:1.3rem;display:none; animation: popIn .3s ease;}
 .advent-box.opened .advent-emoji{display:block}
+@keyframes popIn{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
 .advent-progress{font-size:.72rem;color:var(--ts);margin-top:.8rem;text-align:center}
 
+/* 💬 REACTION WALL (DAUR ULANG PAKAI COUNTER) */
 .reaction-wall{margin-top:1.5rem;padding:1.2rem;background:rgba(0,0,0,.4);border:1px solid rgba(64,196,255,.3);border-radius:15px}
 .rw-title{font-family:'Cinzel',serif;color:#40c4ff;font-size:.85rem;letter-spacing:2px;margin-bottom:.4rem;text-align:center}
 .rw-sub{font-size:.7rem;color:var(--ts);text-align:center;margin-bottom:.9rem}
 .rw-picker{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:.9rem}
-.rw-picker button{width:36px;height:36px;border-radius:8px;background:rgba(64,196,255,.1);border:1px solid rgba(64,196,255,.3);font-size:1.2rem;cursor:pointer;transition:transform .2s;display:flex;align-items:center;justify-content:center}
-.rw-picker button:hover{transform:scale(1.15)}
+.rw-picker button{
+  height:44px; padding: 0 10px; border-radius:8px; background:rgba(64,196,255,.1); border:1px solid rgba(64,196,255,.3);
+  font-size:1.2rem; cursor:pointer; transition:transform .2s; display:flex; align-items:center; justify-content:center; gap: 6px; color: #fff;
+}
+.rw-picker button:hover{transform:scale(1.1); background:rgba(64,196,255,.2);}
+.rw-picker button .count{ font-size: .75rem; font-weight: 700; color: #40c4ff; background: rgba(64,196,255,.2); padding: 2px 6px; border-radius: 10px;}
 .rw-wall{position:relative;min-height:60px;background:rgba(0,0,0,.3);border-radius:8px;padding:8px;overflow:hidden}
 .rw-bubble{position:absolute;font-size:1.2rem;animation:bubbleFloat 3s ease-out forwards;pointer-events:none}
 @keyframes bubbleFloat{0%{transform:translateY(0) scale(0);opacity:0}20%{transform:translateY(-10px) scale(1.2);opacity:1}80%{opacity:.9}100%{transform:translateY(-50px) scale(.8);opacity:0}}
@@ -316,8 +289,8 @@ h1{
   </div>
 
   <div class="advent fade-in d5">
-    <div class="advent-title" id="adventTitle">🎁 KALENDER ADVENT 2026</div>
-    <div class="advent-sub" id="adventSub">Buka satu kotak setiap hari menuju Natal</div>
+    <div class="advent-title" id="adventTitle">🎁 KOTAK BERKAT NATAL</div>
+    <div class="advent-sub" id="adventSub">Klik kotak untuk membuka ayat pilihan</div>
     <div class="advent-grid" id="adventGrid"></div>
     <div class="advent-progress" id="adventProgress">0/24 kotak dibuka</div>
   </div>
@@ -356,8 +329,8 @@ function setText(id, txt) { const el = $(id); if (el) el.textContent = txt; }
 ['contextmenu','selectstart','dragstart','copy','cut'].forEach(evt => document.addEventListener(evt, e => e.preventDefault()));
 
 const I18N = {
-  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KALENDER ADVENT 2026",adventSub:"Buka satu kotak setiap hari menuju Natal",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji",fortuneTitle:"📖 FIRMAN NATAL",fortuneSub:"Klik cookie untuk membuka ayat Alkitab hari ini",cookieHint:"👆 Klik aku!"},
-  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 ADVENT CALENDAR 2026",adventSub:"Open one box each day until Christmas",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"📖 CHRISTMAS SCRIPTURE",fortuneSub:"Click the cookie to reveal today's Bible verse",cookieHint:"👆 Click me!"}
+  id:{subtitle:"Menuju Libur Nataru",greeting:'"Semoga tahun ini penuh berkat & kebahagiaan 🎁"',progress:"Progress",lblD:"Hari",lblH:"Jam",lblM:"Menit",lblS:"Detik",miniTitle:"🎆 Menuju Tahun Baru 2027",mDl:"hari",mHl:"jam",mMl:"menit",weekend:"Weekend Lagi",totalDays:"Total Hari",passed:"Udah Lewat",remain:"Waktu Tersisa",calTitle:"📅 Desember 2026",todayIs:"📅 Hari ini:",treeTitle:"🎄 POHON NATALMU",treeProgress:"Pohon tumbuh:",adventTitle:"🎁 KOTAK BERKAT NATAL",adventSub:"Klik kotak untuk membuka ayat pilihan",adventProgress:"kotak dibuka",rwTitle:"💬 WALL OF CHEERS",rwSub:"Kirim emoji ke dinding kebahagiaan!",rwTotal:"emoji",fortuneTitle:"📖 FIRMAN NATAL",fortuneSub:"Klik cookie untuk membuka ayat Alkitab hari ini",cookieHint:"👆 Klik aku!"},
+  en:{subtitle:"Countdown to Christmas",greeting:'"May this year be full of blessings & happiness 🎁"',progress:"Progress",lblD:"Days",lblH:"Hours",lblM:"Minutes",lblS:"Seconds",miniTitle:"🎆 Countdown to New Year 2027",mDl:"days",mHl:"hours",mMl:"minutes",weekend:"Weekends Left",totalDays:"Total Days",passed:"Passed",remain:"Time Left",calTitle:"📅 December 2026",todayIs:"📅 Today is:",treeTitle:"🎄 YOUR CHRISTMAS TREE",treeProgress:"Tree grown:",adventTitle:"🎁 BLESSING BOXES",adventSub:"Click a box to reveal a Bible verse",adventProgress:"boxes opened",rwTitle:"💬 WALL OF CHEERS",rwSub:"Send emoji to the wall of happiness!",rwTotal:"emojis",fortuneTitle:"📖 CHRISTMAS SCRIPTURE",fortuneSub:"Click the cookie to reveal today's Bible verse",cookieHint:"👆 Click me!"}
 };
 let currentLang = localStorage.getItem('lang') || 'id';
 
@@ -396,7 +369,7 @@ function updateClock() {
   setText('clockWib', `⏰ ${String(wib.getHours()).padStart(2,'0')}:${String(wib.getMinutes()).padStart(2,'0')}:${String(wib.getSeconds()).padStart(2,'0')} WIB`);
 }
 
-// ❄️ SNOW (DIKURANGIN BIAR RINGAN)
+// ❄️ SNOW
 const snowContainer = $('snow');
 if (snowContainer) {
   for (let i = 0; i < 30; i++) {
@@ -482,7 +455,7 @@ function showToast(msg) { if (!toastEl) return; toastEl.textContent=msg; toastEl
 let titleClicks = 0;
 $('titleEgg').addEventListener('click', () => { if (++titleClicks >= 5) { titleClicks=0; showToast('🎁 Kejutan! Selamat Natal! 🎄'); for(let i=0;i<5;i++) setTimeout(launchFirework, i*200); }});
 
-// 📖 AYAT ALKITAB (FIRMAN NATAL)
+// 📖 DATA AYAT (BUAT COOKIE & KOTAK BERKAT)
 const VERSES = [
   "Yohanes 3:16 - Karena begitu besar kasih Allah akan dunia ini, sehingga Ia telah mengaruniakan Anak-Nya yang tunggal, supaya setiap orang yang percaya kepada-Nya tidak binasa, melainkan beroleh hidup yang kekal.",
   "Lukas 2:11 - Hari ini telah lahir bagimu Juruselamat, yaitu Kristus, Tuhan, di kota Daud.",
@@ -503,12 +476,17 @@ const VERSES = [
   "Lukas 2:14 - Kemuliaan bagi Allah di tempat yang mahatinggi dan damai sejahtera di bumi di antara manusia yang berkenan kepada-Nya.",
   "Mazmur 136:1 - Bersyukurlah kepada TUHAN, sebab Ia baik! Bahwasanya untuk selama-lamanya kasih setia-Nya.",
   "Yohanes 8:12 - Maka Yesus berkata pula kepada orang banyak, kata-Nya: Akulah terang dunia; barangsiapa mengikut Aku, ia tidak akan berjalan dalam kegelapan, melainkan ia akan mempunyai terang hidup.",
-  "Efesus 2:8 - Sebab karena kasih karunia kamu diselamatkan oleh iman; itu bukan hasil usahamu, tetapi pemberian Allah."
+  "Efesus 2:8 - Sebab karena kasih karunia kamu diselamatkan oleh iman; itu bukan hasil usahamu, tetapi pemberian Allah.",
+  "Mazmur 46:2 - Allah itu bagi kita tempat perlindungan dan kekuatan, sebagai penolong dalam kesesakan sangat terbukti.",
+  "Yesaya 40:31 - tetapi orang-orang yang menanti-nantikan TUHAN mendapat kekuatan baru: mereka seumpama rajawali yang naik terbang dengan kekuatan sayapnya.",
+  "Yohanes 1:14 - Firman itu telah menjadi manusia, dan diam di antara kita, dan kita telah melihat kemuliaan-Nya, yaitu kemuliaan yang diberikan kepada-Nya sebagai Anak Tunggal Bapa, penuh kasih karunia dan kebenaran.",
+  "Mazmur 96:1-2 - Nyanyikanlah nyanyian baru bagi TUHAN, menyanyilah bagi TUHAN, hai segenap bumi! Menyanyilah bagi TUHAN, pujilah nama-Nya, kabarkanlah keselamatan yang dari pada-Nya dari hari ke hari."
 ];
 
 let fortuneCount = parseInt(localStorage.getItem('fortuneCount') || '0');
 function updateFortuneStats() { setText('fortuneCount', fortuneCount); }
 
+// 🍪 FORTUNE COOKIE LOGIC
 $('cookieBtn').addEventListener('click', () => {
   if ($('cookieBtn').classList.contains('cracked')) return;
   
@@ -519,7 +497,6 @@ $('cookieBtn').addEventListener('click', () => {
   $('cookieBtn').classList.add('cracked'); 
   $('cookieHint').style.display='none';
   
-  // Ambil 1 ayat random
   const msg = VERSES[Math.floor(Math.random()*VERSES.length)];
   
   setTimeout(() => { 
@@ -531,27 +508,35 @@ $('cookieBtn').addEventListener('click', () => {
     $('cookieBtn').classList.remove('cracked'); 
     $('cookieHint').style.display='block'; 
     $('fortuneMessage').classList.remove('show'); 
-  }, 7000);
+  }, 7000); 
 });
 
-// ADVENT
-const ADVENT = [{e:'🎄',m:'Pohon Natal lambang kehidupan!'},{e:'🎅',m:'Santa dari Santo Nikolas.'},{e:'⭐',m:'Bintang Betlehem.'},{e:'🔔',m:'Lonceng sukacita.'},{e:'🦌',m:'Rusa Santa ada 8.'},{e:'🎁',m:'Tradisi tukar kado Romawi.'},{e:'🕯️',m:'Lilin lambang terang.'},{e:'🍪',m:'Gingerbread abad pertengahan.'},{e:'☃️',m:'Simbol musim dingin.'},{e:'🍬',m:'Candy cane tongkat gembala.'},{e:'🎶',m:'Jingle Bells lagu Thanksgiving!'},{e:'🎀',m:'Hijau=kehidupan, Merah=kasih.'},{e:'🥛',m:'Susu+cookies tradisi AS.'},{e:'🎄',m:'Pohon Natal pertama 1510.'},{e:'🌰',m:'Chestnut roasting populer 1946.'},{e:'🎁',m:'Kado dibungkus dari Jerman.'},{e:'🕊️',m:'Merpati simbol damai.'},{e:'✨',m:'Tinsel dari perak Jerman.'},{e:'🦌',m:'Rudolph diciptakan 1939.'},{e:'🎅',m:'Santa di Kutub Utara.'},{e:'🎶',m:'Silent Night 1818.'},{e:'🎁',m:'Kotak merah-keemasan Eropa.'},{e:'🎄',m:'Rockefeller mulai 1931.'},{e:'🎉',m:'Besok Natal! Siapkan hadiah!'}];
+// 🎁 KOTAK BERKAT NATAL LOGIC (DAUR ULANG ADVENT)
 function buildAdvent() {
   const grid = $('adventGrid'); if (!grid) return; grid.innerHTML='';
   const opened = JSON.parse(localStorage.getItem('adventOpened') || '[]');
-  const now = new Date(), y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
-  let can = []; if (y>2026||(y===2026&&m>11)) can = Array.from({length:24},(_,i)=>i+1); else if (y===2026&&m===11) can = Array.from({length:Math.min(d,24)},(_,i)=>i+1);
-  for (let i=1;i<=24;i++) {
+  
+  for (let i=1; i<=24; i++) {
     const box = document.createElement('div'); box.className='advent-box';
-    if (opened.includes(i)) { box.classList.add('opened'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-emoji">${ADVENT[i-1].e}</div>`; }
-    else if (can.includes(i)) { if(y===2026&&m===11&&d===i) box.classList.add('today'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-day">${i}</div>`; box.onclick=()=>{ const op=JSON.parse(localStorage.getItem('adventOpened')||'[]'); op.push(i); localStorage.setItem('adventOpened',JSON.stringify(op)); showToast(ADVENT[i-1].e+' '+ADVENT[i-1].m); buildAdvent(); }; }
-    else { box.classList.add('locked'); box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-day">🔒</div>`; }
+    if (opened.includes(i)) { 
+      box.classList.add('opened'); 
+      box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-emoji">📖</div>`; 
+      box.onclick = () => showToast('📖 ' + VERSES[i-1]);
+    } else { 
+      box.innerHTML=`<div class="advent-num">${i}</div><div class="advent-day">${i}</div>`; 
+      box.onclick=()=>{ 
+        const op=JSON.parse(localStorage.getItem('adventOpened')||'[]'); 
+        if (!op.includes(i)) { op.push(i); localStorage.setItem('adventOpened',JSON.stringify(op)); }
+        showToast('📖 ' + VERSES[i-1]); 
+        buildAdvent(); 
+      }; 
+    }
     grid.appendChild(box);
   }
   setText('adventProgress', `${opened.length}/24 ${I18N[currentLang].adventProgress}`);
 }
 
-// REACTION
+// 💬 REACTION WALL LOGIC (DENGAN COUNTER)
 const RW_EMOJIS = ['❤️','🎄','🎁','🎅','⭐','🔔','☃️','🎉','✨','🍪'];
 function getReactions() {
   try { return JSON.parse(localStorage.getItem('reactions') || '{}'); } catch { return {}; }
@@ -564,13 +549,21 @@ function updateRWTotal() {
 }
 function buildRW() {
   const p = $('rwPicker'); if(!p) return; p.innerHTML='';
+  const data = getReactions();
+  
   RW_EMOJIS.forEach(e => { 
+    const count = data[e] || 0;
     const b=document.createElement('button'); 
-    b.textContent=e; 
+    b.innerHTML = `${e} <span class="count">${count}</span>`; 
+    
     b.onclick=()=>{ 
-      const data = getReactions();
-      data[e] = (data[e] || 0) + 1;
-      localStorage.setItem('reactions', JSON.stringify(data));
+      const newData = getReactions();
+      newData[e] = (newData[e] || 0) + 1;
+      localStorage.setItem('reactions', JSON.stringify(newData));
+      
+      // Update counter di tombol langsung
+      b.querySelector('.count').textContent = newData[e];
+      
       updateRWTotal();
       const w=$('rwWall'), el=document.createElement('div'); 
       el.className='rw-bubble'; 
@@ -579,7 +572,6 @@ function buildRW() {
       el.style.bottom='10px'; 
       w.appendChild(el); 
       setTimeout(()=>el.remove(),3000); 
-      showToast(e+' Dikirim!'); 
     }; 
     p.appendChild(b); 
   });
